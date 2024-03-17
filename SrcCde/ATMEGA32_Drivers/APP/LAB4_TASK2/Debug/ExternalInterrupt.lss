@@ -1,0 +1,4176 @@
+
+ExternalInterrupt.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         000016ae  00000000  00000000  00000094  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .data         0000002c  00800060  000016ae  00001742  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  2 .bss          00000008  0080008c  0080008c  0000176e  2**0
+                  ALLOC
+  3 .comment      00000030  00000000  00000000  0000176e  2**0
+                  CONTENTS, READONLY
+  4 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  000017a0  2**2
+                  CONTENTS, READONLY
+  5 .debug_aranges 00000188  00000000  00000000  000017dc  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_info   00002689  00000000  00000000  00001964  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_abbrev 00000ca5  00000000  00000000  00003fed  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_line   000018b8  00000000  00000000  00004c92  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_frame  000003b0  00000000  00000000  0000654c  2**2
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_str    00000c49  00000000  00000000  000068fc  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_loc    000019e2  00000000  00000000  00007545  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 12 .debug_ranges 00000110  00000000  00000000  00008f27  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+       0:	0c 94 34 00 	jmp	0x68	; 0x68 <__ctors_end>
+       4:	0c 94 d4 0a 	jmp	0x15a8	; 0x15a8 <__vector_1>
+       8:	0c 94 fd 0a 	jmp	0x15fa	; 0x15fa <__vector_2>
+       c:	0c 94 26 0b 	jmp	0x164c	; 0x164c <__vector_3>
+      10:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+      14:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+      18:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+      1c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+      20:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+      24:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+      28:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+      2c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+      30:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+      34:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+      38:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+      3c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+      40:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+      44:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+      48:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+      4c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+      50:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+      54:	df 02       	muls	r29, r31
+      56:	52 03       	mulsu	r21, r18
+      58:	c5 03       	fmuls	r20, r21
+      5a:	38 04       	cpc	r3, r8
+      5c:	ab 04       	cpc	r10, r11
+      5e:	1e 05       	cpc	r17, r14
+      60:	91 05       	cpc	r25, r1
+      62:	04 06       	cpc	r0, r20
+      64:	77 06       	cpc	r7, r23
+      66:	ea 06       	cpc	r14, r26
+
+00000068 <__ctors_end>:
+      68:	11 24       	eor	r1, r1
+      6a:	1f be       	out	0x3f, r1	; 63
+      6c:	cf e5       	ldi	r28, 0x5F	; 95
+      6e:	d8 e0       	ldi	r29, 0x08	; 8
+      70:	de bf       	out	0x3e, r29	; 62
+      72:	cd bf       	out	0x3d, r28	; 61
+
+00000074 <__do_copy_data>:
+      74:	10 e0       	ldi	r17, 0x00	; 0
+      76:	a0 e6       	ldi	r26, 0x60	; 96
+      78:	b0 e0       	ldi	r27, 0x00	; 0
+      7a:	ee ea       	ldi	r30, 0xAE	; 174
+      7c:	f6 e1       	ldi	r31, 0x16	; 22
+      7e:	02 c0       	rjmp	.+4      	; 0x84 <__do_copy_data+0x10>
+      80:	05 90       	lpm	r0, Z+
+      82:	0d 92       	st	X+, r0
+      84:	ac 38       	cpi	r26, 0x8C	; 140
+      86:	b1 07       	cpc	r27, r17
+      88:	d9 f7       	brne	.-10     	; 0x80 <__do_copy_data+0xc>
+
+0000008a <__do_clear_bss>:
+      8a:	20 e0       	ldi	r18, 0x00	; 0
+      8c:	ac e8       	ldi	r26, 0x8C	; 140
+      8e:	b0 e0       	ldi	r27, 0x00	; 0
+      90:	01 c0       	rjmp	.+2      	; 0x94 <.do_clear_bss_start>
+
+00000092 <.do_clear_bss_loop>:
+      92:	1d 92       	st	X+, r1
+
+00000094 <.do_clear_bss_start>:
+      94:	a4 39       	cpi	r26, 0x94	; 148
+      96:	b2 07       	cpc	r27, r18
+      98:	e1 f7       	brne	.-8      	; 0x92 <.do_clear_bss_loop>
+      9a:	0e 94 59 00 	call	0xb2	; 0xb2 <main>
+      9e:	0c 94 55 0b 	jmp	0x16aa	; 0x16aa <_exit>
+
+000000a2 <__bad_interrupt>:
+      a2:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+000000a6 <DecrementTimerEXTI0>:
+#include "Timer.h"
+
+
+void DecrementTimerEXTI0(void)
+{
+	Decrement_Timer();
+      a6:	0e 94 68 00 	call	0xd0	; 0xd0 <Decrement_Timer>
+      aa:	08 95       	ret
+
+000000ac <IncrementTimerEXTI1>:
+}
+void IncrementTimerEXTI1(void)
+{
+	Increment_Timer();
+      ac:	0e 94 ae 00 	call	0x15c	; 0x15c <Increment_Timer>
+      b0:	08 95       	ret
+
+000000b2 <main>:
+}
+
+int main(void)
+{
+	SWITCH_voidInit();
+      b2:	0e 94 79 07 	call	0xef2	; 0xef2 <SWITCH_voidInit>
+	EXTI_voidInit();
+      b6:	0e 94 b4 0a 	call	0x1568	; 0x1568 <EXTI_voidInit>
+	SSD_Init();
+      ba:	0e 94 f0 00 	call	0x1e0	; 0x1e0 <SSD_Init>
+	EXTI0_voidSetCallBack(DecrementTimerEXTI0);
+      be:	83 e5       	ldi	r24, 0x53	; 83
+      c0:	90 e0       	ldi	r25, 0x00	; 0
+      c2:	0e 94 ca 0a 	call	0x1594	; 0x1594 <EXTI0_voidSetCallBack>
+	EXTI1_voidSetCallBack(IncrementTimerEXTI1);
+      c6:	86 e5       	ldi	r24, 0x56	; 86
+      c8:	90 e0       	ldi	r25, 0x00	; 0
+      ca:	0e 94 cf 0a 	call	0x159e	; 0x159e <EXTI1_voidSetCallBack>
+      ce:	ff cf       	rjmp	.-2      	; 0xce <main+0x1c>
+
+000000d0 <Decrement_Timer>:
+u8 TIMER_u8SecondSevSegcounter=ZERO;
+u8 TIMER_u8ThirdSevSegcounter=ZERO;
+u8 TIMER_u8SwitchFlag=ZERO;
+
+void Decrement_Timer(void)
+{
+      d0:	cf 93       	push	r28
+      d2:	df 93       	push	r29
+      d4:	1f 92       	push	r1
+      d6:	cd b7       	in	r28, 0x3d	; 61
+      d8:	de b7       	in	r29, 0x3e	; 62
+    SWITCH_enumSwitchState_t Loc_enumSwitchState=SWITCH_enumNotPressed;
+      da:	81 e0       	ldi	r24, 0x01	; 1
+      dc:	89 83       	std	Y+1, r24	; 0x01
+    SWITCH_enuReadSwitchState(FIRST_SWITCH, &Loc_enumSwitchState);
+      de:	be 01       	movw	r22, r28
+      e0:	6f 5f       	subi	r22, 0xFF	; 255
+      e2:	7f 4f       	sbci	r23, 0xFF	; 255
+      e4:	80 e0       	ldi	r24, 0x00	; 0
+      e6:	0e 94 dc 07 	call	0xfb8	; 0xfb8 <SWITCH_enuReadSwitchState>
+    if (Loc_enumSwitchState == SWITCH_enumPressed)
+      ea:	89 81       	ldd	r24, Y+1	; 0x01
+      ec:	81 11       	cpse	r24, r1
+      ee:	32 c0       	rjmp	.+100    	; 0x154 <Decrement_Timer+0x84>
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+      f0:	2f ef       	ldi	r18, 0xFF	; 255
+      f2:	80 e7       	ldi	r24, 0x70	; 112
+      f4:	92 e0       	ldi	r25, 0x02	; 2
+      f6:	21 50       	subi	r18, 0x01	; 1
+      f8:	80 40       	sbci	r24, 0x00	; 0
+      fa:	90 40       	sbci	r25, 0x00	; 0
+      fc:	e1 f7       	brne	.-8      	; 0xf6 <Decrement_Timer+0x26>
+      fe:	00 c0       	rjmp	.+0      	; 0x100 <Decrement_Timer+0x30>
+     100:	00 00       	nop
+    {
+        _delay_ms(100);
+
+        if (TIMER_u8FirstSevSegcounter > ZERO && TIMER_u8FirstSevSegcounter <= NINE)
+     102:	80 91 8d 00 	lds	r24, 0x008D	; 0x80008d <TIMER_u8FirstSevSegcounter>
+     106:	9f ef       	ldi	r25, 0xFF	; 255
+     108:	98 0f       	add	r25, r24
+     10a:	99 30       	cpi	r25, 0x09	; 9
+     10c:	18 f4       	brcc	.+6      	; 0x114 <Decrement_Timer+0x44>
+        {
+            TIMER_u8FirstSevSegcounter--;
+     10e:	90 93 8d 00 	sts	0x008D, r25	; 0x80008d <TIMER_u8FirstSevSegcounter>
+     112:	10 c0       	rjmp	.+32     	; 0x134 <Decrement_Timer+0x64>
+        }
+        else if (TIMER_u8FirstSevSegcounter == ZERO)
+     114:	81 11       	cpse	r24, r1
+     116:	0e c0       	rjmp	.+28     	; 0x134 <Decrement_Timer+0x64>
+        {
+        	TIMER_u8FirstSevSegcounter = NINE;
+     118:	89 e0       	ldi	r24, 0x09	; 9
+     11a:	80 93 8d 00 	sts	0x008D, r24	; 0x80008d <TIMER_u8FirstSevSegcounter>
+        	if(TIMER_u8SecondSevSegcounter!=ZERO)
+     11e:	80 91 8c 00 	lds	r24, 0x008C	; 0x80008c <__data_end>
+     122:	88 23       	and	r24, r24
+     124:	21 f0       	breq	.+8      	; 0x12e <Decrement_Timer+0x5e>
+        	{
+            TIMER_u8SecondSevSegcounter--;
+     126:	81 50       	subi	r24, 0x01	; 1
+     128:	80 93 8c 00 	sts	0x008C, r24	; 0x80008c <__data_end>
+     12c:	03 c0       	rjmp	.+6      	; 0x134 <Decrement_Timer+0x64>
+        	}
+        	else
+        	{
+        		TIMER_u8SecondSevSegcounter=FIVE;
+     12e:	85 e0       	ldi	r24, 0x05	; 5
+     130:	80 93 8c 00 	sts	0x008C, r24	; 0x80008c <__data_end>
+        	}
+        }
+
+        SSD_enumSetValue(FIRST_SEG, TIMER_u8FirstSevSegcounter);
+     134:	40 91 8d 00 	lds	r20, 0x008D	; 0x80008d <TIMER_u8FirstSevSegcounter>
+     138:	50 e0       	ldi	r21, 0x00	; 0
+     13a:	60 e0       	ldi	r22, 0x00	; 0
+     13c:	70 e0       	ldi	r23, 0x00	; 0
+     13e:	80 e0       	ldi	r24, 0x00	; 0
+     140:	0e 94 cb 02 	call	0x596	; 0x596 <SSD_enumSetValue>
+        SSD_enumSetValue(SECOND_SEG, TIMER_u8SecondSevSegcounter);
+     144:	40 91 8c 00 	lds	r20, 0x008C	; 0x80008c <__data_end>
+     148:	50 e0       	ldi	r21, 0x00	; 0
+     14a:	60 e0       	ldi	r22, 0x00	; 0
+     14c:	70 e0       	ldi	r23, 0x00	; 0
+     14e:	81 e0       	ldi	r24, 0x01	; 1
+     150:	0e 94 cb 02 	call	0x596	; 0x596 <SSD_enumSetValue>
+    }
+}
+     154:	0f 90       	pop	r0
+     156:	df 91       	pop	r29
+     158:	cf 91       	pop	r28
+     15a:	08 95       	ret
+
+0000015c <Increment_Timer>:
+void Increment_Timer(void)
+{
+     15c:	cf 93       	push	r28
+     15e:	df 93       	push	r29
+     160:	1f 92       	push	r1
+     162:	cd b7       	in	r28, 0x3d	; 61
+     164:	de b7       	in	r29, 0x3e	; 62
+    SWITCH_enumSwitchState_t Loc_enumSwitchState=SWITCH_enumNotPressed;
+     166:	81 e0       	ldi	r24, 0x01	; 1
+     168:	89 83       	std	Y+1, r24	; 0x01
+    SWITCH_enuReadSwitchState(SECOND_SWITCH, &Loc_enumSwitchState);
+     16a:	be 01       	movw	r22, r28
+     16c:	6f 5f       	subi	r22, 0xFF	; 255
+     16e:	7f 4f       	sbci	r23, 0xFF	; 255
+     170:	0e 94 dc 07 	call	0xfb8	; 0xfb8 <SWITCH_enuReadSwitchState>
+    if (Loc_enumSwitchState == SWITCH_enumPressed)
+     174:	89 81       	ldd	r24, Y+1	; 0x01
+     176:	81 11       	cpse	r24, r1
+     178:	2f c0       	rjmp	.+94     	; 0x1d8 <Increment_Timer+0x7c>
+     17a:	2f ef       	ldi	r18, 0xFF	; 255
+     17c:	80 e7       	ldi	r24, 0x70	; 112
+     17e:	92 e0       	ldi	r25, 0x02	; 2
+     180:	21 50       	subi	r18, 0x01	; 1
+     182:	80 40       	sbci	r24, 0x00	; 0
+     184:	90 40       	sbci	r25, 0x00	; 0
+     186:	e1 f7       	brne	.-8      	; 0x180 <Increment_Timer+0x24>
+     188:	00 c0       	rjmp	.+0      	; 0x18a <Increment_Timer+0x2e>
+     18a:	00 00       	nop
+    {
+        _delay_ms(100);
+
+        if (TIMER_u8FirstSevSegcounter >= ZERO && TIMER_u8FirstSevSegcounter < NINE)
+     18c:	80 91 8d 00 	lds	r24, 0x008D	; 0x80008d <TIMER_u8FirstSevSegcounter>
+     190:	89 30       	cpi	r24, 0x09	; 9
+     192:	20 f4       	brcc	.+8      	; 0x19c <Increment_Timer+0x40>
+        {
+            TIMER_u8FirstSevSegcounter++;
+     194:	8f 5f       	subi	r24, 0xFF	; 255
+     196:	80 93 8d 00 	sts	0x008D, r24	; 0x80008d <TIMER_u8FirstSevSegcounter>
+     19a:	0e c0       	rjmp	.+28     	; 0x1b8 <Increment_Timer+0x5c>
+        }
+        else if (TIMER_u8FirstSevSegcounter == NINE)
+     19c:	89 30       	cpi	r24, 0x09	; 9
+     19e:	61 f4       	brne	.+24     	; 0x1b8 <Increment_Timer+0x5c>
+        {
+            TIMER_u8FirstSevSegcounter = ZERO;
+     1a0:	10 92 8d 00 	sts	0x008D, r1	; 0x80008d <TIMER_u8FirstSevSegcounter>
+
+            if (TIMER_u8SecondSevSegcounter < FIVE)
+     1a4:	80 91 8c 00 	lds	r24, 0x008C	; 0x80008c <__data_end>
+     1a8:	85 30       	cpi	r24, 0x05	; 5
+     1aa:	20 f4       	brcc	.+8      	; 0x1b4 <Increment_Timer+0x58>
+            {
+                TIMER_u8SecondSevSegcounter++;
+     1ac:	8f 5f       	subi	r24, 0xFF	; 255
+     1ae:	80 93 8c 00 	sts	0x008C, r24	; 0x80008c <__data_end>
+     1b2:	02 c0       	rjmp	.+4      	; 0x1b8 <Increment_Timer+0x5c>
+            }
+            else
+            {
+                TIMER_u8SecondSevSegcounter = ZERO;
+     1b4:	10 92 8c 00 	sts	0x008C, r1	; 0x80008c <__data_end>
+            }
+        }
+
+        SSD_enumSetValue(FIRST_SEG, TIMER_u8FirstSevSegcounter);
+     1b8:	40 91 8d 00 	lds	r20, 0x008D	; 0x80008d <TIMER_u8FirstSevSegcounter>
+     1bc:	50 e0       	ldi	r21, 0x00	; 0
+     1be:	60 e0       	ldi	r22, 0x00	; 0
+     1c0:	70 e0       	ldi	r23, 0x00	; 0
+     1c2:	80 e0       	ldi	r24, 0x00	; 0
+     1c4:	0e 94 cb 02 	call	0x596	; 0x596 <SSD_enumSetValue>
+        SSD_enumSetValue(SECOND_SEG, TIMER_u8SecondSevSegcounter);
+     1c8:	40 91 8c 00 	lds	r20, 0x008C	; 0x80008c <__data_end>
+     1cc:	50 e0       	ldi	r21, 0x00	; 0
+     1ce:	60 e0       	ldi	r22, 0x00	; 0
+     1d0:	70 e0       	ldi	r23, 0x00	; 0
+     1d2:	81 e0       	ldi	r24, 0x01	; 1
+     1d4:	0e 94 cb 02 	call	0x596	; 0x596 <SSD_enumSetValue>
+    }
+}
+     1d8:	0f 90       	pop	r0
+     1da:	df 91       	pop	r29
+     1dc:	cf 91       	pop	r28
+     1de:	08 95       	ret
+
+000001e0 <SSD_Init>:
+#include "SSD.h"
+
+extern SSD_strSegmentCfg_t SSD_strSegmentsArrCfg[SEG_NUM];
+	
+void SSD_Init()
+{
+     1e0:	0f 93       	push	r16
+     1e2:	1f 93       	push	r17
+     1e4:	cf 93       	push	r28
+     1e6:	df 93       	push	r29
+     1e8:	cd b7       	in	r28, 0x3d	; 61
+     1ea:	de b7       	in	r29, 0x3e	; 62
+     1ec:	c0 54       	subi	r28, 0x40	; 64
+     1ee:	d1 09       	sbc	r29, r1
+     1f0:	0f b6       	in	r0, 0x3f	; 63
+     1f2:	f8 94       	cli
+     1f4:	de bf       	out	0x3e, r29	; 62
+     1f6:	0f be       	out	0x3f, r0	; 63
+     1f8:	cd bf       	out	0x3d, r28	; 61
+	
+	DIO_strDioCfg SSD_strSegmentMappingArr[SEG_NUM*SSD_LED_NO];
+
+	u8 dio_iter=0;
+	
+	for(u8 seg_iter=0;seg_iter<SEG_NUM;seg_iter++)
+     1fa:	60 e0       	ldi	r22, 0x00	; 0
+void SSD_Init()
+{
+	
+	DIO_strDioCfg SSD_strSegmentMappingArr[SEG_NUM*SSD_LED_NO];
+
+	u8 dio_iter=0;
+     1fc:	90 e0       	ldi	r25, 0x00	; 0
+	
+	for(u8 seg_iter=0;seg_iter<SEG_NUM;seg_iter++)
+     1fe:	b7 c1       	rjmp	.+878    	; 0x56e <__EEPROM_REGION_LENGTH__+0x16e>
+		{
+				SSD_strSegmentMappingArr[dio_iter].Port= SSD_strSegmentsArrCfg[seg_iter].LED_A.Port;
+     200:	49 2f       	mov	r20, r25
+     202:	50 e0       	ldi	r21, 0x00	; 0
+     204:	26 2f       	mov	r18, r22
+     206:	30 e0       	ldi	r19, 0x00	; 0
+     208:	81 e1       	ldi	r24, 0x11	; 17
+     20a:	82 9f       	mul	r24, r18
+     20c:	f0 01       	movw	r30, r0
+     20e:	83 9f       	mul	r24, r19
+     210:	f0 0d       	add	r31, r0
+     212:	11 24       	eor	r1, r1
+     214:	e0 5a       	subi	r30, 0xA0	; 160
+     216:	ff 4f       	sbci	r31, 0xFF	; 255
+     218:	81 81       	ldd	r24, Z+1	; 0x01
+     21a:	da 01       	movw	r26, r20
+     21c:	aa 0f       	add	r26, r26
+     21e:	bb 1f       	adc	r27, r27
+     220:	aa 0f       	add	r26, r26
+     222:	bb 1f       	adc	r27, r27
+     224:	01 e0       	ldi	r16, 0x01	; 1
+     226:	10 e0       	ldi	r17, 0x00	; 0
+     228:	0c 0f       	add	r16, r28
+     22a:	1d 1f       	adc	r17, r29
+     22c:	a0 0f       	add	r26, r16
+     22e:	b1 1f       	adc	r27, r17
+     230:	8c 93       	st	X, r24
+				SSD_strSegmentMappingArr[dio_iter].Pin= SSD_strSegmentsArrCfg[seg_iter].LED_A.Pin;
+     232:	82 81       	ldd	r24, Z+2	; 0x02
+     234:	11 96       	adiw	r26, 0x01	; 1
+     236:	8c 93       	st	X, r24
+     238:	11 97       	sbiw	r26, 0x01	; 1
+				SSD_strSegmentMappingArr[dio_iter].PinConfig= DIO_enumOutput;
+     23a:	12 96       	adiw	r26, 0x02	; 2
+     23c:	1c 92       	st	X, r1
+     23e:	12 97       	sbiw	r26, 0x02	; 2
+				if(SSD_strSegmentsArrCfg[seg_iter].State== SSD_enumCommonAnode)
+     240:	80 81       	ld	r24, Z
+     242:	81 11       	cpse	r24, r1
+     244:	04 c0       	rjmp	.+8      	; 0x24e <SSD_Init+0x6e>
+				{
+					SSD_strSegmentMappingArr[dio_iter].LogicState=DIO_enumLogicHigh;
+     246:	fd 01       	movw	r30, r26
+     248:	41 e0       	ldi	r20, 0x01	; 1
+     24a:	43 83       	std	Z+3, r20	; 0x03
+     24c:	0d c0       	rjmp	.+26     	; 0x268 <SSD_Init+0x88>
+				}
+				else if(SSD_strSegmentsArrCfg[seg_iter].State== SSD_enumCommonCathode)
+     24e:	81 30       	cpi	r24, 0x01	; 1
+     250:	59 f4       	brne	.+22     	; 0x268 <SSD_Init+0x88>
+				{
+					SSD_strSegmentMappingArr[dio_iter].LogicState=DIO_enumLogicLow;
+     252:	44 0f       	add	r20, r20
+     254:	55 1f       	adc	r21, r21
+     256:	44 0f       	add	r20, r20
+     258:	55 1f       	adc	r21, r21
+     25a:	e1 e0       	ldi	r30, 0x01	; 1
+     25c:	f0 e0       	ldi	r31, 0x00	; 0
+     25e:	ec 0f       	add	r30, r28
+     260:	fd 1f       	adc	r31, r29
+     262:	e4 0f       	add	r30, r20
+     264:	f5 1f       	adc	r31, r21
+     266:	13 82       	std	Z+3, r1	; 0x03
+				}
+			
+				dio_iter++;
+     268:	41 e0       	ldi	r20, 0x01	; 1
+     26a:	49 0f       	add	r20, r25
+				
+				SSD_strSegmentMappingArr[dio_iter].Port= SSD_strSegmentsArrCfg[seg_iter].LED_B.Port;
+     26c:	50 e0       	ldi	r21, 0x00	; 0
+     26e:	71 e1       	ldi	r23, 0x11	; 17
+     270:	72 9f       	mul	r23, r18
+     272:	d0 01       	movw	r26, r0
+     274:	73 9f       	mul	r23, r19
+     276:	b0 0d       	add	r27, r0
+     278:	11 24       	eor	r1, r1
+     27a:	a0 5a       	subi	r26, 0xA0	; 160
+     27c:	bf 4f       	sbci	r27, 0xFF	; 255
+     27e:	13 96       	adiw	r26, 0x03	; 3
+     280:	7c 91       	ld	r23, X
+     282:	13 97       	sbiw	r26, 0x03	; 3
+     284:	fa 01       	movw	r30, r20
+     286:	ee 0f       	add	r30, r30
+     288:	ff 1f       	adc	r31, r31
+     28a:	ee 0f       	add	r30, r30
+     28c:	ff 1f       	adc	r31, r31
+     28e:	01 e0       	ldi	r16, 0x01	; 1
+     290:	10 e0       	ldi	r17, 0x00	; 0
+     292:	0c 0f       	add	r16, r28
+     294:	1d 1f       	adc	r17, r29
+     296:	e0 0f       	add	r30, r16
+     298:	f1 1f       	adc	r31, r17
+     29a:	70 83       	st	Z, r23
+				SSD_strSegmentMappingArr[dio_iter].Pin= SSD_strSegmentsArrCfg[seg_iter].LED_B.Pin;
+     29c:	14 96       	adiw	r26, 0x04	; 4
+     29e:	7c 91       	ld	r23, X
+     2a0:	71 83       	std	Z+1, r23	; 0x01
+				SSD_strSegmentMappingArr[dio_iter].PinConfig= DIO_enumOutput;
+     2a2:	12 82       	std	Z+2, r1	; 0x02
+				if(SSD_strSegmentsArrCfg[seg_iter].State== SSD_enumCommonAnode)
+     2a4:	81 11       	cpse	r24, r1
+     2a6:	0a c0       	rjmp	.+20     	; 0x2bc <SSD_Init+0xdc>
+				{
+					SSD_strSegmentMappingArr[dio_iter].LogicState=DIO_enumLogicHigh;
+     2a8:	44 0f       	add	r20, r20
+     2aa:	55 1f       	adc	r21, r21
+     2ac:	44 0f       	add	r20, r20
+     2ae:	55 1f       	adc	r21, r21
+     2b0:	f8 01       	movw	r30, r16
+     2b2:	e4 0f       	add	r30, r20
+     2b4:	f5 1f       	adc	r31, r21
+     2b6:	41 e0       	ldi	r20, 0x01	; 1
+     2b8:	43 83       	std	Z+3, r20	; 0x03
+     2ba:	0d c0       	rjmp	.+26     	; 0x2d6 <SSD_Init+0xf6>
+				}
+				else if(SSD_strSegmentsArrCfg[seg_iter].State== SSD_enumCommonCathode)
+     2bc:	81 30       	cpi	r24, 0x01	; 1
+     2be:	59 f4       	brne	.+22     	; 0x2d6 <SSD_Init+0xf6>
+				{
+					SSD_strSegmentMappingArr[dio_iter].LogicState=DIO_enumLogicLow;
+     2c0:	44 0f       	add	r20, r20
+     2c2:	55 1f       	adc	r21, r21
+     2c4:	44 0f       	add	r20, r20
+     2c6:	55 1f       	adc	r21, r21
+     2c8:	e1 e0       	ldi	r30, 0x01	; 1
+     2ca:	f0 e0       	ldi	r31, 0x00	; 0
+     2cc:	ec 0f       	add	r30, r28
+     2ce:	fd 1f       	adc	r31, r29
+     2d0:	e4 0f       	add	r30, r20
+     2d2:	f5 1f       	adc	r31, r21
+     2d4:	13 82       	std	Z+3, r1	; 0x03
+				}
+				
+				dio_iter++;
+     2d6:	42 e0       	ldi	r20, 0x02	; 2
+     2d8:	49 0f       	add	r20, r25
+				
+				SSD_strSegmentMappingArr[dio_iter].Port= SSD_strSegmentsArrCfg[seg_iter].LED_C.Port;
+     2da:	50 e0       	ldi	r21, 0x00	; 0
+     2dc:	71 e1       	ldi	r23, 0x11	; 17
+     2de:	72 9f       	mul	r23, r18
+     2e0:	d0 01       	movw	r26, r0
+     2e2:	73 9f       	mul	r23, r19
+     2e4:	b0 0d       	add	r27, r0
+     2e6:	11 24       	eor	r1, r1
+     2e8:	a0 5a       	subi	r26, 0xA0	; 160
+     2ea:	bf 4f       	sbci	r27, 0xFF	; 255
+     2ec:	15 96       	adiw	r26, 0x05	; 5
+     2ee:	7c 91       	ld	r23, X
+     2f0:	15 97       	sbiw	r26, 0x05	; 5
+     2f2:	fa 01       	movw	r30, r20
+     2f4:	ee 0f       	add	r30, r30
+     2f6:	ff 1f       	adc	r31, r31
+     2f8:	ee 0f       	add	r30, r30
+     2fa:	ff 1f       	adc	r31, r31
+     2fc:	01 e0       	ldi	r16, 0x01	; 1
+     2fe:	10 e0       	ldi	r17, 0x00	; 0
+     300:	0c 0f       	add	r16, r28
+     302:	1d 1f       	adc	r17, r29
+     304:	e0 0f       	add	r30, r16
+     306:	f1 1f       	adc	r31, r17
+     308:	70 83       	st	Z, r23
+				SSD_strSegmentMappingArr[dio_iter].Pin= SSD_strSegmentsArrCfg[seg_iter].LED_C.Pin;
+     30a:	16 96       	adiw	r26, 0x06	; 6
+     30c:	7c 91       	ld	r23, X
+     30e:	71 83       	std	Z+1, r23	; 0x01
+				SSD_strSegmentMappingArr[dio_iter].PinConfig= DIO_enumOutput;
+     310:	12 82       	std	Z+2, r1	; 0x02
+				if(SSD_strSegmentsArrCfg[seg_iter].State== SSD_enumCommonAnode)
+     312:	81 11       	cpse	r24, r1
+     314:	0a c0       	rjmp	.+20     	; 0x32a <SSD_Init+0x14a>
+				{
+					SSD_strSegmentMappingArr[dio_iter].LogicState=DIO_enumLogicHigh;
+     316:	44 0f       	add	r20, r20
+     318:	55 1f       	adc	r21, r21
+     31a:	44 0f       	add	r20, r20
+     31c:	55 1f       	adc	r21, r21
+     31e:	f8 01       	movw	r30, r16
+     320:	e4 0f       	add	r30, r20
+     322:	f5 1f       	adc	r31, r21
+     324:	41 e0       	ldi	r20, 0x01	; 1
+     326:	43 83       	std	Z+3, r20	; 0x03
+     328:	0d c0       	rjmp	.+26     	; 0x344 <SSD_Init+0x164>
+				}
+				else if(SSD_strSegmentsArrCfg[seg_iter].State== SSD_enumCommonCathode)
+     32a:	81 30       	cpi	r24, 0x01	; 1
+     32c:	59 f4       	brne	.+22     	; 0x344 <SSD_Init+0x164>
+				{
+					SSD_strSegmentMappingArr[dio_iter].LogicState=DIO_enumLogicLow;
+     32e:	44 0f       	add	r20, r20
+     330:	55 1f       	adc	r21, r21
+     332:	44 0f       	add	r20, r20
+     334:	55 1f       	adc	r21, r21
+     336:	e1 e0       	ldi	r30, 0x01	; 1
+     338:	f0 e0       	ldi	r31, 0x00	; 0
+     33a:	ec 0f       	add	r30, r28
+     33c:	fd 1f       	adc	r31, r29
+     33e:	e4 0f       	add	r30, r20
+     340:	f5 1f       	adc	r31, r21
+     342:	13 82       	std	Z+3, r1	; 0x03
+				}
+				
+				dio_iter++;
+     344:	43 e0       	ldi	r20, 0x03	; 3
+     346:	49 0f       	add	r20, r25
+				
+				SSD_strSegmentMappingArr[dio_iter].Port= SSD_strSegmentsArrCfg[seg_iter].LED_D.Port;
+     348:	50 e0       	ldi	r21, 0x00	; 0
+     34a:	71 e1       	ldi	r23, 0x11	; 17
+     34c:	72 9f       	mul	r23, r18
+     34e:	d0 01       	movw	r26, r0
+     350:	73 9f       	mul	r23, r19
+     352:	b0 0d       	add	r27, r0
+     354:	11 24       	eor	r1, r1
+     356:	a0 5a       	subi	r26, 0xA0	; 160
+     358:	bf 4f       	sbci	r27, 0xFF	; 255
+     35a:	17 96       	adiw	r26, 0x07	; 7
+     35c:	7c 91       	ld	r23, X
+     35e:	17 97       	sbiw	r26, 0x07	; 7
+     360:	fa 01       	movw	r30, r20
+     362:	ee 0f       	add	r30, r30
+     364:	ff 1f       	adc	r31, r31
+     366:	ee 0f       	add	r30, r30
+     368:	ff 1f       	adc	r31, r31
+     36a:	01 e0       	ldi	r16, 0x01	; 1
+     36c:	10 e0       	ldi	r17, 0x00	; 0
+     36e:	0c 0f       	add	r16, r28
+     370:	1d 1f       	adc	r17, r29
+     372:	e0 0f       	add	r30, r16
+     374:	f1 1f       	adc	r31, r17
+     376:	70 83       	st	Z, r23
+				SSD_strSegmentMappingArr[dio_iter].Pin= SSD_strSegmentsArrCfg[seg_iter].LED_D.Pin;
+     378:	18 96       	adiw	r26, 0x08	; 8
+     37a:	7c 91       	ld	r23, X
+     37c:	71 83       	std	Z+1, r23	; 0x01
+				SSD_strSegmentMappingArr[dio_iter].PinConfig= DIO_enumOutput;
+     37e:	12 82       	std	Z+2, r1	; 0x02
+				if(SSD_strSegmentsArrCfg[seg_iter].State== SSD_enumCommonAnode)
+     380:	81 11       	cpse	r24, r1
+     382:	0a c0       	rjmp	.+20     	; 0x398 <SSD_Init+0x1b8>
+				{
+					SSD_strSegmentMappingArr[dio_iter].LogicState=DIO_enumLogicHigh;
+     384:	44 0f       	add	r20, r20
+     386:	55 1f       	adc	r21, r21
+     388:	44 0f       	add	r20, r20
+     38a:	55 1f       	adc	r21, r21
+     38c:	f8 01       	movw	r30, r16
+     38e:	e4 0f       	add	r30, r20
+     390:	f5 1f       	adc	r31, r21
+     392:	41 e0       	ldi	r20, 0x01	; 1
+     394:	43 83       	std	Z+3, r20	; 0x03
+     396:	0d c0       	rjmp	.+26     	; 0x3b2 <SSD_Init+0x1d2>
+				}
+				else if(SSD_strSegmentsArrCfg[seg_iter].State== SSD_enumCommonCathode)
+     398:	81 30       	cpi	r24, 0x01	; 1
+     39a:	59 f4       	brne	.+22     	; 0x3b2 <SSD_Init+0x1d2>
+				{
+					SSD_strSegmentMappingArr[dio_iter].LogicState=DIO_enumLogicLow;
+     39c:	44 0f       	add	r20, r20
+     39e:	55 1f       	adc	r21, r21
+     3a0:	44 0f       	add	r20, r20
+     3a2:	55 1f       	adc	r21, r21
+     3a4:	e1 e0       	ldi	r30, 0x01	; 1
+     3a6:	f0 e0       	ldi	r31, 0x00	; 0
+     3a8:	ec 0f       	add	r30, r28
+     3aa:	fd 1f       	adc	r31, r29
+     3ac:	e4 0f       	add	r30, r20
+     3ae:	f5 1f       	adc	r31, r21
+     3b0:	13 82       	std	Z+3, r1	; 0x03
+				}
+				
+				dio_iter++;
+     3b2:	44 e0       	ldi	r20, 0x04	; 4
+     3b4:	49 0f       	add	r20, r25
+				
+				SSD_strSegmentMappingArr[dio_iter].Port= SSD_strSegmentsArrCfg[seg_iter].LED_E.Port;
+     3b6:	50 e0       	ldi	r21, 0x00	; 0
+     3b8:	71 e1       	ldi	r23, 0x11	; 17
+     3ba:	72 9f       	mul	r23, r18
+     3bc:	d0 01       	movw	r26, r0
+     3be:	73 9f       	mul	r23, r19
+     3c0:	b0 0d       	add	r27, r0
+     3c2:	11 24       	eor	r1, r1
+     3c4:	a0 5a       	subi	r26, 0xA0	; 160
+     3c6:	bf 4f       	sbci	r27, 0xFF	; 255
+     3c8:	19 96       	adiw	r26, 0x09	; 9
+     3ca:	7c 91       	ld	r23, X
+     3cc:	19 97       	sbiw	r26, 0x09	; 9
+     3ce:	fa 01       	movw	r30, r20
+     3d0:	ee 0f       	add	r30, r30
+     3d2:	ff 1f       	adc	r31, r31
+     3d4:	ee 0f       	add	r30, r30
+     3d6:	ff 1f       	adc	r31, r31
+     3d8:	01 e0       	ldi	r16, 0x01	; 1
+     3da:	10 e0       	ldi	r17, 0x00	; 0
+     3dc:	0c 0f       	add	r16, r28
+     3de:	1d 1f       	adc	r17, r29
+     3e0:	e0 0f       	add	r30, r16
+     3e2:	f1 1f       	adc	r31, r17
+     3e4:	70 83       	st	Z, r23
+				SSD_strSegmentMappingArr[dio_iter].Pin= SSD_strSegmentsArrCfg[seg_iter].LED_E.Pin;
+     3e6:	1a 96       	adiw	r26, 0x0a	; 10
+     3e8:	7c 91       	ld	r23, X
+     3ea:	71 83       	std	Z+1, r23	; 0x01
+				SSD_strSegmentMappingArr[dio_iter].PinConfig= DIO_enumOutput;
+     3ec:	12 82       	std	Z+2, r1	; 0x02
+				if(SSD_strSegmentsArrCfg[seg_iter].State== SSD_enumCommonAnode)
+     3ee:	81 11       	cpse	r24, r1
+     3f0:	0a c0       	rjmp	.+20     	; 0x406 <__EEPROM_REGION_LENGTH__+0x6>
+				{
+					SSD_strSegmentMappingArr[dio_iter].LogicState=DIO_enumLogicHigh;
+     3f2:	44 0f       	add	r20, r20
+     3f4:	55 1f       	adc	r21, r21
+     3f6:	44 0f       	add	r20, r20
+     3f8:	55 1f       	adc	r21, r21
+     3fa:	f8 01       	movw	r30, r16
+     3fc:	e4 0f       	add	r30, r20
+     3fe:	f5 1f       	adc	r31, r21
+     400:	41 e0       	ldi	r20, 0x01	; 1
+     402:	43 83       	std	Z+3, r20	; 0x03
+     404:	0d c0       	rjmp	.+26     	; 0x420 <__EEPROM_REGION_LENGTH__+0x20>
+				}
+				else if(SSD_strSegmentsArrCfg[seg_iter].State== SSD_enumCommonCathode)
+     406:	81 30       	cpi	r24, 0x01	; 1
+     408:	59 f4       	brne	.+22     	; 0x420 <__EEPROM_REGION_LENGTH__+0x20>
+				{
+					SSD_strSegmentMappingArr[dio_iter].LogicState=DIO_enumLogicLow;
+     40a:	44 0f       	add	r20, r20
+     40c:	55 1f       	adc	r21, r21
+     40e:	44 0f       	add	r20, r20
+     410:	55 1f       	adc	r21, r21
+     412:	e1 e0       	ldi	r30, 0x01	; 1
+     414:	f0 e0       	ldi	r31, 0x00	; 0
+     416:	ec 0f       	add	r30, r28
+     418:	fd 1f       	adc	r31, r29
+     41a:	e4 0f       	add	r30, r20
+     41c:	f5 1f       	adc	r31, r21
+     41e:	13 82       	std	Z+3, r1	; 0x03
+				}
+				
+				dio_iter++;
+     420:	45 e0       	ldi	r20, 0x05	; 5
+     422:	49 0f       	add	r20, r25
+				
+				SSD_strSegmentMappingArr[dio_iter].Port= SSD_strSegmentsArrCfg[seg_iter].LED_F.Port;
+     424:	50 e0       	ldi	r21, 0x00	; 0
+     426:	71 e1       	ldi	r23, 0x11	; 17
+     428:	72 9f       	mul	r23, r18
+     42a:	d0 01       	movw	r26, r0
+     42c:	73 9f       	mul	r23, r19
+     42e:	b0 0d       	add	r27, r0
+     430:	11 24       	eor	r1, r1
+     432:	a0 5a       	subi	r26, 0xA0	; 160
+     434:	bf 4f       	sbci	r27, 0xFF	; 255
+     436:	1b 96       	adiw	r26, 0x0b	; 11
+     438:	7c 91       	ld	r23, X
+     43a:	1b 97       	sbiw	r26, 0x0b	; 11
+     43c:	fa 01       	movw	r30, r20
+     43e:	ee 0f       	add	r30, r30
+     440:	ff 1f       	adc	r31, r31
+     442:	ee 0f       	add	r30, r30
+     444:	ff 1f       	adc	r31, r31
+     446:	01 e0       	ldi	r16, 0x01	; 1
+     448:	10 e0       	ldi	r17, 0x00	; 0
+     44a:	0c 0f       	add	r16, r28
+     44c:	1d 1f       	adc	r17, r29
+     44e:	e0 0f       	add	r30, r16
+     450:	f1 1f       	adc	r31, r17
+     452:	70 83       	st	Z, r23
+				SSD_strSegmentMappingArr[dio_iter].Pin= SSD_strSegmentsArrCfg[seg_iter].LED_F.Pin;
+     454:	1c 96       	adiw	r26, 0x0c	; 12
+     456:	7c 91       	ld	r23, X
+     458:	71 83       	std	Z+1, r23	; 0x01
+				SSD_strSegmentMappingArr[dio_iter].PinConfig= DIO_enumOutput;
+     45a:	12 82       	std	Z+2, r1	; 0x02
+				if(SSD_strSegmentsArrCfg[seg_iter].State== SSD_enumCommonAnode)
+     45c:	81 11       	cpse	r24, r1
+     45e:	0a c0       	rjmp	.+20     	; 0x474 <__EEPROM_REGION_LENGTH__+0x74>
+				{
+					SSD_strSegmentMappingArr[dio_iter].LogicState=DIO_enumLogicHigh;
+     460:	44 0f       	add	r20, r20
+     462:	55 1f       	adc	r21, r21
+     464:	44 0f       	add	r20, r20
+     466:	55 1f       	adc	r21, r21
+     468:	f8 01       	movw	r30, r16
+     46a:	e4 0f       	add	r30, r20
+     46c:	f5 1f       	adc	r31, r21
+     46e:	41 e0       	ldi	r20, 0x01	; 1
+     470:	43 83       	std	Z+3, r20	; 0x03
+     472:	0d c0       	rjmp	.+26     	; 0x48e <__EEPROM_REGION_LENGTH__+0x8e>
+				}
+				else if(SSD_strSegmentsArrCfg[seg_iter].State== SSD_enumCommonCathode)
+     474:	81 30       	cpi	r24, 0x01	; 1
+     476:	59 f4       	brne	.+22     	; 0x48e <__EEPROM_REGION_LENGTH__+0x8e>
+				{
+					SSD_strSegmentMappingArr[dio_iter].LogicState=DIO_enumLogicLow;
+     478:	44 0f       	add	r20, r20
+     47a:	55 1f       	adc	r21, r21
+     47c:	44 0f       	add	r20, r20
+     47e:	55 1f       	adc	r21, r21
+     480:	e1 e0       	ldi	r30, 0x01	; 1
+     482:	f0 e0       	ldi	r31, 0x00	; 0
+     484:	ec 0f       	add	r30, r28
+     486:	fd 1f       	adc	r31, r29
+     488:	e4 0f       	add	r30, r20
+     48a:	f5 1f       	adc	r31, r21
+     48c:	13 82       	std	Z+3, r1	; 0x03
+				}
+				
+				dio_iter++;
+     48e:	46 e0       	ldi	r20, 0x06	; 6
+     490:	49 0f       	add	r20, r25
+				
+				SSD_strSegmentMappingArr[dio_iter].Port= SSD_strSegmentsArrCfg[seg_iter].LED_G.Port;
+     492:	50 e0       	ldi	r21, 0x00	; 0
+     494:	71 e1       	ldi	r23, 0x11	; 17
+     496:	72 9f       	mul	r23, r18
+     498:	d0 01       	movw	r26, r0
+     49a:	73 9f       	mul	r23, r19
+     49c:	b0 0d       	add	r27, r0
+     49e:	11 24       	eor	r1, r1
+     4a0:	a0 5a       	subi	r26, 0xA0	; 160
+     4a2:	bf 4f       	sbci	r27, 0xFF	; 255
+     4a4:	1d 96       	adiw	r26, 0x0d	; 13
+     4a6:	7c 91       	ld	r23, X
+     4a8:	1d 97       	sbiw	r26, 0x0d	; 13
+     4aa:	fa 01       	movw	r30, r20
+     4ac:	ee 0f       	add	r30, r30
+     4ae:	ff 1f       	adc	r31, r31
+     4b0:	ee 0f       	add	r30, r30
+     4b2:	ff 1f       	adc	r31, r31
+     4b4:	01 e0       	ldi	r16, 0x01	; 1
+     4b6:	10 e0       	ldi	r17, 0x00	; 0
+     4b8:	0c 0f       	add	r16, r28
+     4ba:	1d 1f       	adc	r17, r29
+     4bc:	e0 0f       	add	r30, r16
+     4be:	f1 1f       	adc	r31, r17
+     4c0:	70 83       	st	Z, r23
+				SSD_strSegmentMappingArr[dio_iter].Pin= SSD_strSegmentsArrCfg[seg_iter].LED_G.Pin;
+     4c2:	1e 96       	adiw	r26, 0x0e	; 14
+     4c4:	7c 91       	ld	r23, X
+     4c6:	71 83       	std	Z+1, r23	; 0x01
+				SSD_strSegmentMappingArr[dio_iter].PinConfig= DIO_enumOutput;
+     4c8:	12 82       	std	Z+2, r1	; 0x02
+				if(SSD_strSegmentsArrCfg[seg_iter].State== SSD_enumCommonAnode)
+     4ca:	81 11       	cpse	r24, r1
+     4cc:	0a c0       	rjmp	.+20     	; 0x4e2 <__EEPROM_REGION_LENGTH__+0xe2>
+				{
+					SSD_strSegmentMappingArr[dio_iter].LogicState=DIO_enumLogicHigh;
+     4ce:	44 0f       	add	r20, r20
+     4d0:	55 1f       	adc	r21, r21
+     4d2:	44 0f       	add	r20, r20
+     4d4:	55 1f       	adc	r21, r21
+     4d6:	f8 01       	movw	r30, r16
+     4d8:	e4 0f       	add	r30, r20
+     4da:	f5 1f       	adc	r31, r21
+     4dc:	41 e0       	ldi	r20, 0x01	; 1
+     4de:	43 83       	std	Z+3, r20	; 0x03
+     4e0:	0d c0       	rjmp	.+26     	; 0x4fc <__EEPROM_REGION_LENGTH__+0xfc>
+				}
+				else if(SSD_strSegmentsArrCfg[seg_iter].State== SSD_enumCommonCathode)
+     4e2:	81 30       	cpi	r24, 0x01	; 1
+     4e4:	59 f4       	brne	.+22     	; 0x4fc <__EEPROM_REGION_LENGTH__+0xfc>
+				{
+					SSD_strSegmentMappingArr[dio_iter].LogicState=DIO_enumLogicLow;
+     4e6:	44 0f       	add	r20, r20
+     4e8:	55 1f       	adc	r21, r21
+     4ea:	44 0f       	add	r20, r20
+     4ec:	55 1f       	adc	r21, r21
+     4ee:	e1 e0       	ldi	r30, 0x01	; 1
+     4f0:	f0 e0       	ldi	r31, 0x00	; 0
+     4f2:	ec 0f       	add	r30, r28
+     4f4:	fd 1f       	adc	r31, r29
+     4f6:	e4 0f       	add	r30, r20
+     4f8:	f5 1f       	adc	r31, r21
+     4fa:	13 82       	std	Z+3, r1	; 0x03
+				}
+				
+				dio_iter++;
+     4fc:	47 e0       	ldi	r20, 0x07	; 7
+     4fe:	49 0f       	add	r20, r25
+				
+				SSD_strSegmentMappingArr[dio_iter].Port= SSD_strSegmentsArrCfg[seg_iter].LED_DOT.Port;
+     500:	50 e0       	ldi	r21, 0x00	; 0
+     502:	71 e1       	ldi	r23, 0x11	; 17
+     504:	72 9f       	mul	r23, r18
+     506:	d0 01       	movw	r26, r0
+     508:	73 9f       	mul	r23, r19
+     50a:	b0 0d       	add	r27, r0
+     50c:	11 24       	eor	r1, r1
+     50e:	a0 5a       	subi	r26, 0xA0	; 160
+     510:	bf 4f       	sbci	r27, 0xFF	; 255
+     512:	1f 96       	adiw	r26, 0x0f	; 15
+     514:	2c 91       	ld	r18, X
+     516:	1f 97       	sbiw	r26, 0x0f	; 15
+     518:	fa 01       	movw	r30, r20
+     51a:	ee 0f       	add	r30, r30
+     51c:	ff 1f       	adc	r31, r31
+     51e:	ee 0f       	add	r30, r30
+     520:	ff 1f       	adc	r31, r31
+     522:	01 e0       	ldi	r16, 0x01	; 1
+     524:	10 e0       	ldi	r17, 0x00	; 0
+     526:	0c 0f       	add	r16, r28
+     528:	1d 1f       	adc	r17, r29
+     52a:	e0 0f       	add	r30, r16
+     52c:	f1 1f       	adc	r31, r17
+     52e:	20 83       	st	Z, r18
+				SSD_strSegmentMappingArr[dio_iter].Pin= SSD_strSegmentsArrCfg[seg_iter].LED_DOT.Pin;
+     530:	50 96       	adiw	r26, 0x10	; 16
+     532:	2c 91       	ld	r18, X
+     534:	21 83       	std	Z+1, r18	; 0x01
+				SSD_strSegmentMappingArr[dio_iter].PinConfig= DIO_enumOutput;
+     536:	12 82       	std	Z+2, r1	; 0x02
+				if(SSD_strSegmentsArrCfg[seg_iter].State== SSD_enumCommonAnode)
+     538:	81 11       	cpse	r24, r1
+     53a:	0a c0       	rjmp	.+20     	; 0x550 <__EEPROM_REGION_LENGTH__+0x150>
+				{
+					SSD_strSegmentMappingArr[dio_iter].LogicState=DIO_enumLogicHigh;
+     53c:	44 0f       	add	r20, r20
+     53e:	55 1f       	adc	r21, r21
+     540:	44 0f       	add	r20, r20
+     542:	55 1f       	adc	r21, r21
+     544:	f8 01       	movw	r30, r16
+     546:	e4 0f       	add	r30, r20
+     548:	f5 1f       	adc	r31, r21
+     54a:	81 e0       	ldi	r24, 0x01	; 1
+     54c:	83 83       	std	Z+3, r24	; 0x03
+     54e:	0d c0       	rjmp	.+26     	; 0x56a <__EEPROM_REGION_LENGTH__+0x16a>
+				}
+				else if(SSD_strSegmentsArrCfg[seg_iter].State== SSD_enumCommonCathode)
+     550:	81 30       	cpi	r24, 0x01	; 1
+     552:	59 f4       	brne	.+22     	; 0x56a <__EEPROM_REGION_LENGTH__+0x16a>
+				{
+					SSD_strSegmentMappingArr[dio_iter].LogicState=DIO_enumLogicLow;
+     554:	44 0f       	add	r20, r20
+     556:	55 1f       	adc	r21, r21
+     558:	44 0f       	add	r20, r20
+     55a:	55 1f       	adc	r21, r21
+     55c:	e1 e0       	ldi	r30, 0x01	; 1
+     55e:	f0 e0       	ldi	r31, 0x00	; 0
+     560:	ec 0f       	add	r30, r28
+     562:	fd 1f       	adc	r31, r29
+     564:	e4 0f       	add	r30, r20
+     566:	f5 1f       	adc	r31, r21
+     568:	13 82       	std	Z+3, r1	; 0x03
+				}
+				
+				dio_iter++;
+     56a:	98 5f       	subi	r25, 0xF8	; 248
+	
+	DIO_strDioCfg SSD_strSegmentMappingArr[SEG_NUM*SSD_LED_NO];
+
+	u8 dio_iter=0;
+	
+	for(u8 seg_iter=0;seg_iter<SEG_NUM;seg_iter++)
+     56c:	6f 5f       	subi	r22, 0xFF	; 255
+     56e:	62 30       	cpi	r22, 0x02	; 2
+     570:	08 f4       	brcc	.+2      	; 0x574 <__EEPROM_REGION_LENGTH__+0x174>
+     572:	46 ce       	rjmp	.-884    	; 0x200 <SSD_Init+0x20>
+				
+				dio_iter++;
+				
+	}
+	
+	DIO_enumSetConfig(SSD_strSegmentMappingArr,SEG_NUM*8);
+     574:	60 e1       	ldi	r22, 0x10	; 16
+     576:	ce 01       	movw	r24, r28
+     578:	01 96       	adiw	r24, 0x01	; 1
+     57a:	0e 94 fa 08 	call	0x11f4	; 0x11f4 <DIO_enumSetConfig>
+
+}
+     57e:	c0 5c       	subi	r28, 0xC0	; 192
+     580:	df 4f       	sbci	r29, 0xFF	; 255
+     582:	0f b6       	in	r0, 0x3f	; 63
+     584:	f8 94       	cli
+     586:	de bf       	out	0x3e, r29	; 62
+     588:	0f be       	out	0x3f, r0	; 63
+     58a:	cd bf       	out	0x3d, r28	; 61
+     58c:	df 91       	pop	r29
+     58e:	cf 91       	pop	r28
+     590:	1f 91       	pop	r17
+     592:	0f 91       	pop	r16
+     594:	08 95       	ret
+
+00000596 <SSD_enumSetValue>:
+
+SSD_enumErrorStatus_t SSD_enumSetValue(u8 Copy_u8SegName, u32 Copy_u8DisplayValue)
+{
+     596:	cf 93       	push	r28
+     598:	df 93       	push	r29
+	SSD_enumErrorStatus_t RET_enumErrorStatus= SSD_enumNotOk;
+	if(Copy_u8DisplayValue<ZERO || Copy_u8DisplayValue>NINE)
+     59a:	4a 30       	cpi	r20, 0x0A	; 10
+     59c:	51 05       	cpc	r21, r1
+     59e:	61 05       	cpc	r22, r1
+     5a0:	71 05       	cpc	r23, r1
+     5a2:	08 f0       	brcs	.+2      	; 0x5a6 <SSD_enumSetValue+0x10>
+     5a4:	8a c4       	rjmp	.+2324   	; 0xeba <__stack+0x65b>
+	{
+		RET_enumErrorStatus=SSD_enumInvalidValue;
+	}
+	else if(Copy_u8SegName>=SEG_NUM)
+     5a6:	82 30       	cpi	r24, 0x02	; 2
+     5a8:	08 f0       	brcs	.+2      	; 0x5ac <SSD_enumSetValue+0x16>
+     5aa:	89 c4       	rjmp	.+2322   	; 0xebe <__stack+0x65f>
+		RET_enumErrorStatus=SSD_enumInvalidSegmentName;
+	}
+	else
+	{
+		RET_enumErrorStatus=SSD_enumOk;
+		switch(Copy_u8DisplayValue)
+     5ac:	4a 30       	cpi	r20, 0x0A	; 10
+     5ae:	51 05       	cpc	r21, r1
+     5b0:	08 f0       	brcs	.+2      	; 0x5b4 <SSD_enumSetValue+0x1e>
+     5b2:	87 c4       	rjmp	.+2318   	; 0xec2 <__stack+0x663>
+     5b4:	fa 01       	movw	r30, r20
+     5b6:	e6 5d       	subi	r30, 0xD6	; 214
+     5b8:	ff 4f       	sbci	r31, 0xFF	; 255
+     5ba:	0c 94 4f 0b 	jmp	0x169e	; 0x169e <__tablejump2__>
+		{
+			case ZERO:
+				switch(SSD_strSegmentsArrCfg[Copy_u8SegName].State)
+     5be:	90 e0       	ldi	r25, 0x00	; 0
+     5c0:	21 e1       	ldi	r18, 0x11	; 17
+     5c2:	28 9f       	mul	r18, r24
+     5c4:	f0 01       	movw	r30, r0
+     5c6:	29 9f       	mul	r18, r25
+     5c8:	f0 0d       	add	r31, r0
+     5ca:	11 24       	eor	r1, r1
+     5cc:	e0 5a       	subi	r30, 0xA0	; 160
+     5ce:	ff 4f       	sbci	r31, 0xFF	; 255
+     5d0:	20 81       	ld	r18, Z
+     5d2:	22 23       	and	r18, r18
+     5d4:	19 f0       	breq	.+6      	; 0x5dc <SSD_enumSetValue+0x46>
+     5d6:	21 30       	cpi	r18, 0x01	; 1
+     5d8:	99 f1       	breq	.+102    	; 0x640 <SSD_enumSetValue+0xaa>
+     5da:	75 c4       	rjmp	.+2282   	; 0xec6 <__stack+0x667>
+				{
+					case SSD_enumCommonAnode:
+						DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_A.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_A.Pin,DIO_enumLogicLow);
+     5dc:	21 e1       	ldi	r18, 0x11	; 17
+     5de:	28 9f       	mul	r18, r24
+     5e0:	e0 01       	movw	r28, r0
+     5e2:	29 9f       	mul	r18, r25
+     5e4:	d0 0d       	add	r29, r0
+     5e6:	11 24       	eor	r1, r1
+     5e8:	c0 5a       	subi	r28, 0xA0	; 160
+     5ea:	df 4f       	sbci	r29, 0xFF	; 255
+     5ec:	40 e0       	ldi	r20, 0x00	; 0
+     5ee:	6a 81       	ldd	r22, Y+2	; 0x02
+     5f0:	89 81       	ldd	r24, Y+1	; 0x01
+     5f2:	0e 94 25 08 	call	0x104a	; 0x104a <DIO_enumSetPin>
+						DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_B.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_B.Pin,DIO_enumLogicLow);
+     5f6:	40 e0       	ldi	r20, 0x00	; 0
+     5f8:	6c 81       	ldd	r22, Y+4	; 0x04
+     5fa:	8b 81       	ldd	r24, Y+3	; 0x03
+     5fc:	0e 94 25 08 	call	0x104a	; 0x104a <DIO_enumSetPin>
+						DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_C.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_C.Pin,DIO_enumLogicLow);
+     600:	40 e0       	ldi	r20, 0x00	; 0
+     602:	6e 81       	ldd	r22, Y+6	; 0x06
+     604:	8d 81       	ldd	r24, Y+5	; 0x05
+     606:	0e 94 25 08 	call	0x104a	; 0x104a <DIO_enumSetPin>
+						DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_D.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_D.Pin,DIO_enumLogicLow);
+     60a:	40 e0       	ldi	r20, 0x00	; 0
+     60c:	68 85       	ldd	r22, Y+8	; 0x08
+     60e:	8f 81       	ldd	r24, Y+7	; 0x07
+     610:	0e 94 25 08 	call	0x104a	; 0x104a <DIO_enumSetPin>
+						DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_E.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_E.Pin,DIO_enumLogicLow);
+     614:	40 e0       	ldi	r20, 0x00	; 0
+     616:	6a 85       	ldd	r22, Y+10	; 0x0a
+     618:	89 85       	ldd	r24, Y+9	; 0x09
+     61a:	0e 94 25 08 	call	0x104a	; 0x104a <DIO_enumSetPin>
+						DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_F.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_F.Pin,DIO_enumLogicLow);
+     61e:	40 e0       	ldi	r20, 0x00	; 0
+     620:	6c 85       	ldd	r22, Y+12	; 0x0c
+     622:	8b 85       	ldd	r24, Y+11	; 0x0b
+     624:	0e 94 25 08 	call	0x104a	; 0x104a <DIO_enumSetPin>
+						DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_G.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_G.Pin,DIO_enumLogicHigh);
+     628:	41 e0       	ldi	r20, 0x01	; 1
+     62a:	6e 85       	ldd	r22, Y+14	; 0x0e
+     62c:	8d 85       	ldd	r24, Y+13	; 0x0d
+     62e:	0e 94 25 08 	call	0x104a	; 0x104a <DIO_enumSetPin>
+						DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_DOT.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_DOT.Pin,DIO_enumLogicHigh);
+     632:	41 e0       	ldi	r20, 0x01	; 1
+     634:	68 89       	ldd	r22, Y+16	; 0x10
+     636:	8f 85       	ldd	r24, Y+15	; 0x0f
+     638:	0e 94 25 08 	call	0x104a	; 0x104a <DIO_enumSetPin>
+	{
+		RET_enumErrorStatus=SSD_enumInvalidSegmentName;
+	}
+	else
+	{
+		RET_enumErrorStatus=SSD_enumOk;
+     63c:	81 e0       	ldi	r24, 0x01	; 1
+						DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_D.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_D.Pin,DIO_enumLogicLow);
+						DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_E.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_E.Pin,DIO_enumLogicLow);
+						DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_F.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_F.Pin,DIO_enumLogicLow);
+						DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_G.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_G.Pin,DIO_enumLogicHigh);
+						DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_DOT.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_DOT.Pin,DIO_enumLogicHigh);
+					break;
+     63e:	56 c4       	rjmp	.+2220   	; 0xeec <__stack+0x68d>
+				
+					case SSD_enumCommonCathode:
+						 DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_A.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_A.Pin,DIO_enumLogicHigh);
+     640:	21 e1       	ldi	r18, 0x11	; 17
+     642:	28 9f       	mul	r18, r24
+     644:	e0 01       	movw	r28, r0
+     646:	29 9f       	mul	r18, r25
+     648:	d0 0d       	add	r29, r0
+     64a:	11 24       	eor	r1, r1
+     64c:	c0 5a       	subi	r28, 0xA0	; 160
+     64e:	df 4f       	sbci	r29, 0xFF	; 255
+     650:	41 e0       	ldi	r20, 0x01	; 1
+     652:	6a 81       	ldd	r22, Y+2	; 0x02
+     654:	89 81       	ldd	r24, Y+1	; 0x01
+     656:	0e 94 25 08 	call	0x104a	; 0x104a <DIO_enumSetPin>
+						 DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_B.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_B.Pin,DIO_enumLogicHigh);
+     65a:	41 e0       	ldi	r20, 0x01	; 1
+     65c:	6c 81       	ldd	r22, Y+4	; 0x04
+     65e:	8b 81       	ldd	r24, Y+3	; 0x03
+     660:	0e 94 25 08 	call	0x104a	; 0x104a <DIO_enumSetPin>
+						 DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_C.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_C.Pin,DIO_enumLogicHigh);
+     664:	41 e0       	ldi	r20, 0x01	; 1
+     666:	6e 81       	ldd	r22, Y+6	; 0x06
+     668:	8d 81       	ldd	r24, Y+5	; 0x05
+     66a:	0e 94 25 08 	call	0x104a	; 0x104a <DIO_enumSetPin>
+						 DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_D.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_D.Pin,DIO_enumLogicHigh);
+     66e:	41 e0       	ldi	r20, 0x01	; 1
+     670:	68 85       	ldd	r22, Y+8	; 0x08
+     672:	8f 81       	ldd	r24, Y+7	; 0x07
+     674:	0e 94 25 08 	call	0x104a	; 0x104a <DIO_enumSetPin>
+						 DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_E.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_E.Pin,DIO_enumLogicHigh);
+     678:	41 e0       	ldi	r20, 0x01	; 1
+     67a:	6a 85       	ldd	r22, Y+10	; 0x0a
+     67c:	89 85       	ldd	r24, Y+9	; 0x09
+     67e:	0e 94 25 08 	call	0x104a	; 0x104a <DIO_enumSetPin>
+						 DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_F.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_F.Pin,DIO_enumLogicHigh);
+     682:	41 e0       	ldi	r20, 0x01	; 1
+     684:	6c 85       	ldd	r22, Y+12	; 0x0c
+     686:	8b 85       	ldd	r24, Y+11	; 0x0b
+     688:	0e 94 25 08 	call	0x104a	; 0x104a <DIO_enumSetPin>
+						 DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_G.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_G.Pin,DIO_enumLogicLow);
+     68c:	40 e0       	ldi	r20, 0x00	; 0
+     68e:	6e 85       	ldd	r22, Y+14	; 0x0e
+     690:	8d 85       	ldd	r24, Y+13	; 0x0d
+     692:	0e 94 25 08 	call	0x104a	; 0x104a <DIO_enumSetPin>
+						 DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_DOT.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_DOT.Pin,DIO_enumLogicLow);
+     696:	40 e0       	ldi	r20, 0x00	; 0
+     698:	68 89       	ldd	r22, Y+16	; 0x10
+     69a:	8f 85       	ldd	r24, Y+15	; 0x0f
+     69c:	0e 94 25 08 	call	0x104a	; 0x104a <DIO_enumSetPin>
+	{
+		RET_enumErrorStatus=SSD_enumInvalidSegmentName;
+	}
+	else
+	{
+		RET_enumErrorStatus=SSD_enumOk;
+     6a0:	81 e0       	ldi	r24, 0x01	; 1
+						 DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_D.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_D.Pin,DIO_enumLogicHigh);
+						 DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_E.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_E.Pin,DIO_enumLogicHigh);
+						 DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_F.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_F.Pin,DIO_enumLogicHigh);
+						 DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_G.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_G.Pin,DIO_enumLogicLow);
+						 DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_DOT.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_DOT.Pin,DIO_enumLogicLow);
+					break;
+     6a2:	24 c4       	rjmp	.+2120   	; 0xeec <__stack+0x68d>
+				}
+			break;
+			case ONE:
+				switch(SSD_strSegmentsArrCfg[Copy_u8SegName].State)
+     6a4:	90 e0       	ldi	r25, 0x00	; 0
+     6a6:	21 e1       	ldi	r18, 0x11	; 17
+     6a8:	28 9f       	mul	r18, r24
+     6aa:	f0 01       	movw	r30, r0
+     6ac:	29 9f       	mul	r18, r25
+     6ae:	f0 0d       	add	r31, r0
+     6b0:	11 24       	eor	r1, r1
+     6b2:	e0 5a       	subi	r30, 0xA0	; 160
+     6b4:	ff 4f       	sbci	r31, 0xFF	; 255
+     6b6:	20 81       	ld	r18, Z
+     6b8:	22 23       	and	r18, r18
+     6ba:	19 f0       	breq	.+6      	; 0x6c2 <SSD_enumSetValue+0x12c>
+     6bc:	21 30       	cpi	r18, 0x01	; 1
+     6be:	99 f1       	breq	.+102    	; 0x726 <SSD_enumSetValue+0x190>
+     6c0:	04 c4       	rjmp	.+2056   	; 0xeca <__stack+0x66b>
+				{
+					case SSD_enumCommonAnode:
+						 DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_A.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_A.Pin,DIO_enumLogicHigh);
+     6c2:	21 e1       	ldi	r18, 0x11	; 17
+     6c4:	28 9f       	mul	r18, r24
+     6c6:	e0 01       	movw	r28, r0
+     6c8:	29 9f       	mul	r18, r25
+     6ca:	d0 0d       	add	r29, r0
+     6cc:	11 24       	eor	r1, r1
+     6ce:	c0 5a       	subi	r28, 0xA0	; 160
+     6d0:	df 4f       	sbci	r29, 0xFF	; 255
+     6d2:	41 e0       	ldi	r20, 0x01	; 1
+     6d4:	6a 81       	ldd	r22, Y+2	; 0x02
+     6d6:	89 81       	ldd	r24, Y+1	; 0x01
+     6d8:	0e 94 25 08 	call	0x104a	; 0x104a <DIO_enumSetPin>
+						 DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_B.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_B.Pin,DIO_enumLogicLow);
+     6dc:	40 e0       	ldi	r20, 0x00	; 0
+     6de:	6c 81       	ldd	r22, Y+4	; 0x04
+     6e0:	8b 81       	ldd	r24, Y+3	; 0x03
+     6e2:	0e 94 25 08 	call	0x104a	; 0x104a <DIO_enumSetPin>
+						 DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_C.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_C.Pin,DIO_enumLogicLow);
+     6e6:	40 e0       	ldi	r20, 0x00	; 0
+     6e8:	6e 81       	ldd	r22, Y+6	; 0x06
+     6ea:	8d 81       	ldd	r24, Y+5	; 0x05
+     6ec:	0e 94 25 08 	call	0x104a	; 0x104a <DIO_enumSetPin>
+						 DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_D.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_D.Pin,DIO_enumLogicHigh);
+     6f0:	41 e0       	ldi	r20, 0x01	; 1
+     6f2:	68 85       	ldd	r22, Y+8	; 0x08
+     6f4:	8f 81       	ldd	r24, Y+7	; 0x07
+     6f6:	0e 94 25 08 	call	0x104a	; 0x104a <DIO_enumSetPin>
+						 DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_E.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_E.Pin,DIO_enumLogicHigh);
+     6fa:	41 e0       	ldi	r20, 0x01	; 1
+     6fc:	6a 85       	ldd	r22, Y+10	; 0x0a
+     6fe:	89 85       	ldd	r24, Y+9	; 0x09
+     700:	0e 94 25 08 	call	0x104a	; 0x104a <DIO_enumSetPin>
+						 DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_F.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_F.Pin,DIO_enumLogicHigh);
+     704:	41 e0       	ldi	r20, 0x01	; 1
+     706:	6c 85       	ldd	r22, Y+12	; 0x0c
+     708:	8b 85       	ldd	r24, Y+11	; 0x0b
+     70a:	0e 94 25 08 	call	0x104a	; 0x104a <DIO_enumSetPin>
+						 DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_G.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_G.Pin,DIO_enumLogicHigh);
+     70e:	41 e0       	ldi	r20, 0x01	; 1
+     710:	6e 85       	ldd	r22, Y+14	; 0x0e
+     712:	8d 85       	ldd	r24, Y+13	; 0x0d
+     714:	0e 94 25 08 	call	0x104a	; 0x104a <DIO_enumSetPin>
+						 DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_DOT.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_DOT.Pin,DIO_enumLogicHigh);
+     718:	41 e0       	ldi	r20, 0x01	; 1
+     71a:	68 89       	ldd	r22, Y+16	; 0x10
+     71c:	8f 85       	ldd	r24, Y+15	; 0x0f
+     71e:	0e 94 25 08 	call	0x104a	; 0x104a <DIO_enumSetPin>
+	{
+		RET_enumErrorStatus=SSD_enumInvalidSegmentName;
+	}
+	else
+	{
+		RET_enumErrorStatus=SSD_enumOk;
+     722:	81 e0       	ldi	r24, 0x01	; 1
+						 DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_D.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_D.Pin,DIO_enumLogicHigh);
+						 DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_E.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_E.Pin,DIO_enumLogicHigh);
+						 DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_F.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_F.Pin,DIO_enumLogicHigh);
+						 DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_G.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_G.Pin,DIO_enumLogicHigh);
+						 DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_DOT.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_DOT.Pin,DIO_enumLogicHigh);
+					break;
+     724:	e3 c3       	rjmp	.+1990   	; 0xeec <__stack+0x68d>
+					case SSD_enumCommonCathode:
+						 DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_A.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_A.Pin,DIO_enumLogicLow);
+     726:	21 e1       	ldi	r18, 0x11	; 17
+     728:	28 9f       	mul	r18, r24
+     72a:	e0 01       	movw	r28, r0
+     72c:	29 9f       	mul	r18, r25
+     72e:	d0 0d       	add	r29, r0
+     730:	11 24       	eor	r1, r1
+     732:	c0 5a       	subi	r28, 0xA0	; 160
+     734:	df 4f       	sbci	r29, 0xFF	; 255
+     736:	40 e0       	ldi	r20, 0x00	; 0
+     738:	6a 81       	ldd	r22, Y+2	; 0x02
+     73a:	89 81       	ldd	r24, Y+1	; 0x01
+     73c:	0e 94 25 08 	call	0x104a	; 0x104a <DIO_enumSetPin>
+						 DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_B.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_B.Pin,DIO_enumLogicHigh);
+     740:	41 e0       	ldi	r20, 0x01	; 1
+     742:	6c 81       	ldd	r22, Y+4	; 0x04
+     744:	8b 81       	ldd	r24, Y+3	; 0x03
+     746:	0e 94 25 08 	call	0x104a	; 0x104a <DIO_enumSetPin>
+						 DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_C.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_C.Pin,DIO_enumLogicHigh);
+     74a:	41 e0       	ldi	r20, 0x01	; 1
+     74c:	6e 81       	ldd	r22, Y+6	; 0x06
+     74e:	8d 81       	ldd	r24, Y+5	; 0x05
+     750:	0e 94 25 08 	call	0x104a	; 0x104a <DIO_enumSetPin>
+						 DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_D.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_D.Pin,DIO_enumLogicLow);
+     754:	40 e0       	ldi	r20, 0x00	; 0
+     756:	68 85       	ldd	r22, Y+8	; 0x08
+     758:	8f 81       	ldd	r24, Y+7	; 0x07
+     75a:	0e 94 25 08 	call	0x104a	; 0x104a <DIO_enumSetPin>
+						 DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_E.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_E.Pin,DIO_enumLogicLow);
+     75e:	40 e0       	ldi	r20, 0x00	; 0
+     760:	6a 85       	ldd	r22, Y+10	; 0x0a
+     762:	89 85       	ldd	r24, Y+9	; 0x09
+     764:	0e 94 25 08 	call	0x104a	; 0x104a <DIO_enumSetPin>
+						 DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_F.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_F.Pin,DIO_enumLogicLow);
+     768:	40 e0       	ldi	r20, 0x00	; 0
+     76a:	6c 85       	ldd	r22, Y+12	; 0x0c
+     76c:	8b 85       	ldd	r24, Y+11	; 0x0b
+     76e:	0e 94 25 08 	call	0x104a	; 0x104a <DIO_enumSetPin>
+						 DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_G.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_G.Pin,DIO_enumLogicLow);
+     772:	40 e0       	ldi	r20, 0x00	; 0
+     774:	6e 85       	ldd	r22, Y+14	; 0x0e
+     776:	8d 85       	ldd	r24, Y+13	; 0x0d
+     778:	0e 94 25 08 	call	0x104a	; 0x104a <DIO_enumSetPin>
+						 DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_DOT.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_DOT.Pin,DIO_enumLogicLow);
+     77c:	40 e0       	ldi	r20, 0x00	; 0
+     77e:	68 89       	ldd	r22, Y+16	; 0x10
+     780:	8f 85       	ldd	r24, Y+15	; 0x0f
+     782:	0e 94 25 08 	call	0x104a	; 0x104a <DIO_enumSetPin>
+	{
+		RET_enumErrorStatus=SSD_enumInvalidSegmentName;
+	}
+	else
+	{
+		RET_enumErrorStatus=SSD_enumOk;
+     786:	81 e0       	ldi	r24, 0x01	; 1
+						 DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_D.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_D.Pin,DIO_enumLogicLow);
+						 DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_E.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_E.Pin,DIO_enumLogicLow);
+						 DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_F.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_F.Pin,DIO_enumLogicLow);
+						 DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_G.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_G.Pin,DIO_enumLogicLow);
+						 DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_DOT.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_DOT.Pin,DIO_enumLogicLow);
+					break;
+     788:	b1 c3       	rjmp	.+1890   	; 0xeec <__stack+0x68d>
+				}
+			break;
+			case TWO:
+				switch(SSD_strSegmentsArrCfg[Copy_u8SegName].State)
+     78a:	90 e0       	ldi	r25, 0x00	; 0
+     78c:	21 e1       	ldi	r18, 0x11	; 17
+     78e:	28 9f       	mul	r18, r24
+     790:	f0 01       	movw	r30, r0
+     792:	29 9f       	mul	r18, r25
+     794:	f0 0d       	add	r31, r0
+     796:	11 24       	eor	r1, r1
+     798:	e0 5a       	subi	r30, 0xA0	; 160
+     79a:	ff 4f       	sbci	r31, 0xFF	; 255
+     79c:	20 81       	ld	r18, Z
+     79e:	22 23       	and	r18, r18
+     7a0:	19 f0       	breq	.+6      	; 0x7a8 <SSD_enumSetValue+0x212>
+     7a2:	21 30       	cpi	r18, 0x01	; 1
+     7a4:	99 f1       	breq	.+102    	; 0x80c <__DATA_REGION_LENGTH__+0xc>
+     7a6:	93 c3       	rjmp	.+1830   	; 0xece <__stack+0x66f>
+				{
+					case SSD_enumCommonAnode:
+						 DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_A.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_A.Pin,DIO_enumLogicLow);
+     7a8:	21 e1       	ldi	r18, 0x11	; 17
+     7aa:	28 9f       	mul	r18, r24
+     7ac:	e0 01       	movw	r28, r0
+     7ae:	29 9f       	mul	r18, r25
+     7b0:	d0 0d       	add	r29, r0
+     7b2:	11 24       	eor	r1, r1
+     7b4:	c0 5a       	subi	r28, 0xA0	; 160
+     7b6:	df 4f       	sbci	r29, 0xFF	; 255
+     7b8:	40 e0       	ldi	r20, 0x00	; 0
+     7ba:	6a 81       	ldd	r22, Y+2	; 0x02
+     7bc:	89 81       	ldd	r24, Y+1	; 0x01
+     7be:	0e 94 25 08 	call	0x104a	; 0x104a <DIO_enumSetPin>
+						 DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_B.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_B.Pin,DIO_enumLogicLow);
+     7c2:	40 e0       	ldi	r20, 0x00	; 0
+     7c4:	6c 81       	ldd	r22, Y+4	; 0x04
+     7c6:	8b 81       	ldd	r24, Y+3	; 0x03
+     7c8:	0e 94 25 08 	call	0x104a	; 0x104a <DIO_enumSetPin>
+						 DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_C.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_C.Pin,DIO_enumLogicHigh);
+     7cc:	41 e0       	ldi	r20, 0x01	; 1
+     7ce:	6e 81       	ldd	r22, Y+6	; 0x06
+     7d0:	8d 81       	ldd	r24, Y+5	; 0x05
+     7d2:	0e 94 25 08 	call	0x104a	; 0x104a <DIO_enumSetPin>
+						 DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_D.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_D.Pin,DIO_enumLogicLow);
+     7d6:	40 e0       	ldi	r20, 0x00	; 0
+     7d8:	68 85       	ldd	r22, Y+8	; 0x08
+     7da:	8f 81       	ldd	r24, Y+7	; 0x07
+     7dc:	0e 94 25 08 	call	0x104a	; 0x104a <DIO_enumSetPin>
+						 DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_E.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_E.Pin,DIO_enumLogicLow);
+     7e0:	40 e0       	ldi	r20, 0x00	; 0
+     7e2:	6a 85       	ldd	r22, Y+10	; 0x0a
+     7e4:	89 85       	ldd	r24, Y+9	; 0x09
+     7e6:	0e 94 25 08 	call	0x104a	; 0x104a <DIO_enumSetPin>
+						 DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_F.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_F.Pin,DIO_enumLogicHigh);
+     7ea:	41 e0       	ldi	r20, 0x01	; 1
+     7ec:	6c 85       	ldd	r22, Y+12	; 0x0c
+     7ee:	8b 85       	ldd	r24, Y+11	; 0x0b
+     7f0:	0e 94 25 08 	call	0x104a	; 0x104a <DIO_enumSetPin>
+						 DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_G.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_G.Pin,DIO_enumLogicLow);
+     7f4:	40 e0       	ldi	r20, 0x00	; 0
+     7f6:	6e 85       	ldd	r22, Y+14	; 0x0e
+     7f8:	8d 85       	ldd	r24, Y+13	; 0x0d
+     7fa:	0e 94 25 08 	call	0x104a	; 0x104a <DIO_enumSetPin>
+						 DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_DOT.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_DOT.Pin,DIO_enumLogicHigh);
+     7fe:	41 e0       	ldi	r20, 0x01	; 1
+     800:	68 89       	ldd	r22, Y+16	; 0x10
+     802:	8f 85       	ldd	r24, Y+15	; 0x0f
+     804:	0e 94 25 08 	call	0x104a	; 0x104a <DIO_enumSetPin>
+	{
+		RET_enumErrorStatus=SSD_enumInvalidSegmentName;
+	}
+	else
+	{
+		RET_enumErrorStatus=SSD_enumOk;
+     808:	81 e0       	ldi	r24, 0x01	; 1
+						 DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_E.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_E.Pin,DIO_enumLogicLow);
+						 DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_F.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_F.Pin,DIO_enumLogicHigh);
+						 DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_G.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_G.Pin,DIO_enumLogicLow);
+						 DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_DOT.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_DOT.Pin,DIO_enumLogicHigh);
+					
+					break;
+     80a:	70 c3       	rjmp	.+1760   	; 0xeec <__stack+0x68d>
+					case SSD_enumCommonCathode:
+						DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_A.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_A.Pin,DIO_enumLogicHigh);
+     80c:	21 e1       	ldi	r18, 0x11	; 17
+     80e:	28 9f       	mul	r18, r24
+     810:	e0 01       	movw	r28, r0
+     812:	29 9f       	mul	r18, r25
+     814:	d0 0d       	add	r29, r0
+     816:	11 24       	eor	r1, r1
+     818:	c0 5a       	subi	r28, 0xA0	; 160
+     81a:	df 4f       	sbci	r29, 0xFF	; 255
+     81c:	41 e0       	ldi	r20, 0x01	; 1
+     81e:	6a 81       	ldd	r22, Y+2	; 0x02
+     820:	89 81       	ldd	r24, Y+1	; 0x01
+     822:	0e 94 25 08 	call	0x104a	; 0x104a <DIO_enumSetPin>
+						DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_B.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_B.Pin,DIO_enumLogicHigh);
+     826:	41 e0       	ldi	r20, 0x01	; 1
+     828:	6c 81       	ldd	r22, Y+4	; 0x04
+     82a:	8b 81       	ldd	r24, Y+3	; 0x03
+     82c:	0e 94 25 08 	call	0x104a	; 0x104a <DIO_enumSetPin>
+						DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_C.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_C.Pin,DIO_enumLogicLow);
+     830:	40 e0       	ldi	r20, 0x00	; 0
+     832:	6e 81       	ldd	r22, Y+6	; 0x06
+     834:	8d 81       	ldd	r24, Y+5	; 0x05
+     836:	0e 94 25 08 	call	0x104a	; 0x104a <DIO_enumSetPin>
+						DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_D.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_D.Pin,DIO_enumLogicHigh);
+     83a:	41 e0       	ldi	r20, 0x01	; 1
+     83c:	68 85       	ldd	r22, Y+8	; 0x08
+     83e:	8f 81       	ldd	r24, Y+7	; 0x07
+     840:	0e 94 25 08 	call	0x104a	; 0x104a <DIO_enumSetPin>
+						DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_E.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_E.Pin,DIO_enumLogicHigh);
+     844:	41 e0       	ldi	r20, 0x01	; 1
+     846:	6a 85       	ldd	r22, Y+10	; 0x0a
+     848:	89 85       	ldd	r24, Y+9	; 0x09
+     84a:	0e 94 25 08 	call	0x104a	; 0x104a <DIO_enumSetPin>
+						DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_F.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_F.Pin,DIO_enumLogicLow);
+     84e:	40 e0       	ldi	r20, 0x00	; 0
+     850:	6c 85       	ldd	r22, Y+12	; 0x0c
+     852:	8b 85       	ldd	r24, Y+11	; 0x0b
+     854:	0e 94 25 08 	call	0x104a	; 0x104a <DIO_enumSetPin>
+						DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_G.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_G.Pin,DIO_enumLogicHigh);
+     858:	41 e0       	ldi	r20, 0x01	; 1
+     85a:	6e 85       	ldd	r22, Y+14	; 0x0e
+     85c:	8d 85       	ldd	r24, Y+13	; 0x0d
+     85e:	0e 94 25 08 	call	0x104a	; 0x104a <DIO_enumSetPin>
+						DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_DOT.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_DOT.Pin,DIO_enumLogicLow);
+     862:	40 e0       	ldi	r20, 0x00	; 0
+     864:	68 89       	ldd	r22, Y+16	; 0x10
+     866:	8f 85       	ldd	r24, Y+15	; 0x0f
+     868:	0e 94 25 08 	call	0x104a	; 0x104a <DIO_enumSetPin>
+	{
+		RET_enumErrorStatus=SSD_enumInvalidSegmentName;
+	}
+	else
+	{
+		RET_enumErrorStatus=SSD_enumOk;
+     86c:	81 e0       	ldi	r24, 0x01	; 1
+						DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_D.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_D.Pin,DIO_enumLogicHigh);
+						DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_E.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_E.Pin,DIO_enumLogicHigh);
+						DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_F.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_F.Pin,DIO_enumLogicLow);
+						DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_G.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_G.Pin,DIO_enumLogicHigh);
+						DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_DOT.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_DOT.Pin,DIO_enumLogicLow);
+					break;
+     86e:	3e c3       	rjmp	.+1660   	; 0xeec <__stack+0x68d>
+				}
+			break;
+			case THREE:
+				switch(SSD_strSegmentsArrCfg[Copy_u8SegName].State)
+     870:	90 e0       	ldi	r25, 0x00	; 0
+     872:	21 e1       	ldi	r18, 0x11	; 17
+     874:	28 9f       	mul	r18, r24
+     876:	f0 01       	movw	r30, r0
+     878:	29 9f       	mul	r18, r25
+     87a:	f0 0d       	add	r31, r0
+     87c:	11 24       	eor	r1, r1
+     87e:	e0 5a       	subi	r30, 0xA0	; 160
+     880:	ff 4f       	sbci	r31, 0xFF	; 255
+     882:	20 81       	ld	r18, Z
+     884:	22 23       	and	r18, r18
+     886:	19 f0       	breq	.+6      	; 0x88e <__stack+0x2f>
+     888:	21 30       	cpi	r18, 0x01	; 1
+     88a:	99 f1       	breq	.+102    	; 0x8f2 <__stack+0x93>
+     88c:	22 c3       	rjmp	.+1604   	; 0xed2 <__stack+0x673>
+				{
+					case SSD_enumCommonAnode:
+						 DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_A.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_A.Pin,DIO_enumLogicLow);
+     88e:	21 e1       	ldi	r18, 0x11	; 17
+     890:	28 9f       	mul	r18, r24
+     892:	e0 01       	movw	r28, r0
+     894:	29 9f       	mul	r18, r25
+     896:	d0 0d       	add	r29, r0
+     898:	11 24       	eor	r1, r1
+     89a:	c0 5a       	subi	r28, 0xA0	; 160
+     89c:	df 4f       	sbci	r29, 0xFF	; 255
+     89e:	40 e0       	ldi	r20, 0x00	; 0
+     8a0:	6a 81       	ldd	r22, Y+2	; 0x02
+     8a2:	89 81       	ldd	r24, Y+1	; 0x01
+     8a4:	0e 94 25 08 	call	0x104a	; 0x104a <DIO_enumSetPin>
+						 DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_B.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_B.Pin,DIO_enumLogicLow);
+     8a8:	40 e0       	ldi	r20, 0x00	; 0
+     8aa:	6c 81       	ldd	r22, Y+4	; 0x04
+     8ac:	8b 81       	ldd	r24, Y+3	; 0x03
+     8ae:	0e 94 25 08 	call	0x104a	; 0x104a <DIO_enumSetPin>
+						 DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_C.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_C.Pin,DIO_enumLogicLow);
+     8b2:	40 e0       	ldi	r20, 0x00	; 0
+     8b4:	6e 81       	ldd	r22, Y+6	; 0x06
+     8b6:	8d 81       	ldd	r24, Y+5	; 0x05
+     8b8:	0e 94 25 08 	call	0x104a	; 0x104a <DIO_enumSetPin>
+						 DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_D.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_D.Pin,DIO_enumLogicLow);
+     8bc:	40 e0       	ldi	r20, 0x00	; 0
+     8be:	68 85       	ldd	r22, Y+8	; 0x08
+     8c0:	8f 81       	ldd	r24, Y+7	; 0x07
+     8c2:	0e 94 25 08 	call	0x104a	; 0x104a <DIO_enumSetPin>
+						 DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_E.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_E.Pin,DIO_enumLogicHigh);
+     8c6:	41 e0       	ldi	r20, 0x01	; 1
+     8c8:	6a 85       	ldd	r22, Y+10	; 0x0a
+     8ca:	89 85       	ldd	r24, Y+9	; 0x09
+     8cc:	0e 94 25 08 	call	0x104a	; 0x104a <DIO_enumSetPin>
+						 DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_F.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_F.Pin,DIO_enumLogicHigh);
+     8d0:	41 e0       	ldi	r20, 0x01	; 1
+     8d2:	6c 85       	ldd	r22, Y+12	; 0x0c
+     8d4:	8b 85       	ldd	r24, Y+11	; 0x0b
+     8d6:	0e 94 25 08 	call	0x104a	; 0x104a <DIO_enumSetPin>
+						 DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_G.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_G.Pin,DIO_enumLogicLow);
+     8da:	40 e0       	ldi	r20, 0x00	; 0
+     8dc:	6e 85       	ldd	r22, Y+14	; 0x0e
+     8de:	8d 85       	ldd	r24, Y+13	; 0x0d
+     8e0:	0e 94 25 08 	call	0x104a	; 0x104a <DIO_enumSetPin>
+						 DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_DOT.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_DOT.Pin,DIO_enumLogicHigh);
+     8e4:	41 e0       	ldi	r20, 0x01	; 1
+     8e6:	68 89       	ldd	r22, Y+16	; 0x10
+     8e8:	8f 85       	ldd	r24, Y+15	; 0x0f
+     8ea:	0e 94 25 08 	call	0x104a	; 0x104a <DIO_enumSetPin>
+	{
+		RET_enumErrorStatus=SSD_enumInvalidSegmentName;
+	}
+	else
+	{
+		RET_enumErrorStatus=SSD_enumOk;
+     8ee:	81 e0       	ldi	r24, 0x01	; 1
+						 DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_D.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_D.Pin,DIO_enumLogicLow);
+						 DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_E.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_E.Pin,DIO_enumLogicHigh);
+						 DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_F.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_F.Pin,DIO_enumLogicHigh);
+						 DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_G.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_G.Pin,DIO_enumLogicLow);
+						 DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_DOT.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_DOT.Pin,DIO_enumLogicHigh);
+					break;
+     8f0:	fd c2       	rjmp	.+1530   	; 0xeec <__stack+0x68d>
+					case SSD_enumCommonCathode:
+						DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_A.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_A.Pin,DIO_enumLogicHigh);
+     8f2:	21 e1       	ldi	r18, 0x11	; 17
+     8f4:	28 9f       	mul	r18, r24
+     8f6:	e0 01       	movw	r28, r0
+     8f8:	29 9f       	mul	r18, r25
+     8fa:	d0 0d       	add	r29, r0
+     8fc:	11 24       	eor	r1, r1
+     8fe:	c0 5a       	subi	r28, 0xA0	; 160
+     900:	df 4f       	sbci	r29, 0xFF	; 255
+     902:	41 e0       	ldi	r20, 0x01	; 1
+     904:	6a 81       	ldd	r22, Y+2	; 0x02
+     906:	89 81       	ldd	r24, Y+1	; 0x01
+     908:	0e 94 25 08 	call	0x104a	; 0x104a <DIO_enumSetPin>
+						DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_B.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_B.Pin,DIO_enumLogicHigh);
+     90c:	41 e0       	ldi	r20, 0x01	; 1
+     90e:	6c 81       	ldd	r22, Y+4	; 0x04
+     910:	8b 81       	ldd	r24, Y+3	; 0x03
+     912:	0e 94 25 08 	call	0x104a	; 0x104a <DIO_enumSetPin>
+						DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_C.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_C.Pin,DIO_enumLogicHigh);
+     916:	41 e0       	ldi	r20, 0x01	; 1
+     918:	6e 81       	ldd	r22, Y+6	; 0x06
+     91a:	8d 81       	ldd	r24, Y+5	; 0x05
+     91c:	0e 94 25 08 	call	0x104a	; 0x104a <DIO_enumSetPin>
+						DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_D.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_D.Pin,DIO_enumLogicHigh);
+     920:	41 e0       	ldi	r20, 0x01	; 1
+     922:	68 85       	ldd	r22, Y+8	; 0x08
+     924:	8f 81       	ldd	r24, Y+7	; 0x07
+     926:	0e 94 25 08 	call	0x104a	; 0x104a <DIO_enumSetPin>
+						DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_E.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_E.Pin,DIO_enumLogicLow);
+     92a:	40 e0       	ldi	r20, 0x00	; 0
+     92c:	6a 85       	ldd	r22, Y+10	; 0x0a
+     92e:	89 85       	ldd	r24, Y+9	; 0x09
+     930:	0e 94 25 08 	call	0x104a	; 0x104a <DIO_enumSetPin>
+						DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_F.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_F.Pin,DIO_enumLogicLow);
+     934:	40 e0       	ldi	r20, 0x00	; 0
+     936:	6c 85       	ldd	r22, Y+12	; 0x0c
+     938:	8b 85       	ldd	r24, Y+11	; 0x0b
+     93a:	0e 94 25 08 	call	0x104a	; 0x104a <DIO_enumSetPin>
+						DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_G.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_G.Pin,DIO_enumLogicHigh);
+     93e:	41 e0       	ldi	r20, 0x01	; 1
+     940:	6e 85       	ldd	r22, Y+14	; 0x0e
+     942:	8d 85       	ldd	r24, Y+13	; 0x0d
+     944:	0e 94 25 08 	call	0x104a	; 0x104a <DIO_enumSetPin>
+						DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_DOT.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_DOT.Pin,DIO_enumLogicLow);
+     948:	40 e0       	ldi	r20, 0x00	; 0
+     94a:	68 89       	ldd	r22, Y+16	; 0x10
+     94c:	8f 85       	ldd	r24, Y+15	; 0x0f
+     94e:	0e 94 25 08 	call	0x104a	; 0x104a <DIO_enumSetPin>
+	{
+		RET_enumErrorStatus=SSD_enumInvalidSegmentName;
+	}
+	else
+	{
+		RET_enumErrorStatus=SSD_enumOk;
+     952:	81 e0       	ldi	r24, 0x01	; 1
+						DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_D.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_D.Pin,DIO_enumLogicHigh);
+						DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_E.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_E.Pin,DIO_enumLogicLow);
+						DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_F.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_F.Pin,DIO_enumLogicLow);
+						DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_G.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_G.Pin,DIO_enumLogicHigh);
+						DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_DOT.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_DOT.Pin,DIO_enumLogicLow);
+					break;
+     954:	cb c2       	rjmp	.+1430   	; 0xeec <__stack+0x68d>
+				}
+			break;
+			case FOUR:
+				switch(SSD_strSegmentsArrCfg[Copy_u8SegName].State)
+     956:	90 e0       	ldi	r25, 0x00	; 0
+     958:	21 e1       	ldi	r18, 0x11	; 17
+     95a:	28 9f       	mul	r18, r24
+     95c:	f0 01       	movw	r30, r0
+     95e:	29 9f       	mul	r18, r25
+     960:	f0 0d       	add	r31, r0
+     962:	11 24       	eor	r1, r1
+     964:	e0 5a       	subi	r30, 0xA0	; 160
+     966:	ff 4f       	sbci	r31, 0xFF	; 255
+     968:	20 81       	ld	r18, Z
+     96a:	22 23       	and	r18, r18
+     96c:	19 f0       	breq	.+6      	; 0x974 <__stack+0x115>
+     96e:	21 30       	cpi	r18, 0x01	; 1
+     970:	99 f1       	breq	.+102    	; 0x9d8 <__stack+0x179>
+     972:	b1 c2       	rjmp	.+1378   	; 0xed6 <__stack+0x677>
+				{
+					case SSD_enumCommonAnode:
+						 DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_A.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_A.Pin,DIO_enumLogicHigh);
+     974:	21 e1       	ldi	r18, 0x11	; 17
+     976:	28 9f       	mul	r18, r24
+     978:	e0 01       	movw	r28, r0
+     97a:	29 9f       	mul	r18, r25
+     97c:	d0 0d       	add	r29, r0
+     97e:	11 24       	eor	r1, r1
+     980:	c0 5a       	subi	r28, 0xA0	; 160
+     982:	df 4f       	sbci	r29, 0xFF	; 255
+     984:	41 e0       	ldi	r20, 0x01	; 1
+     986:	6a 81       	ldd	r22, Y+2	; 0x02
+     988:	89 81       	ldd	r24, Y+1	; 0x01
+     98a:	0e 94 25 08 	call	0x104a	; 0x104a <DIO_enumSetPin>
+						 DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_B.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_B.Pin,DIO_enumLogicLow);
+     98e:	40 e0       	ldi	r20, 0x00	; 0
+     990:	6c 81       	ldd	r22, Y+4	; 0x04
+     992:	8b 81       	ldd	r24, Y+3	; 0x03
+     994:	0e 94 25 08 	call	0x104a	; 0x104a <DIO_enumSetPin>
+						 DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_C.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_C.Pin,DIO_enumLogicLow);
+     998:	40 e0       	ldi	r20, 0x00	; 0
+     99a:	6e 81       	ldd	r22, Y+6	; 0x06
+     99c:	8d 81       	ldd	r24, Y+5	; 0x05
+     99e:	0e 94 25 08 	call	0x104a	; 0x104a <DIO_enumSetPin>
+						 DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_D.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_D.Pin,DIO_enumLogicHigh);
+     9a2:	41 e0       	ldi	r20, 0x01	; 1
+     9a4:	68 85       	ldd	r22, Y+8	; 0x08
+     9a6:	8f 81       	ldd	r24, Y+7	; 0x07
+     9a8:	0e 94 25 08 	call	0x104a	; 0x104a <DIO_enumSetPin>
+						 DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_E.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_E.Pin,DIO_enumLogicHigh);
+     9ac:	41 e0       	ldi	r20, 0x01	; 1
+     9ae:	6a 85       	ldd	r22, Y+10	; 0x0a
+     9b0:	89 85       	ldd	r24, Y+9	; 0x09
+     9b2:	0e 94 25 08 	call	0x104a	; 0x104a <DIO_enumSetPin>
+						 DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_F.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_F.Pin,DIO_enumLogicLow);
+     9b6:	40 e0       	ldi	r20, 0x00	; 0
+     9b8:	6c 85       	ldd	r22, Y+12	; 0x0c
+     9ba:	8b 85       	ldd	r24, Y+11	; 0x0b
+     9bc:	0e 94 25 08 	call	0x104a	; 0x104a <DIO_enumSetPin>
+						 DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_G.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_G.Pin,DIO_enumLogicLow);
+     9c0:	40 e0       	ldi	r20, 0x00	; 0
+     9c2:	6e 85       	ldd	r22, Y+14	; 0x0e
+     9c4:	8d 85       	ldd	r24, Y+13	; 0x0d
+     9c6:	0e 94 25 08 	call	0x104a	; 0x104a <DIO_enumSetPin>
+						 DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_DOT.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_DOT.Pin,DIO_enumLogicHigh);
+     9ca:	41 e0       	ldi	r20, 0x01	; 1
+     9cc:	68 89       	ldd	r22, Y+16	; 0x10
+     9ce:	8f 85       	ldd	r24, Y+15	; 0x0f
+     9d0:	0e 94 25 08 	call	0x104a	; 0x104a <DIO_enumSetPin>
+	{
+		RET_enumErrorStatus=SSD_enumInvalidSegmentName;
+	}
+	else
+	{
+		RET_enumErrorStatus=SSD_enumOk;
+     9d4:	81 e0       	ldi	r24, 0x01	; 1
+						 DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_D.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_D.Pin,DIO_enumLogicHigh);
+						 DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_E.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_E.Pin,DIO_enumLogicHigh);
+						 DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_F.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_F.Pin,DIO_enumLogicLow);
+						 DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_G.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_G.Pin,DIO_enumLogicLow);
+						 DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_DOT.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_DOT.Pin,DIO_enumLogicHigh);
+					break;
+     9d6:	8a c2       	rjmp	.+1300   	; 0xeec <__stack+0x68d>
+					case SSD_enumCommonCathode:
+						DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_A.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_A.Pin,DIO_enumLogicLow);
+     9d8:	21 e1       	ldi	r18, 0x11	; 17
+     9da:	28 9f       	mul	r18, r24
+     9dc:	e0 01       	movw	r28, r0
+     9de:	29 9f       	mul	r18, r25
+     9e0:	d0 0d       	add	r29, r0
+     9e2:	11 24       	eor	r1, r1
+     9e4:	c0 5a       	subi	r28, 0xA0	; 160
+     9e6:	df 4f       	sbci	r29, 0xFF	; 255
+     9e8:	40 e0       	ldi	r20, 0x00	; 0
+     9ea:	6a 81       	ldd	r22, Y+2	; 0x02
+     9ec:	89 81       	ldd	r24, Y+1	; 0x01
+     9ee:	0e 94 25 08 	call	0x104a	; 0x104a <DIO_enumSetPin>
+						DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_B.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_B.Pin,DIO_enumLogicHigh);
+     9f2:	41 e0       	ldi	r20, 0x01	; 1
+     9f4:	6c 81       	ldd	r22, Y+4	; 0x04
+     9f6:	8b 81       	ldd	r24, Y+3	; 0x03
+     9f8:	0e 94 25 08 	call	0x104a	; 0x104a <DIO_enumSetPin>
+						DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_C.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_C.Pin,DIO_enumLogicHigh);
+     9fc:	41 e0       	ldi	r20, 0x01	; 1
+     9fe:	6e 81       	ldd	r22, Y+6	; 0x06
+     a00:	8d 81       	ldd	r24, Y+5	; 0x05
+     a02:	0e 94 25 08 	call	0x104a	; 0x104a <DIO_enumSetPin>
+						DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_D.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_D.Pin,DIO_enumLogicLow);
+     a06:	40 e0       	ldi	r20, 0x00	; 0
+     a08:	68 85       	ldd	r22, Y+8	; 0x08
+     a0a:	8f 81       	ldd	r24, Y+7	; 0x07
+     a0c:	0e 94 25 08 	call	0x104a	; 0x104a <DIO_enumSetPin>
+						DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_E.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_E.Pin,DIO_enumLogicLow);
+     a10:	40 e0       	ldi	r20, 0x00	; 0
+     a12:	6a 85       	ldd	r22, Y+10	; 0x0a
+     a14:	89 85       	ldd	r24, Y+9	; 0x09
+     a16:	0e 94 25 08 	call	0x104a	; 0x104a <DIO_enumSetPin>
+						DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_F.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_F.Pin,DIO_enumLogicHigh);
+     a1a:	41 e0       	ldi	r20, 0x01	; 1
+     a1c:	6c 85       	ldd	r22, Y+12	; 0x0c
+     a1e:	8b 85       	ldd	r24, Y+11	; 0x0b
+     a20:	0e 94 25 08 	call	0x104a	; 0x104a <DIO_enumSetPin>
+						DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_G.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_G.Pin,DIO_enumLogicHigh);
+     a24:	41 e0       	ldi	r20, 0x01	; 1
+     a26:	6e 85       	ldd	r22, Y+14	; 0x0e
+     a28:	8d 85       	ldd	r24, Y+13	; 0x0d
+     a2a:	0e 94 25 08 	call	0x104a	; 0x104a <DIO_enumSetPin>
+						DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_DOT.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_DOT.Pin,DIO_enumLogicLow);
+     a2e:	40 e0       	ldi	r20, 0x00	; 0
+     a30:	68 89       	ldd	r22, Y+16	; 0x10
+     a32:	8f 85       	ldd	r24, Y+15	; 0x0f
+     a34:	0e 94 25 08 	call	0x104a	; 0x104a <DIO_enumSetPin>
+	{
+		RET_enumErrorStatus=SSD_enumInvalidSegmentName;
+	}
+	else
+	{
+		RET_enumErrorStatus=SSD_enumOk;
+     a38:	81 e0       	ldi	r24, 0x01	; 1
+						DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_D.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_D.Pin,DIO_enumLogicLow);
+						DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_E.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_E.Pin,DIO_enumLogicLow);
+						DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_F.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_F.Pin,DIO_enumLogicHigh);
+						DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_G.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_G.Pin,DIO_enumLogicHigh);
+						DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_DOT.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_DOT.Pin,DIO_enumLogicLow);
+					break;
+     a3a:	58 c2       	rjmp	.+1200   	; 0xeec <__stack+0x68d>
+				}
+			break;
+			case FIVE:
+				switch(SSD_strSegmentsArrCfg[Copy_u8SegName].State)
+     a3c:	90 e0       	ldi	r25, 0x00	; 0
+     a3e:	21 e1       	ldi	r18, 0x11	; 17
+     a40:	28 9f       	mul	r18, r24
+     a42:	f0 01       	movw	r30, r0
+     a44:	29 9f       	mul	r18, r25
+     a46:	f0 0d       	add	r31, r0
+     a48:	11 24       	eor	r1, r1
+     a4a:	e0 5a       	subi	r30, 0xA0	; 160
+     a4c:	ff 4f       	sbci	r31, 0xFF	; 255
+     a4e:	20 81       	ld	r18, Z
+     a50:	22 23       	and	r18, r18
+     a52:	19 f0       	breq	.+6      	; 0xa5a <__stack+0x1fb>
+     a54:	21 30       	cpi	r18, 0x01	; 1
+     a56:	99 f1       	breq	.+102    	; 0xabe <__stack+0x25f>
+     a58:	40 c2       	rjmp	.+1152   	; 0xeda <__stack+0x67b>
+				{
+					case SSD_enumCommonAnode:
+						DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_A.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_A.Pin,DIO_enumLogicLow);
+     a5a:	21 e1       	ldi	r18, 0x11	; 17
+     a5c:	28 9f       	mul	r18, r24
+     a5e:	e0 01       	movw	r28, r0
+     a60:	29 9f       	mul	r18, r25
+     a62:	d0 0d       	add	r29, r0
+     a64:	11 24       	eor	r1, r1
+     a66:	c0 5a       	subi	r28, 0xA0	; 160
+     a68:	df 4f       	sbci	r29, 0xFF	; 255
+     a6a:	40 e0       	ldi	r20, 0x00	; 0
+     a6c:	6a 81       	ldd	r22, Y+2	; 0x02
+     a6e:	89 81       	ldd	r24, Y+1	; 0x01
+     a70:	0e 94 25 08 	call	0x104a	; 0x104a <DIO_enumSetPin>
+						DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_B.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_B.Pin,DIO_enumLogicHigh);
+     a74:	41 e0       	ldi	r20, 0x01	; 1
+     a76:	6c 81       	ldd	r22, Y+4	; 0x04
+     a78:	8b 81       	ldd	r24, Y+3	; 0x03
+     a7a:	0e 94 25 08 	call	0x104a	; 0x104a <DIO_enumSetPin>
+						DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_C.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_C.Pin,DIO_enumLogicLow);
+     a7e:	40 e0       	ldi	r20, 0x00	; 0
+     a80:	6e 81       	ldd	r22, Y+6	; 0x06
+     a82:	8d 81       	ldd	r24, Y+5	; 0x05
+     a84:	0e 94 25 08 	call	0x104a	; 0x104a <DIO_enumSetPin>
+						DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_D.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_D.Pin,DIO_enumLogicLow);
+     a88:	40 e0       	ldi	r20, 0x00	; 0
+     a8a:	68 85       	ldd	r22, Y+8	; 0x08
+     a8c:	8f 81       	ldd	r24, Y+7	; 0x07
+     a8e:	0e 94 25 08 	call	0x104a	; 0x104a <DIO_enumSetPin>
+						DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_E.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_E.Pin,DIO_enumLogicHigh);
+     a92:	41 e0       	ldi	r20, 0x01	; 1
+     a94:	6a 85       	ldd	r22, Y+10	; 0x0a
+     a96:	89 85       	ldd	r24, Y+9	; 0x09
+     a98:	0e 94 25 08 	call	0x104a	; 0x104a <DIO_enumSetPin>
+						DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_F.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_F.Pin,DIO_enumLogicLow);
+     a9c:	40 e0       	ldi	r20, 0x00	; 0
+     a9e:	6c 85       	ldd	r22, Y+12	; 0x0c
+     aa0:	8b 85       	ldd	r24, Y+11	; 0x0b
+     aa2:	0e 94 25 08 	call	0x104a	; 0x104a <DIO_enumSetPin>
+						DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_G.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_G.Pin,DIO_enumLogicLow);
+     aa6:	40 e0       	ldi	r20, 0x00	; 0
+     aa8:	6e 85       	ldd	r22, Y+14	; 0x0e
+     aaa:	8d 85       	ldd	r24, Y+13	; 0x0d
+     aac:	0e 94 25 08 	call	0x104a	; 0x104a <DIO_enumSetPin>
+						DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_DOT.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_DOT.Pin,DIO_enumLogicHigh);
+     ab0:	41 e0       	ldi	r20, 0x01	; 1
+     ab2:	68 89       	ldd	r22, Y+16	; 0x10
+     ab4:	8f 85       	ldd	r24, Y+15	; 0x0f
+     ab6:	0e 94 25 08 	call	0x104a	; 0x104a <DIO_enumSetPin>
+	{
+		RET_enumErrorStatus=SSD_enumInvalidSegmentName;
+	}
+	else
+	{
+		RET_enumErrorStatus=SSD_enumOk;
+     aba:	81 e0       	ldi	r24, 0x01	; 1
+						DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_D.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_D.Pin,DIO_enumLogicLow);
+						DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_E.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_E.Pin,DIO_enumLogicHigh);
+						DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_F.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_F.Pin,DIO_enumLogicLow);
+						DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_G.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_G.Pin,DIO_enumLogicLow);
+						DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_DOT.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_DOT.Pin,DIO_enumLogicHigh);
+				break;
+     abc:	17 c2       	rjmp	.+1070   	; 0xeec <__stack+0x68d>
+					case SSD_enumCommonCathode:
+						DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_A.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_A.Pin,DIO_enumLogicHigh);
+     abe:	21 e1       	ldi	r18, 0x11	; 17
+     ac0:	28 9f       	mul	r18, r24
+     ac2:	e0 01       	movw	r28, r0
+     ac4:	29 9f       	mul	r18, r25
+     ac6:	d0 0d       	add	r29, r0
+     ac8:	11 24       	eor	r1, r1
+     aca:	c0 5a       	subi	r28, 0xA0	; 160
+     acc:	df 4f       	sbci	r29, 0xFF	; 255
+     ace:	41 e0       	ldi	r20, 0x01	; 1
+     ad0:	6a 81       	ldd	r22, Y+2	; 0x02
+     ad2:	89 81       	ldd	r24, Y+1	; 0x01
+     ad4:	0e 94 25 08 	call	0x104a	; 0x104a <DIO_enumSetPin>
+						DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_B.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_B.Pin,DIO_enumLogicLow);
+     ad8:	40 e0       	ldi	r20, 0x00	; 0
+     ada:	6c 81       	ldd	r22, Y+4	; 0x04
+     adc:	8b 81       	ldd	r24, Y+3	; 0x03
+     ade:	0e 94 25 08 	call	0x104a	; 0x104a <DIO_enumSetPin>
+						DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_C.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_C.Pin,DIO_enumLogicHigh);
+     ae2:	41 e0       	ldi	r20, 0x01	; 1
+     ae4:	6e 81       	ldd	r22, Y+6	; 0x06
+     ae6:	8d 81       	ldd	r24, Y+5	; 0x05
+     ae8:	0e 94 25 08 	call	0x104a	; 0x104a <DIO_enumSetPin>
+						DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_D.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_D.Pin,DIO_enumLogicHigh);
+     aec:	41 e0       	ldi	r20, 0x01	; 1
+     aee:	68 85       	ldd	r22, Y+8	; 0x08
+     af0:	8f 81       	ldd	r24, Y+7	; 0x07
+     af2:	0e 94 25 08 	call	0x104a	; 0x104a <DIO_enumSetPin>
+						DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_E.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_E.Pin,DIO_enumLogicLow);
+     af6:	40 e0       	ldi	r20, 0x00	; 0
+     af8:	6a 85       	ldd	r22, Y+10	; 0x0a
+     afa:	89 85       	ldd	r24, Y+9	; 0x09
+     afc:	0e 94 25 08 	call	0x104a	; 0x104a <DIO_enumSetPin>
+						DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_F.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_F.Pin,DIO_enumLogicHigh);
+     b00:	41 e0       	ldi	r20, 0x01	; 1
+     b02:	6c 85       	ldd	r22, Y+12	; 0x0c
+     b04:	8b 85       	ldd	r24, Y+11	; 0x0b
+     b06:	0e 94 25 08 	call	0x104a	; 0x104a <DIO_enumSetPin>
+						DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_G.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_G.Pin,DIO_enumLogicHigh);
+     b0a:	41 e0       	ldi	r20, 0x01	; 1
+     b0c:	6e 85       	ldd	r22, Y+14	; 0x0e
+     b0e:	8d 85       	ldd	r24, Y+13	; 0x0d
+     b10:	0e 94 25 08 	call	0x104a	; 0x104a <DIO_enumSetPin>
+						DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_DOT.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_DOT.Pin,DIO_enumLogicLow);
+     b14:	40 e0       	ldi	r20, 0x00	; 0
+     b16:	68 89       	ldd	r22, Y+16	; 0x10
+     b18:	8f 85       	ldd	r24, Y+15	; 0x0f
+     b1a:	0e 94 25 08 	call	0x104a	; 0x104a <DIO_enumSetPin>
+	{
+		RET_enumErrorStatus=SSD_enumInvalidSegmentName;
+	}
+	else
+	{
+		RET_enumErrorStatus=SSD_enumOk;
+     b1e:	81 e0       	ldi	r24, 0x01	; 1
+						DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_D.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_D.Pin,DIO_enumLogicHigh);
+						DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_E.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_E.Pin,DIO_enumLogicLow);
+						DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_F.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_F.Pin,DIO_enumLogicHigh);
+						DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_G.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_G.Pin,DIO_enumLogicHigh);
+						DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_DOT.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_DOT.Pin,DIO_enumLogicLow);
+					break;
+     b20:	e5 c1       	rjmp	.+970    	; 0xeec <__stack+0x68d>
+				}
+			break;
+			case SIX:
+				switch(SSD_strSegmentsArrCfg[Copy_u8SegName].State)
+     b22:	90 e0       	ldi	r25, 0x00	; 0
+     b24:	21 e1       	ldi	r18, 0x11	; 17
+     b26:	28 9f       	mul	r18, r24
+     b28:	f0 01       	movw	r30, r0
+     b2a:	29 9f       	mul	r18, r25
+     b2c:	f0 0d       	add	r31, r0
+     b2e:	11 24       	eor	r1, r1
+     b30:	e0 5a       	subi	r30, 0xA0	; 160
+     b32:	ff 4f       	sbci	r31, 0xFF	; 255
+     b34:	20 81       	ld	r18, Z
+     b36:	22 23       	and	r18, r18
+     b38:	19 f0       	breq	.+6      	; 0xb40 <__stack+0x2e1>
+     b3a:	21 30       	cpi	r18, 0x01	; 1
+     b3c:	99 f1       	breq	.+102    	; 0xba4 <__stack+0x345>
+     b3e:	cf c1       	rjmp	.+926    	; 0xede <__stack+0x67f>
+				{
+					case SSD_enumCommonAnode:
+						DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_A.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_A.Pin,DIO_enumLogicLow);
+     b40:	21 e1       	ldi	r18, 0x11	; 17
+     b42:	28 9f       	mul	r18, r24
+     b44:	e0 01       	movw	r28, r0
+     b46:	29 9f       	mul	r18, r25
+     b48:	d0 0d       	add	r29, r0
+     b4a:	11 24       	eor	r1, r1
+     b4c:	c0 5a       	subi	r28, 0xA0	; 160
+     b4e:	df 4f       	sbci	r29, 0xFF	; 255
+     b50:	40 e0       	ldi	r20, 0x00	; 0
+     b52:	6a 81       	ldd	r22, Y+2	; 0x02
+     b54:	89 81       	ldd	r24, Y+1	; 0x01
+     b56:	0e 94 25 08 	call	0x104a	; 0x104a <DIO_enumSetPin>
+						DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_B.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_B.Pin,DIO_enumLogicHigh);
+     b5a:	41 e0       	ldi	r20, 0x01	; 1
+     b5c:	6c 81       	ldd	r22, Y+4	; 0x04
+     b5e:	8b 81       	ldd	r24, Y+3	; 0x03
+     b60:	0e 94 25 08 	call	0x104a	; 0x104a <DIO_enumSetPin>
+						DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_C.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_C.Pin,DIO_enumLogicLow);
+     b64:	40 e0       	ldi	r20, 0x00	; 0
+     b66:	6e 81       	ldd	r22, Y+6	; 0x06
+     b68:	8d 81       	ldd	r24, Y+5	; 0x05
+     b6a:	0e 94 25 08 	call	0x104a	; 0x104a <DIO_enumSetPin>
+						DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_D.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_D.Pin,DIO_enumLogicLow);
+     b6e:	40 e0       	ldi	r20, 0x00	; 0
+     b70:	68 85       	ldd	r22, Y+8	; 0x08
+     b72:	8f 81       	ldd	r24, Y+7	; 0x07
+     b74:	0e 94 25 08 	call	0x104a	; 0x104a <DIO_enumSetPin>
+						DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_E.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_E.Pin,DIO_enumLogicLow);
+     b78:	40 e0       	ldi	r20, 0x00	; 0
+     b7a:	6a 85       	ldd	r22, Y+10	; 0x0a
+     b7c:	89 85       	ldd	r24, Y+9	; 0x09
+     b7e:	0e 94 25 08 	call	0x104a	; 0x104a <DIO_enumSetPin>
+						DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_F.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_F.Pin,DIO_enumLogicLow);
+     b82:	40 e0       	ldi	r20, 0x00	; 0
+     b84:	6c 85       	ldd	r22, Y+12	; 0x0c
+     b86:	8b 85       	ldd	r24, Y+11	; 0x0b
+     b88:	0e 94 25 08 	call	0x104a	; 0x104a <DIO_enumSetPin>
+						DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_G.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_G.Pin,DIO_enumLogicLow);
+     b8c:	40 e0       	ldi	r20, 0x00	; 0
+     b8e:	6e 85       	ldd	r22, Y+14	; 0x0e
+     b90:	8d 85       	ldd	r24, Y+13	; 0x0d
+     b92:	0e 94 25 08 	call	0x104a	; 0x104a <DIO_enumSetPin>
+						DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_DOT.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_DOT.Pin,DIO_enumLogicHigh);
+     b96:	41 e0       	ldi	r20, 0x01	; 1
+     b98:	68 89       	ldd	r22, Y+16	; 0x10
+     b9a:	8f 85       	ldd	r24, Y+15	; 0x0f
+     b9c:	0e 94 25 08 	call	0x104a	; 0x104a <DIO_enumSetPin>
+	{
+		RET_enumErrorStatus=SSD_enumInvalidSegmentName;
+	}
+	else
+	{
+		RET_enumErrorStatus=SSD_enumOk;
+     ba0:	81 e0       	ldi	r24, 0x01	; 1
+						DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_D.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_D.Pin,DIO_enumLogicLow);
+						DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_E.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_E.Pin,DIO_enumLogicLow);
+						DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_F.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_F.Pin,DIO_enumLogicLow);
+						DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_G.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_G.Pin,DIO_enumLogicLow);
+						DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_DOT.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_DOT.Pin,DIO_enumLogicHigh);
+					break;
+     ba2:	a4 c1       	rjmp	.+840    	; 0xeec <__stack+0x68d>
+					case SSD_enumCommonCathode:
+						DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_A.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_A.Pin,DIO_enumLogicHigh);
+     ba4:	21 e1       	ldi	r18, 0x11	; 17
+     ba6:	28 9f       	mul	r18, r24
+     ba8:	e0 01       	movw	r28, r0
+     baa:	29 9f       	mul	r18, r25
+     bac:	d0 0d       	add	r29, r0
+     bae:	11 24       	eor	r1, r1
+     bb0:	c0 5a       	subi	r28, 0xA0	; 160
+     bb2:	df 4f       	sbci	r29, 0xFF	; 255
+     bb4:	41 e0       	ldi	r20, 0x01	; 1
+     bb6:	6a 81       	ldd	r22, Y+2	; 0x02
+     bb8:	89 81       	ldd	r24, Y+1	; 0x01
+     bba:	0e 94 25 08 	call	0x104a	; 0x104a <DIO_enumSetPin>
+						DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_B.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_B.Pin,DIO_enumLogicLow);
+     bbe:	40 e0       	ldi	r20, 0x00	; 0
+     bc0:	6c 81       	ldd	r22, Y+4	; 0x04
+     bc2:	8b 81       	ldd	r24, Y+3	; 0x03
+     bc4:	0e 94 25 08 	call	0x104a	; 0x104a <DIO_enumSetPin>
+						DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_C.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_C.Pin,DIO_enumLogicHigh);
+     bc8:	41 e0       	ldi	r20, 0x01	; 1
+     bca:	6e 81       	ldd	r22, Y+6	; 0x06
+     bcc:	8d 81       	ldd	r24, Y+5	; 0x05
+     bce:	0e 94 25 08 	call	0x104a	; 0x104a <DIO_enumSetPin>
+						DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_D.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_D.Pin,DIO_enumLogicHigh);
+     bd2:	41 e0       	ldi	r20, 0x01	; 1
+     bd4:	68 85       	ldd	r22, Y+8	; 0x08
+     bd6:	8f 81       	ldd	r24, Y+7	; 0x07
+     bd8:	0e 94 25 08 	call	0x104a	; 0x104a <DIO_enumSetPin>
+						DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_E.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_E.Pin,DIO_enumLogicHigh);
+     bdc:	41 e0       	ldi	r20, 0x01	; 1
+     bde:	6a 85       	ldd	r22, Y+10	; 0x0a
+     be0:	89 85       	ldd	r24, Y+9	; 0x09
+     be2:	0e 94 25 08 	call	0x104a	; 0x104a <DIO_enumSetPin>
+						DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_F.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_F.Pin,DIO_enumLogicHigh);
+     be6:	41 e0       	ldi	r20, 0x01	; 1
+     be8:	6c 85       	ldd	r22, Y+12	; 0x0c
+     bea:	8b 85       	ldd	r24, Y+11	; 0x0b
+     bec:	0e 94 25 08 	call	0x104a	; 0x104a <DIO_enumSetPin>
+						DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_G.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_G.Pin,DIO_enumLogicHigh);
+     bf0:	41 e0       	ldi	r20, 0x01	; 1
+     bf2:	6e 85       	ldd	r22, Y+14	; 0x0e
+     bf4:	8d 85       	ldd	r24, Y+13	; 0x0d
+     bf6:	0e 94 25 08 	call	0x104a	; 0x104a <DIO_enumSetPin>
+						DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_DOT.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_DOT.Pin,DIO_enumLogicLow);
+     bfa:	40 e0       	ldi	r20, 0x00	; 0
+     bfc:	68 89       	ldd	r22, Y+16	; 0x10
+     bfe:	8f 85       	ldd	r24, Y+15	; 0x0f
+     c00:	0e 94 25 08 	call	0x104a	; 0x104a <DIO_enumSetPin>
+	{
+		RET_enumErrorStatus=SSD_enumInvalidSegmentName;
+	}
+	else
+	{
+		RET_enumErrorStatus=SSD_enumOk;
+     c04:	81 e0       	ldi	r24, 0x01	; 1
+						DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_D.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_D.Pin,DIO_enumLogicHigh);
+						DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_E.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_E.Pin,DIO_enumLogicHigh);
+						DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_F.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_F.Pin,DIO_enumLogicHigh);
+						DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_G.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_G.Pin,DIO_enumLogicHigh);
+						DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_DOT.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_DOT.Pin,DIO_enumLogicLow);
+					break;
+     c06:	72 c1       	rjmp	.+740    	; 0xeec <__stack+0x68d>
+				}
+			break;
+			case SEVEN:
+				switch(SSD_strSegmentsArrCfg[Copy_u8SegName].State)
+     c08:	90 e0       	ldi	r25, 0x00	; 0
+     c0a:	21 e1       	ldi	r18, 0x11	; 17
+     c0c:	28 9f       	mul	r18, r24
+     c0e:	f0 01       	movw	r30, r0
+     c10:	29 9f       	mul	r18, r25
+     c12:	f0 0d       	add	r31, r0
+     c14:	11 24       	eor	r1, r1
+     c16:	e0 5a       	subi	r30, 0xA0	; 160
+     c18:	ff 4f       	sbci	r31, 0xFF	; 255
+     c1a:	20 81       	ld	r18, Z
+     c1c:	22 23       	and	r18, r18
+     c1e:	19 f0       	breq	.+6      	; 0xc26 <__stack+0x3c7>
+     c20:	21 30       	cpi	r18, 0x01	; 1
+     c22:	99 f1       	breq	.+102    	; 0xc8a <__stack+0x42b>
+     c24:	5e c1       	rjmp	.+700    	; 0xee2 <__stack+0x683>
+				{
+				case SSD_enumCommonAnode:
+					DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_A.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_A.Pin,DIO_enumLogicLow);
+     c26:	21 e1       	ldi	r18, 0x11	; 17
+     c28:	28 9f       	mul	r18, r24
+     c2a:	e0 01       	movw	r28, r0
+     c2c:	29 9f       	mul	r18, r25
+     c2e:	d0 0d       	add	r29, r0
+     c30:	11 24       	eor	r1, r1
+     c32:	c0 5a       	subi	r28, 0xA0	; 160
+     c34:	df 4f       	sbci	r29, 0xFF	; 255
+     c36:	40 e0       	ldi	r20, 0x00	; 0
+     c38:	6a 81       	ldd	r22, Y+2	; 0x02
+     c3a:	89 81       	ldd	r24, Y+1	; 0x01
+     c3c:	0e 94 25 08 	call	0x104a	; 0x104a <DIO_enumSetPin>
+					DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_B.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_B.Pin,DIO_enumLogicLow);
+     c40:	40 e0       	ldi	r20, 0x00	; 0
+     c42:	6c 81       	ldd	r22, Y+4	; 0x04
+     c44:	8b 81       	ldd	r24, Y+3	; 0x03
+     c46:	0e 94 25 08 	call	0x104a	; 0x104a <DIO_enumSetPin>
+					DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_C.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_C.Pin,DIO_enumLogicLow);
+     c4a:	40 e0       	ldi	r20, 0x00	; 0
+     c4c:	6e 81       	ldd	r22, Y+6	; 0x06
+     c4e:	8d 81       	ldd	r24, Y+5	; 0x05
+     c50:	0e 94 25 08 	call	0x104a	; 0x104a <DIO_enumSetPin>
+					DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_D.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_D.Pin,DIO_enumLogicHigh);
+     c54:	41 e0       	ldi	r20, 0x01	; 1
+     c56:	68 85       	ldd	r22, Y+8	; 0x08
+     c58:	8f 81       	ldd	r24, Y+7	; 0x07
+     c5a:	0e 94 25 08 	call	0x104a	; 0x104a <DIO_enumSetPin>
+					DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_E.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_E.Pin,DIO_enumLogicHigh);
+     c5e:	41 e0       	ldi	r20, 0x01	; 1
+     c60:	6a 85       	ldd	r22, Y+10	; 0x0a
+     c62:	89 85       	ldd	r24, Y+9	; 0x09
+     c64:	0e 94 25 08 	call	0x104a	; 0x104a <DIO_enumSetPin>
+					DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_F.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_F.Pin,DIO_enumLogicHigh);
+     c68:	41 e0       	ldi	r20, 0x01	; 1
+     c6a:	6c 85       	ldd	r22, Y+12	; 0x0c
+     c6c:	8b 85       	ldd	r24, Y+11	; 0x0b
+     c6e:	0e 94 25 08 	call	0x104a	; 0x104a <DIO_enumSetPin>
+					DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_G.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_G.Pin,DIO_enumLogicHigh);
+     c72:	41 e0       	ldi	r20, 0x01	; 1
+     c74:	6e 85       	ldd	r22, Y+14	; 0x0e
+     c76:	8d 85       	ldd	r24, Y+13	; 0x0d
+     c78:	0e 94 25 08 	call	0x104a	; 0x104a <DIO_enumSetPin>
+					DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_DOT.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_DOT.Pin,DIO_enumLogicHigh);
+     c7c:	41 e0       	ldi	r20, 0x01	; 1
+     c7e:	68 89       	ldd	r22, Y+16	; 0x10
+     c80:	8f 85       	ldd	r24, Y+15	; 0x0f
+     c82:	0e 94 25 08 	call	0x104a	; 0x104a <DIO_enumSetPin>
+	{
+		RET_enumErrorStatus=SSD_enumInvalidSegmentName;
+	}
+	else
+	{
+		RET_enumErrorStatus=SSD_enumOk;
+     c86:	81 e0       	ldi	r24, 0x01	; 1
+					DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_D.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_D.Pin,DIO_enumLogicHigh);
+					DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_E.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_E.Pin,DIO_enumLogicHigh);
+					DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_F.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_F.Pin,DIO_enumLogicHigh);
+					DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_G.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_G.Pin,DIO_enumLogicHigh);
+					DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_DOT.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_DOT.Pin,DIO_enumLogicHigh);
+				break;
+     c88:	31 c1       	rjmp	.+610    	; 0xeec <__stack+0x68d>
+				case SSD_enumCommonCathode:
+					DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_A.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_A.Pin,DIO_enumLogicHigh);
+     c8a:	21 e1       	ldi	r18, 0x11	; 17
+     c8c:	28 9f       	mul	r18, r24
+     c8e:	e0 01       	movw	r28, r0
+     c90:	29 9f       	mul	r18, r25
+     c92:	d0 0d       	add	r29, r0
+     c94:	11 24       	eor	r1, r1
+     c96:	c0 5a       	subi	r28, 0xA0	; 160
+     c98:	df 4f       	sbci	r29, 0xFF	; 255
+     c9a:	41 e0       	ldi	r20, 0x01	; 1
+     c9c:	6a 81       	ldd	r22, Y+2	; 0x02
+     c9e:	89 81       	ldd	r24, Y+1	; 0x01
+     ca0:	0e 94 25 08 	call	0x104a	; 0x104a <DIO_enumSetPin>
+					DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_B.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_B.Pin,DIO_enumLogicHigh);
+     ca4:	41 e0       	ldi	r20, 0x01	; 1
+     ca6:	6c 81       	ldd	r22, Y+4	; 0x04
+     ca8:	8b 81       	ldd	r24, Y+3	; 0x03
+     caa:	0e 94 25 08 	call	0x104a	; 0x104a <DIO_enumSetPin>
+					DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_C.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_C.Pin,DIO_enumLogicHigh);
+     cae:	41 e0       	ldi	r20, 0x01	; 1
+     cb0:	6e 81       	ldd	r22, Y+6	; 0x06
+     cb2:	8d 81       	ldd	r24, Y+5	; 0x05
+     cb4:	0e 94 25 08 	call	0x104a	; 0x104a <DIO_enumSetPin>
+					DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_D.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_D.Pin,DIO_enumLogicLow);
+     cb8:	40 e0       	ldi	r20, 0x00	; 0
+     cba:	68 85       	ldd	r22, Y+8	; 0x08
+     cbc:	8f 81       	ldd	r24, Y+7	; 0x07
+     cbe:	0e 94 25 08 	call	0x104a	; 0x104a <DIO_enumSetPin>
+					DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_E.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_E.Pin,DIO_enumLogicLow);
+     cc2:	40 e0       	ldi	r20, 0x00	; 0
+     cc4:	6a 85       	ldd	r22, Y+10	; 0x0a
+     cc6:	89 85       	ldd	r24, Y+9	; 0x09
+     cc8:	0e 94 25 08 	call	0x104a	; 0x104a <DIO_enumSetPin>
+					DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_F.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_F.Pin,DIO_enumLogicLow);
+     ccc:	40 e0       	ldi	r20, 0x00	; 0
+     cce:	6c 85       	ldd	r22, Y+12	; 0x0c
+     cd0:	8b 85       	ldd	r24, Y+11	; 0x0b
+     cd2:	0e 94 25 08 	call	0x104a	; 0x104a <DIO_enumSetPin>
+					DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_G.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_G.Pin,DIO_enumLogicLow);
+     cd6:	40 e0       	ldi	r20, 0x00	; 0
+     cd8:	6e 85       	ldd	r22, Y+14	; 0x0e
+     cda:	8d 85       	ldd	r24, Y+13	; 0x0d
+     cdc:	0e 94 25 08 	call	0x104a	; 0x104a <DIO_enumSetPin>
+					DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_DOT.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_DOT.Pin,DIO_enumLogicLow);
+     ce0:	40 e0       	ldi	r20, 0x00	; 0
+     ce2:	68 89       	ldd	r22, Y+16	; 0x10
+     ce4:	8f 85       	ldd	r24, Y+15	; 0x0f
+     ce6:	0e 94 25 08 	call	0x104a	; 0x104a <DIO_enumSetPin>
+	{
+		RET_enumErrorStatus=SSD_enumInvalidSegmentName;
+	}
+	else
+	{
+		RET_enumErrorStatus=SSD_enumOk;
+     cea:	81 e0       	ldi	r24, 0x01	; 1
+					DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_D.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_D.Pin,DIO_enumLogicLow);
+					DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_E.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_E.Pin,DIO_enumLogicLow);
+					DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_F.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_F.Pin,DIO_enumLogicLow);
+					DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_G.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_G.Pin,DIO_enumLogicLow);
+					DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_DOT.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_DOT.Pin,DIO_enumLogicLow);
+				break;
+     cec:	ff c0       	rjmp	.+510    	; 0xeec <__stack+0x68d>
+				}
+			break;
+			case EIGHT:
+				switch(SSD_strSegmentsArrCfg[Copy_u8SegName].State)
+     cee:	90 e0       	ldi	r25, 0x00	; 0
+     cf0:	21 e1       	ldi	r18, 0x11	; 17
+     cf2:	28 9f       	mul	r18, r24
+     cf4:	f0 01       	movw	r30, r0
+     cf6:	29 9f       	mul	r18, r25
+     cf8:	f0 0d       	add	r31, r0
+     cfa:	11 24       	eor	r1, r1
+     cfc:	e0 5a       	subi	r30, 0xA0	; 160
+     cfe:	ff 4f       	sbci	r31, 0xFF	; 255
+     d00:	20 81       	ld	r18, Z
+     d02:	22 23       	and	r18, r18
+     d04:	19 f0       	breq	.+6      	; 0xd0c <__stack+0x4ad>
+     d06:	21 30       	cpi	r18, 0x01	; 1
+     d08:	99 f1       	breq	.+102    	; 0xd70 <__stack+0x511>
+     d0a:	ed c0       	rjmp	.+474    	; 0xee6 <__stack+0x687>
+				{
+					case SSD_enumCommonAnode:
+						DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_A.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_A.Pin,DIO_enumLogicLow);
+     d0c:	21 e1       	ldi	r18, 0x11	; 17
+     d0e:	28 9f       	mul	r18, r24
+     d10:	e0 01       	movw	r28, r0
+     d12:	29 9f       	mul	r18, r25
+     d14:	d0 0d       	add	r29, r0
+     d16:	11 24       	eor	r1, r1
+     d18:	c0 5a       	subi	r28, 0xA0	; 160
+     d1a:	df 4f       	sbci	r29, 0xFF	; 255
+     d1c:	40 e0       	ldi	r20, 0x00	; 0
+     d1e:	6a 81       	ldd	r22, Y+2	; 0x02
+     d20:	89 81       	ldd	r24, Y+1	; 0x01
+     d22:	0e 94 25 08 	call	0x104a	; 0x104a <DIO_enumSetPin>
+						DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_B.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_B.Pin,DIO_enumLogicLow);
+     d26:	40 e0       	ldi	r20, 0x00	; 0
+     d28:	6c 81       	ldd	r22, Y+4	; 0x04
+     d2a:	8b 81       	ldd	r24, Y+3	; 0x03
+     d2c:	0e 94 25 08 	call	0x104a	; 0x104a <DIO_enumSetPin>
+						DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_C.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_C.Pin,DIO_enumLogicLow);
+     d30:	40 e0       	ldi	r20, 0x00	; 0
+     d32:	6e 81       	ldd	r22, Y+6	; 0x06
+     d34:	8d 81       	ldd	r24, Y+5	; 0x05
+     d36:	0e 94 25 08 	call	0x104a	; 0x104a <DIO_enumSetPin>
+						DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_D.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_D.Pin,DIO_enumLogicLow);
+     d3a:	40 e0       	ldi	r20, 0x00	; 0
+     d3c:	68 85       	ldd	r22, Y+8	; 0x08
+     d3e:	8f 81       	ldd	r24, Y+7	; 0x07
+     d40:	0e 94 25 08 	call	0x104a	; 0x104a <DIO_enumSetPin>
+						DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_E.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_E.Pin,DIO_enumLogicLow);
+     d44:	40 e0       	ldi	r20, 0x00	; 0
+     d46:	6a 85       	ldd	r22, Y+10	; 0x0a
+     d48:	89 85       	ldd	r24, Y+9	; 0x09
+     d4a:	0e 94 25 08 	call	0x104a	; 0x104a <DIO_enumSetPin>
+						DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_F.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_F.Pin,DIO_enumLogicLow);
+     d4e:	40 e0       	ldi	r20, 0x00	; 0
+     d50:	6c 85       	ldd	r22, Y+12	; 0x0c
+     d52:	8b 85       	ldd	r24, Y+11	; 0x0b
+     d54:	0e 94 25 08 	call	0x104a	; 0x104a <DIO_enumSetPin>
+						DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_G.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_G.Pin,DIO_enumLogicLow);
+     d58:	40 e0       	ldi	r20, 0x00	; 0
+     d5a:	6e 85       	ldd	r22, Y+14	; 0x0e
+     d5c:	8d 85       	ldd	r24, Y+13	; 0x0d
+     d5e:	0e 94 25 08 	call	0x104a	; 0x104a <DIO_enumSetPin>
+						DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_DOT.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_DOT.Pin,DIO_enumLogicHigh);
+     d62:	41 e0       	ldi	r20, 0x01	; 1
+     d64:	68 89       	ldd	r22, Y+16	; 0x10
+     d66:	8f 85       	ldd	r24, Y+15	; 0x0f
+     d68:	0e 94 25 08 	call	0x104a	; 0x104a <DIO_enumSetPin>
+	{
+		RET_enumErrorStatus=SSD_enumInvalidSegmentName;
+	}
+	else
+	{
+		RET_enumErrorStatus=SSD_enumOk;
+     d6c:	81 e0       	ldi	r24, 0x01	; 1
+						DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_D.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_D.Pin,DIO_enumLogicLow);
+						DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_E.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_E.Pin,DIO_enumLogicLow);
+						DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_F.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_F.Pin,DIO_enumLogicLow);
+						DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_G.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_G.Pin,DIO_enumLogicLow);
+						DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_DOT.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_DOT.Pin,DIO_enumLogicHigh);
+					break;
+     d6e:	be c0       	rjmp	.+380    	; 0xeec <__stack+0x68d>
+					case SSD_enumCommonCathode:
+						DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_A.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_A.Pin,DIO_enumLogicHigh);
+     d70:	21 e1       	ldi	r18, 0x11	; 17
+     d72:	28 9f       	mul	r18, r24
+     d74:	e0 01       	movw	r28, r0
+     d76:	29 9f       	mul	r18, r25
+     d78:	d0 0d       	add	r29, r0
+     d7a:	11 24       	eor	r1, r1
+     d7c:	c0 5a       	subi	r28, 0xA0	; 160
+     d7e:	df 4f       	sbci	r29, 0xFF	; 255
+     d80:	41 e0       	ldi	r20, 0x01	; 1
+     d82:	6a 81       	ldd	r22, Y+2	; 0x02
+     d84:	89 81       	ldd	r24, Y+1	; 0x01
+     d86:	0e 94 25 08 	call	0x104a	; 0x104a <DIO_enumSetPin>
+						DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_B.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_B.Pin,DIO_enumLogicHigh);
+     d8a:	41 e0       	ldi	r20, 0x01	; 1
+     d8c:	6c 81       	ldd	r22, Y+4	; 0x04
+     d8e:	8b 81       	ldd	r24, Y+3	; 0x03
+     d90:	0e 94 25 08 	call	0x104a	; 0x104a <DIO_enumSetPin>
+						DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_C.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_C.Pin,DIO_enumLogicHigh);
+     d94:	41 e0       	ldi	r20, 0x01	; 1
+     d96:	6e 81       	ldd	r22, Y+6	; 0x06
+     d98:	8d 81       	ldd	r24, Y+5	; 0x05
+     d9a:	0e 94 25 08 	call	0x104a	; 0x104a <DIO_enumSetPin>
+						DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_D.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_D.Pin,DIO_enumLogicHigh);
+     d9e:	41 e0       	ldi	r20, 0x01	; 1
+     da0:	68 85       	ldd	r22, Y+8	; 0x08
+     da2:	8f 81       	ldd	r24, Y+7	; 0x07
+     da4:	0e 94 25 08 	call	0x104a	; 0x104a <DIO_enumSetPin>
+						DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_E.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_E.Pin,DIO_enumLogicHigh);
+     da8:	41 e0       	ldi	r20, 0x01	; 1
+     daa:	6a 85       	ldd	r22, Y+10	; 0x0a
+     dac:	89 85       	ldd	r24, Y+9	; 0x09
+     dae:	0e 94 25 08 	call	0x104a	; 0x104a <DIO_enumSetPin>
+						DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_F.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_F.Pin,DIO_enumLogicHigh);
+     db2:	41 e0       	ldi	r20, 0x01	; 1
+     db4:	6c 85       	ldd	r22, Y+12	; 0x0c
+     db6:	8b 85       	ldd	r24, Y+11	; 0x0b
+     db8:	0e 94 25 08 	call	0x104a	; 0x104a <DIO_enumSetPin>
+						DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_G.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_G.Pin,DIO_enumLogicHigh);
+     dbc:	41 e0       	ldi	r20, 0x01	; 1
+     dbe:	6e 85       	ldd	r22, Y+14	; 0x0e
+     dc0:	8d 85       	ldd	r24, Y+13	; 0x0d
+     dc2:	0e 94 25 08 	call	0x104a	; 0x104a <DIO_enumSetPin>
+						DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_DOT.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_DOT.Pin,DIO_enumLogicLow);
+     dc6:	40 e0       	ldi	r20, 0x00	; 0
+     dc8:	68 89       	ldd	r22, Y+16	; 0x10
+     dca:	8f 85       	ldd	r24, Y+15	; 0x0f
+     dcc:	0e 94 25 08 	call	0x104a	; 0x104a <DIO_enumSetPin>
+	{
+		RET_enumErrorStatus=SSD_enumInvalidSegmentName;
+	}
+	else
+	{
+		RET_enumErrorStatus=SSD_enumOk;
+     dd0:	81 e0       	ldi	r24, 0x01	; 1
+						DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_D.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_D.Pin,DIO_enumLogicHigh);
+						DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_E.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_E.Pin,DIO_enumLogicHigh);
+						DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_F.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_F.Pin,DIO_enumLogicHigh);
+						DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_G.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_G.Pin,DIO_enumLogicHigh);
+						DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_DOT.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_DOT.Pin,DIO_enumLogicLow);
+					break;
+     dd2:	8c c0       	rjmp	.+280    	; 0xeec <__stack+0x68d>
+				}
+			break;
+			case NINE:
+				switch(SSD_strSegmentsArrCfg[Copy_u8SegName].State)
+     dd4:	90 e0       	ldi	r25, 0x00	; 0
+     dd6:	21 e1       	ldi	r18, 0x11	; 17
+     dd8:	28 9f       	mul	r18, r24
+     dda:	f0 01       	movw	r30, r0
+     ddc:	29 9f       	mul	r18, r25
+     dde:	f0 0d       	add	r31, r0
+     de0:	11 24       	eor	r1, r1
+     de2:	e0 5a       	subi	r30, 0xA0	; 160
+     de4:	ff 4f       	sbci	r31, 0xFF	; 255
+     de6:	20 81       	ld	r18, Z
+     de8:	22 23       	and	r18, r18
+     dea:	19 f0       	breq	.+6      	; 0xdf2 <__stack+0x593>
+     dec:	21 30       	cpi	r18, 0x01	; 1
+     dee:	99 f1       	breq	.+102    	; 0xe56 <__stack+0x5f7>
+     df0:	7c c0       	rjmp	.+248    	; 0xeea <__stack+0x68b>
+				{
+					case SSD_enumCommonAnode:
+						DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_A.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_A.Pin,DIO_enumLogicLow);
+     df2:	21 e1       	ldi	r18, 0x11	; 17
+     df4:	28 9f       	mul	r18, r24
+     df6:	e0 01       	movw	r28, r0
+     df8:	29 9f       	mul	r18, r25
+     dfa:	d0 0d       	add	r29, r0
+     dfc:	11 24       	eor	r1, r1
+     dfe:	c0 5a       	subi	r28, 0xA0	; 160
+     e00:	df 4f       	sbci	r29, 0xFF	; 255
+     e02:	40 e0       	ldi	r20, 0x00	; 0
+     e04:	6a 81       	ldd	r22, Y+2	; 0x02
+     e06:	89 81       	ldd	r24, Y+1	; 0x01
+     e08:	0e 94 25 08 	call	0x104a	; 0x104a <DIO_enumSetPin>
+						DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_B.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_B.Pin,DIO_enumLogicLow);
+     e0c:	40 e0       	ldi	r20, 0x00	; 0
+     e0e:	6c 81       	ldd	r22, Y+4	; 0x04
+     e10:	8b 81       	ldd	r24, Y+3	; 0x03
+     e12:	0e 94 25 08 	call	0x104a	; 0x104a <DIO_enumSetPin>
+						DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_C.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_C.Pin,DIO_enumLogicLow);
+     e16:	40 e0       	ldi	r20, 0x00	; 0
+     e18:	6e 81       	ldd	r22, Y+6	; 0x06
+     e1a:	8d 81       	ldd	r24, Y+5	; 0x05
+     e1c:	0e 94 25 08 	call	0x104a	; 0x104a <DIO_enumSetPin>
+						DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_D.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_D.Pin,DIO_enumLogicLow);
+     e20:	40 e0       	ldi	r20, 0x00	; 0
+     e22:	68 85       	ldd	r22, Y+8	; 0x08
+     e24:	8f 81       	ldd	r24, Y+7	; 0x07
+     e26:	0e 94 25 08 	call	0x104a	; 0x104a <DIO_enumSetPin>
+						DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_E.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_E.Pin,DIO_enumLogicHigh);
+     e2a:	41 e0       	ldi	r20, 0x01	; 1
+     e2c:	6a 85       	ldd	r22, Y+10	; 0x0a
+     e2e:	89 85       	ldd	r24, Y+9	; 0x09
+     e30:	0e 94 25 08 	call	0x104a	; 0x104a <DIO_enumSetPin>
+						DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_F.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_F.Pin,DIO_enumLogicLow);
+     e34:	40 e0       	ldi	r20, 0x00	; 0
+     e36:	6c 85       	ldd	r22, Y+12	; 0x0c
+     e38:	8b 85       	ldd	r24, Y+11	; 0x0b
+     e3a:	0e 94 25 08 	call	0x104a	; 0x104a <DIO_enumSetPin>
+						DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_G.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_G.Pin,DIO_enumLogicLow);
+     e3e:	40 e0       	ldi	r20, 0x00	; 0
+     e40:	6e 85       	ldd	r22, Y+14	; 0x0e
+     e42:	8d 85       	ldd	r24, Y+13	; 0x0d
+     e44:	0e 94 25 08 	call	0x104a	; 0x104a <DIO_enumSetPin>
+						DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_DOT.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_DOT.Pin,DIO_enumLogicHigh);
+     e48:	41 e0       	ldi	r20, 0x01	; 1
+     e4a:	68 89       	ldd	r22, Y+16	; 0x10
+     e4c:	8f 85       	ldd	r24, Y+15	; 0x0f
+     e4e:	0e 94 25 08 	call	0x104a	; 0x104a <DIO_enumSetPin>
+	{
+		RET_enumErrorStatus=SSD_enumInvalidSegmentName;
+	}
+	else
+	{
+		RET_enumErrorStatus=SSD_enumOk;
+     e52:	81 e0       	ldi	r24, 0x01	; 1
+						DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_D.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_D.Pin,DIO_enumLogicLow);
+						DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_E.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_E.Pin,DIO_enumLogicHigh);
+						DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_F.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_F.Pin,DIO_enumLogicLow);
+						DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_G.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_G.Pin,DIO_enumLogicLow);
+						DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_DOT.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_DOT.Pin,DIO_enumLogicHigh);
+					break;
+     e54:	4b c0       	rjmp	.+150    	; 0xeec <__stack+0x68d>
+					case SSD_enumCommonCathode:
+						DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_A.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_A.Pin,DIO_enumLogicHigh);
+     e56:	21 e1       	ldi	r18, 0x11	; 17
+     e58:	28 9f       	mul	r18, r24
+     e5a:	e0 01       	movw	r28, r0
+     e5c:	29 9f       	mul	r18, r25
+     e5e:	d0 0d       	add	r29, r0
+     e60:	11 24       	eor	r1, r1
+     e62:	c0 5a       	subi	r28, 0xA0	; 160
+     e64:	df 4f       	sbci	r29, 0xFF	; 255
+     e66:	41 e0       	ldi	r20, 0x01	; 1
+     e68:	6a 81       	ldd	r22, Y+2	; 0x02
+     e6a:	89 81       	ldd	r24, Y+1	; 0x01
+     e6c:	0e 94 25 08 	call	0x104a	; 0x104a <DIO_enumSetPin>
+						DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_B.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_B.Pin,DIO_enumLogicHigh);
+     e70:	41 e0       	ldi	r20, 0x01	; 1
+     e72:	6c 81       	ldd	r22, Y+4	; 0x04
+     e74:	8b 81       	ldd	r24, Y+3	; 0x03
+     e76:	0e 94 25 08 	call	0x104a	; 0x104a <DIO_enumSetPin>
+						DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_C.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_C.Pin,DIO_enumLogicHigh);
+     e7a:	41 e0       	ldi	r20, 0x01	; 1
+     e7c:	6e 81       	ldd	r22, Y+6	; 0x06
+     e7e:	8d 81       	ldd	r24, Y+5	; 0x05
+     e80:	0e 94 25 08 	call	0x104a	; 0x104a <DIO_enumSetPin>
+						DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_D.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_D.Pin,DIO_enumLogicHigh);
+     e84:	41 e0       	ldi	r20, 0x01	; 1
+     e86:	68 85       	ldd	r22, Y+8	; 0x08
+     e88:	8f 81       	ldd	r24, Y+7	; 0x07
+     e8a:	0e 94 25 08 	call	0x104a	; 0x104a <DIO_enumSetPin>
+						DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_E.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_E.Pin,DIO_enumLogicLow);
+     e8e:	40 e0       	ldi	r20, 0x00	; 0
+     e90:	6a 85       	ldd	r22, Y+10	; 0x0a
+     e92:	89 85       	ldd	r24, Y+9	; 0x09
+     e94:	0e 94 25 08 	call	0x104a	; 0x104a <DIO_enumSetPin>
+						DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_F.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_F.Pin,DIO_enumLogicHigh);
+     e98:	41 e0       	ldi	r20, 0x01	; 1
+     e9a:	6c 85       	ldd	r22, Y+12	; 0x0c
+     e9c:	8b 85       	ldd	r24, Y+11	; 0x0b
+     e9e:	0e 94 25 08 	call	0x104a	; 0x104a <DIO_enumSetPin>
+						DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_G.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_G.Pin,DIO_enumLogicHigh);
+     ea2:	41 e0       	ldi	r20, 0x01	; 1
+     ea4:	6e 85       	ldd	r22, Y+14	; 0x0e
+     ea6:	8d 85       	ldd	r24, Y+13	; 0x0d
+     ea8:	0e 94 25 08 	call	0x104a	; 0x104a <DIO_enumSetPin>
+						DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_DOT.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_DOT.Pin,DIO_enumLogicLow);
+     eac:	40 e0       	ldi	r20, 0x00	; 0
+     eae:	68 89       	ldd	r22, Y+16	; 0x10
+     eb0:	8f 85       	ldd	r24, Y+15	; 0x0f
+     eb2:	0e 94 25 08 	call	0x104a	; 0x104a <DIO_enumSetPin>
+	{
+		RET_enumErrorStatus=SSD_enumInvalidSegmentName;
+	}
+	else
+	{
+		RET_enumErrorStatus=SSD_enumOk;
+     eb6:	81 e0       	ldi	r24, 0x01	; 1
+						DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_D.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_D.Pin,DIO_enumLogicHigh);
+						DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_E.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_E.Pin,DIO_enumLogicLow);
+						DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_F.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_F.Pin,DIO_enumLogicHigh);
+						DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_G.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_G.Pin,DIO_enumLogicHigh);
+						DIO_enumSetPin(SSD_strSegmentsArrCfg[Copy_u8SegName].LED_DOT.Port,SSD_strSegmentsArrCfg[Copy_u8SegName].LED_DOT.Pin,DIO_enumLogicLow);
+					break;
+     eb8:	19 c0       	rjmp	.+50     	; 0xeec <__stack+0x68d>
+SSD_enumErrorStatus_t SSD_enumSetValue(u8 Copy_u8SegName, u32 Copy_u8DisplayValue)
+{
+	SSD_enumErrorStatus_t RET_enumErrorStatus= SSD_enumNotOk;
+	if(Copy_u8DisplayValue<ZERO || Copy_u8DisplayValue>NINE)
+	{
+		RET_enumErrorStatus=SSD_enumInvalidValue;
+     eba:	82 e0       	ldi	r24, 0x02	; 2
+     ebc:	17 c0       	rjmp	.+46     	; 0xeec <__stack+0x68d>
+	}
+	else if(Copy_u8SegName>=SEG_NUM)
+	{
+		RET_enumErrorStatus=SSD_enumInvalidSegmentName;
+     ebe:	83 e0       	ldi	r24, 0x03	; 3
+     ec0:	15 c0       	rjmp	.+42     	; 0xeec <__stack+0x68d>
+	}
+	else
+	{
+		RET_enumErrorStatus=SSD_enumOk;
+     ec2:	81 e0       	ldi	r24, 0x01	; 1
+     ec4:	13 c0       	rjmp	.+38     	; 0xeec <__stack+0x68d>
+     ec6:	81 e0       	ldi	r24, 0x01	; 1
+     ec8:	11 c0       	rjmp	.+34     	; 0xeec <__stack+0x68d>
+     eca:	81 e0       	ldi	r24, 0x01	; 1
+     ecc:	0f c0       	rjmp	.+30     	; 0xeec <__stack+0x68d>
+     ece:	81 e0       	ldi	r24, 0x01	; 1
+     ed0:	0d c0       	rjmp	.+26     	; 0xeec <__stack+0x68d>
+     ed2:	81 e0       	ldi	r24, 0x01	; 1
+     ed4:	0b c0       	rjmp	.+22     	; 0xeec <__stack+0x68d>
+     ed6:	81 e0       	ldi	r24, 0x01	; 1
+     ed8:	09 c0       	rjmp	.+18     	; 0xeec <__stack+0x68d>
+     eda:	81 e0       	ldi	r24, 0x01	; 1
+     edc:	07 c0       	rjmp	.+14     	; 0xeec <__stack+0x68d>
+     ede:	81 e0       	ldi	r24, 0x01	; 1
+     ee0:	05 c0       	rjmp	.+10     	; 0xeec <__stack+0x68d>
+     ee2:	81 e0       	ldi	r24, 0x01	; 1
+     ee4:	03 c0       	rjmp	.+6      	; 0xeec <__stack+0x68d>
+     ee6:	81 e0       	ldi	r24, 0x01	; 1
+     ee8:	01 c0       	rjmp	.+2      	; 0xeec <__stack+0x68d>
+     eea:	81 e0       	ldi	r24, 0x01	; 1
+		}
+	}
+	
+	return RET_enumErrorStatus;
+	
+}
+     eec:	df 91       	pop	r29
+     eee:	cf 91       	pop	r28
+     ef0:	08 95       	ret
+
+00000ef2 <SWITCH_voidInit>:
+
+/* Extern LCD Configuration Array*/
+extern SWITCH_strSwitchCfg_t SWITCH_strSwitchArrCfg[SWITCH_COUNT]; 
+
+void SWITCH_voidInit (void)
+{
+     ef2:	cf 93       	push	r28
+     ef4:	df 93       	push	r29
+     ef6:	cd b7       	in	r28, 0x3d	; 61
+     ef8:	de b7       	in	r29, 0x3e	; 62
+     efa:	2c 97       	sbiw	r28, 0x0c	; 12
+     efc:	0f b6       	in	r0, 0x3f	; 63
+     efe:	f8 94       	cli
+     f00:	de bf       	out	0x3e, r29	; 62
+     f02:	0f be       	out	0x3f, r0	; 63
+     f04:	cd bf       	out	0x3d, r28	; 61
+                                  
+	/* Create a Local Array for SWITCH Configurations*/
+	DIO_strDioCfg Loc_strSwitchArrCfg[SWITCH_COUNT]; 
+	
+	/*Loop over total SWITCHs*/
+	for(u8 iter=0;iter<SWITCH_COUNT;iter++)
+     f06:	20 e0       	ldi	r18, 0x00	; 0
+     f08:	46 c0       	rjmp	.+140    	; 0xf96 <SWITCH_voidInit+0xa4>
+		{	
+			/*Copy Port Number*/
+			Loc_strSwitchArrCfg[iter].Port = SWITCH_strSwitchArrCfg[iter].Port;
+     f0a:	82 2f       	mov	r24, r18
+     f0c:	90 e0       	ldi	r25, 0x00	; 0
+     f0e:	fc 01       	movw	r30, r24
+     f10:	ee 0f       	add	r30, r30
+     f12:	ff 1f       	adc	r31, r31
+     f14:	e8 0f       	add	r30, r24
+     f16:	f9 1f       	adc	r31, r25
+     f18:	ee 57       	subi	r30, 0x7E	; 126
+     f1a:	ff 4f       	sbci	r31, 0xFF	; 255
+     f1c:	30 81       	ld	r19, Z
+     f1e:	dc 01       	movw	r26, r24
+     f20:	aa 0f       	add	r26, r26
+     f22:	bb 1f       	adc	r27, r27
+     f24:	aa 0f       	add	r26, r26
+     f26:	bb 1f       	adc	r27, r27
+     f28:	41 e0       	ldi	r20, 0x01	; 1
+     f2a:	50 e0       	ldi	r21, 0x00	; 0
+     f2c:	4c 0f       	add	r20, r28
+     f2e:	5d 1f       	adc	r21, r29
+     f30:	a4 0f       	add	r26, r20
+     f32:	b5 1f       	adc	r27, r21
+     f34:	3c 93       	st	X, r19
+			/*Copy Pin Number*/
+			Loc_strSwitchArrCfg[iter].Pin = SWITCH_strSwitchArrCfg[iter].Pin;
+     f36:	31 81       	ldd	r19, Z+1	; 0x01
+     f38:	11 96       	adiw	r26, 0x01	; 1
+     f3a:	3c 93       	st	X, r19
+			/*Set Input Configuration*/
+			switch(SWITCH_strSwitchArrCfg[iter].InputState)
+     f3c:	32 81       	ldd	r19, Z+2	; 0x02
+     f3e:	33 23       	and	r19, r19
+     f40:	19 f0       	breq	.+6      	; 0xf48 <SWITCH_voidInit+0x56>
+     f42:	31 30       	cpi	r19, 0x01	; 1
+     f44:	79 f0       	breq	.+30     	; 0xf64 <SWITCH_voidInit+0x72>
+     f46:	1b c0       	rjmp	.+54     	; 0xf7e <SWITCH_voidInit+0x8c>
+			{
+				case SWITCH_enumInputInternalPU:
+					Loc_strSwitchArrCfg[iter].PinConfig= DIO_enumInputInternalPU;
+     f48:	fc 01       	movw	r30, r24
+     f4a:	ee 0f       	add	r30, r30
+     f4c:	ff 1f       	adc	r31, r31
+     f4e:	ee 0f       	add	r30, r30
+     f50:	ff 1f       	adc	r31, r31
+     f52:	41 e0       	ldi	r20, 0x01	; 1
+     f54:	50 e0       	ldi	r21, 0x00	; 0
+     f56:	4c 0f       	add	r20, r28
+     f58:	5d 1f       	adc	r21, r29
+     f5a:	e4 0f       	add	r30, r20
+     f5c:	f5 1f       	adc	r31, r21
+     f5e:	31 e0       	ldi	r19, 0x01	; 1
+     f60:	32 83       	std	Z+2, r19	; 0x02
+				break;
+     f62:	0d c0       	rjmp	.+26     	; 0xf7e <SWITCH_voidInit+0x8c>
+				case SWITCH_enumInputExternalPD:
+					Loc_strSwitchArrCfg[iter].PinConfig= DIO_enumInputExternalPD;
+     f64:	fc 01       	movw	r30, r24
+     f66:	ee 0f       	add	r30, r30
+     f68:	ff 1f       	adc	r31, r31
+     f6a:	ee 0f       	add	r30, r30
+     f6c:	ff 1f       	adc	r31, r31
+     f6e:	41 e0       	ldi	r20, 0x01	; 1
+     f70:	50 e0       	ldi	r21, 0x00	; 0
+     f72:	4c 0f       	add	r20, r28
+     f74:	5d 1f       	adc	r21, r29
+     f76:	e4 0f       	add	r30, r20
+     f78:	f5 1f       	adc	r31, r21
+     f7a:	32 e0       	ldi	r19, 0x02	; 2
+     f7c:	32 83       	std	Z+2, r19	; 0x02
+				break;
+			}
+			/*Set Logic HIGH/LOW as Dummy Value*/
+			Loc_strSwitchArrCfg[iter].LogicState= DUMMY_VALUE;
+     f7e:	88 0f       	add	r24, r24
+     f80:	99 1f       	adc	r25, r25
+     f82:	88 0f       	add	r24, r24
+     f84:	99 1f       	adc	r25, r25
+     f86:	e1 e0       	ldi	r30, 0x01	; 1
+     f88:	f0 e0       	ldi	r31, 0x00	; 0
+     f8a:	ec 0f       	add	r30, r28
+     f8c:	fd 1f       	adc	r31, r29
+     f8e:	e8 0f       	add	r30, r24
+     f90:	f9 1f       	adc	r31, r25
+     f92:	13 82       	std	Z+3, r1	; 0x03
+                                  
+	/* Create a Local Array for SWITCH Configurations*/
+	DIO_strDioCfg Loc_strSwitchArrCfg[SWITCH_COUNT]; 
+	
+	/*Loop over total SWITCHs*/
+	for(u8 iter=0;iter<SWITCH_COUNT;iter++)
+     f94:	2f 5f       	subi	r18, 0xFF	; 255
+     f96:	23 30       	cpi	r18, 0x03	; 3
+     f98:	08 f4       	brcc	.+2      	; 0xf9c <SWITCH_voidInit+0xaa>
+     f9a:	b7 cf       	rjmp	.-146    	; 0xf0a <SWITCH_voidInit+0x18>
+			/*Set Logic HIGH/LOW as Dummy Value*/
+			Loc_strSwitchArrCfg[iter].LogicState= DUMMY_VALUE;
+		}
+
+	/*Send Mapped Array to DIO Configuration Function*/
+	DIO_enumSetConfig(Loc_strSwitchArrCfg, SWITCH_COUNT);
+     f9c:	63 e0       	ldi	r22, 0x03	; 3
+     f9e:	ce 01       	movw	r24, r28
+     fa0:	01 96       	adiw	r24, 0x01	; 1
+     fa2:	0e 94 fa 08 	call	0x11f4	; 0x11f4 <DIO_enumSetConfig>
+}
+     fa6:	2c 96       	adiw	r28, 0x0c	; 12
+     fa8:	0f b6       	in	r0, 0x3f	; 63
+     faa:	f8 94       	cli
+     fac:	de bf       	out	0x3e, r29	; 62
+     fae:	0f be       	out	0x3f, r0	; 63
+     fb0:	cd bf       	out	0x3d, r28	; 61
+     fb2:	df 91       	pop	r29
+     fb4:	cf 91       	pop	r28
+     fb6:	08 95       	ret
+
+00000fb8 <SWITCH_enuReadSwitchState>:
+
+SWITCH_enumErrorStatus_t SWITCH_enuReadSwitchState(u8 Copy_u8SwitchName, SWITCH_enumSwitchState_t* Add_u8State)
+{
+     fb8:	ef 92       	push	r14
+     fba:	ff 92       	push	r15
+     fbc:	0f 93       	push	r16
+     fbe:	1f 93       	push	r17
+     fc0:	cf 93       	push	r28
+     fc2:	df 93       	push	r29
+     fc4:	1f 92       	push	r1
+     fc6:	cd b7       	in	r28, 0x3d	; 61
+     fc8:	de b7       	in	r29, 0x3e	; 62
+	SWITCH_enumErrorStatus_t RET_enumErrorStatus= SWITCH_enumNotOk;
+	if(Copy_u8SwitchName>=SWITCH_COUNT)
+     fca:	83 30       	cpi	r24, 0x03	; 3
+     fcc:	98 f5       	brcc	.+102    	; 0x1034 <SWITCH_enuReadSwitchState+0x7c>
+	{
+		RET_enumErrorStatus=SWITCH_enumInvalidSwitch;
+	}
+	else if(Add_u8State==NULL)
+     fce:	61 15       	cp	r22, r1
+     fd0:	71 05       	cpc	r23, r1
+     fd2:	91 f1       	breq	.+100    	; 0x1038 <SWITCH_enuReadSwitchState+0x80>
+     fd4:	7b 01       	movw	r14, r22
+	}
+	else
+	{
+		RET_enumErrorStatus=SWITCH_enumOk;
+		DIO_enumLogicState_t Loc_enumSwitchLogicState;
+		DIO_enumReadState(SWITCH_strSwitchArrCfg[Copy_u8SwitchName].Port,SWITCH_strSwitchArrCfg[Copy_u8SwitchName].Pin,&Loc_enumSwitchLogicState);
+     fd6:	90 e0       	ldi	r25, 0x00	; 0
+     fd8:	8c 01       	movw	r16, r24
+     fda:	00 0f       	add	r16, r16
+     fdc:	11 1f       	adc	r17, r17
+     fde:	08 0f       	add	r16, r24
+     fe0:	19 1f       	adc	r17, r25
+     fe2:	0e 57       	subi	r16, 0x7E	; 126
+     fe4:	1f 4f       	sbci	r17, 0xFF	; 255
+     fe6:	ae 01       	movw	r20, r28
+     fe8:	4f 5f       	subi	r20, 0xFF	; 255
+     fea:	5f 4f       	sbci	r21, 0xFF	; 255
+     fec:	f8 01       	movw	r30, r16
+     fee:	61 81       	ldd	r22, Z+1	; 0x01
+     ff0:	80 81       	ld	r24, Z
+     ff2:	0e 94 b3 08 	call	0x1166	; 0x1166 <DIO_enumReadState>
+		/*Switch on State Parameter*/
+		switch(SWITCH_strSwitchArrCfg[Copy_u8SwitchName].InputState)
+     ff6:	f8 01       	movw	r30, r16
+     ff8:	82 81       	ldd	r24, Z+2	; 0x02
+     ffa:	88 23       	and	r24, r24
+     ffc:	19 f0       	breq	.+6      	; 0x1004 <SWITCH_enuReadSwitchState+0x4c>
+     ffe:	81 30       	cpi	r24, 0x01	; 1
+    1000:	61 f0       	breq	.+24     	; 0x101a <SWITCH_enuReadSwitchState+0x62>
+    1002:	16 c0       	rjmp	.+44     	; 0x1030 <SWITCH_enuReadSwitchState+0x78>
+		{
+				case SWITCH_enumInputInternalPU:
+					switch(Loc_enumSwitchLogicState)
+    1004:	89 81       	ldd	r24, Y+1	; 0x01
+    1006:	88 23       	and	r24, r24
+    1008:	29 f0       	breq	.+10     	; 0x1014 <SWITCH_enuReadSwitchState+0x5c>
+    100a:	81 30       	cpi	r24, 0x01	; 1
+    100c:	89 f4       	brne	.+34     	; 0x1030 <SWITCH_enuReadSwitchState+0x78>
+						{
+							case DIO_enumLogicHigh:
+								*Add_u8State=SWITCH_enumNotPressed;
+    100e:	f7 01       	movw	r30, r14
+    1010:	80 83       	st	Z, r24
+							break;
+    1012:	0e c0       	rjmp	.+28     	; 0x1030 <SWITCH_enuReadSwitchState+0x78>
+							case DIO_enumLogicLow:
+								*Add_u8State=SWITCH_enumPressed;
+    1014:	f7 01       	movw	r30, r14
+    1016:	10 82       	st	Z, r1
+							break;
+    1018:	0b c0       	rjmp	.+22     	; 0x1030 <SWITCH_enuReadSwitchState+0x78>
+						}
+				break;
+				/*If Active High, Set Pin to LOW*/
+				case SWITCH_enumInputExternalPD:
+					switch(Loc_enumSwitchLogicState)
+    101a:	89 81       	ldd	r24, Y+1	; 0x01
+    101c:	88 23       	and	r24, r24
+    101e:	29 f0       	breq	.+10     	; 0x102a <SWITCH_enuReadSwitchState+0x72>
+    1020:	81 30       	cpi	r24, 0x01	; 1
+    1022:	31 f4       	brne	.+12     	; 0x1030 <SWITCH_enuReadSwitchState+0x78>
+					{
+						case DIO_enumLogicHigh:
+							*Add_u8State=SWITCH_enumPressed;
+    1024:	f7 01       	movw	r30, r14
+    1026:	10 82       	st	Z, r1
+						break;
+    1028:	03 c0       	rjmp	.+6      	; 0x1030 <SWITCH_enuReadSwitchState+0x78>
+						case DIO_enumLogicLow:
+							*Add_u8State=SWITCH_enumNotPressed;
+    102a:	81 e0       	ldi	r24, 0x01	; 1
+    102c:	f7 01       	movw	r30, r14
+    102e:	80 83       	st	Z, r24
+	{
+		RET_enumErrorStatus=SWITCH_enumNullPointer;
+	}
+	else
+	{
+		RET_enumErrorStatus=SWITCH_enumOk;
+    1030:	81 e0       	ldi	r24, 0x01	; 1
+    1032:	03 c0       	rjmp	.+6      	; 0x103a <SWITCH_enuReadSwitchState+0x82>
+SWITCH_enumErrorStatus_t SWITCH_enuReadSwitchState(u8 Copy_u8SwitchName, SWITCH_enumSwitchState_t* Add_u8State)
+{
+	SWITCH_enumErrorStatus_t RET_enumErrorStatus= SWITCH_enumNotOk;
+	if(Copy_u8SwitchName>=SWITCH_COUNT)
+	{
+		RET_enumErrorStatus=SWITCH_enumInvalidSwitch;
+    1034:	83 e0       	ldi	r24, 0x03	; 3
+    1036:	01 c0       	rjmp	.+2      	; 0x103a <SWITCH_enuReadSwitchState+0x82>
+	}
+	else if(Add_u8State==NULL)
+	{
+		RET_enumErrorStatus=SWITCH_enumNullPointer;
+    1038:	82 e0       	ldi	r24, 0x02	; 2
+					}
+				break;
+		}
+	}
+	return RET_enumErrorStatus;
+}
+    103a:	0f 90       	pop	r0
+    103c:	df 91       	pop	r29
+    103e:	cf 91       	pop	r28
+    1040:	1f 91       	pop	r17
+    1042:	0f 91       	pop	r16
+    1044:	ff 90       	pop	r15
+    1046:	ef 90       	pop	r14
+    1048:	08 95       	ret
+
+0000104a <DIO_enumSetPin>:
+	{
+		/*Creating an Error Status Variable*/
+		DIO_enumErrorStatus_t RET_enumErrorStatus;
+		
+		/*Check if Port Number Parameter is Valid*/
+		if(Copy_enumPortNum>PORT_NUM)
+    104a:	84 30       	cpi	r24, 0x04	; 4
+    104c:	08 f0       	brcs	.+2      	; 0x1050 <DIO_enumSetPin+0x6>
+    104e:	7f c0       	rjmp	.+254    	; 0x114e <DIO_enumSetPin+0x104>
+		{
+			RET_enumErrorStatus= DIO_enumWrongPort;
+		}
+		/*Check if Pin Number Parameter is Valid*/
+		else if(Copy_enumPinNum>DIO_enumPin7)
+    1050:	68 30       	cpi	r22, 0x08	; 8
+    1052:	08 f0       	brcs	.+2      	; 0x1056 <DIO_enumSetPin+0xc>
+    1054:	7e c0       	rjmp	.+252    	; 0x1152 <DIO_enumSetPin+0x108>
+		{
+			RET_enumErrorStatus= DIO_enumWrongPin;
+		}
+		/*Check if Logic State Parameter is Valid*/
+		else if(Copy_enumLogicState>DIO_enumLogicHigh)
+    1056:	42 30       	cpi	r20, 0x02	; 2
+    1058:	08 f0       	brcs	.+2      	; 0x105c <DIO_enumSetPin+0x12>
+    105a:	7d c0       	rjmp	.+250    	; 0x1156 <DIO_enumSetPin+0x10c>
+		else
+		{
+			/*Update Error Status to be OK*/
+			RET_enumErrorStatus=DIO_enumOk;
+			/*Switch on Logic State*/
+			switch(Copy_enumLogicState)
+    105c:	44 23       	and	r20, r20
+    105e:	d9 f1       	breq	.+118    	; 0x10d6 <DIO_enumSetPin+0x8c>
+    1060:	41 30       	cpi	r20, 0x01	; 1
+    1062:	09 f0       	breq	.+2      	; 0x1066 <DIO_enumSetPin+0x1c>
+    1064:	7a c0       	rjmp	.+244    	; 0x115a <DIO_enumSetPin+0x110>
+			{
+				/*In case of Logic HIGH*/
+				case DIO_enumLogicHigh:
+				/*Switch on Port Number*/
+				switch(Copy_enumPortNum)
+    1066:	81 30       	cpi	r24, 0x01	; 1
+    1068:	91 f0       	breq	.+36     	; 0x108e <DIO_enumSetPin+0x44>
+    106a:	28 f0       	brcs	.+10     	; 0x1076 <DIO_enumSetPin+0x2c>
+    106c:	82 30       	cpi	r24, 0x02	; 2
+    106e:	d9 f0       	breq	.+54     	; 0x10a6 <DIO_enumSetPin+0x5c>
+    1070:	83 30       	cpi	r24, 0x03	; 3
+    1072:	29 f1       	breq	.+74     	; 0x10be <DIO_enumSetPin+0x74>
+    1074:	74 c0       	rjmp	.+232    	; 0x115e <DIO_enumSetPin+0x114>
+				{
+					/*If Number of Ports are 4*/
+					#if PORT_NUM==FOUR_PORTS
+						case DIO_enumPortA:
+						/*Set Logic of PortA-Pinx as HIGH*/
+						SET_BIT(PORTA,Copy_enumPinNum);
+    1076:	2b b3       	in	r18, 0x1b	; 27
+    1078:	81 e0       	ldi	r24, 0x01	; 1
+    107a:	90 e0       	ldi	r25, 0x00	; 0
+    107c:	02 c0       	rjmp	.+4      	; 0x1082 <DIO_enumSetPin+0x38>
+    107e:	88 0f       	add	r24, r24
+    1080:	99 1f       	adc	r25, r25
+    1082:	6a 95       	dec	r22
+    1084:	e2 f7       	brpl	.-8      	; 0x107e <DIO_enumSetPin+0x34>
+    1086:	82 2b       	or	r24, r18
+    1088:	8b bb       	out	0x1b, r24	; 27
+		}
+		/*All Parameters are Valid, Continue with Configuration*/
+		else
+		{
+			/*Update Error Status to be OK*/
+			RET_enumErrorStatus=DIO_enumOk;
+    108a:	81 e0       	ldi	r24, 0x01	; 1
+					/*If Number of Ports are 4*/
+					#if PORT_NUM==FOUR_PORTS
+						case DIO_enumPortA:
+						/*Set Logic of PortA-Pinx as HIGH*/
+						SET_BIT(PORTA,Copy_enumPinNum);
+						break;
+    108c:	08 95       	ret
+						case DIO_enumPortB:
+						/*Set Logic of PortB-Pinx as HIGH*/
+						SET_BIT(PORTB,Copy_enumPinNum);
+    108e:	28 b3       	in	r18, 0x18	; 24
+    1090:	81 e0       	ldi	r24, 0x01	; 1
+    1092:	90 e0       	ldi	r25, 0x00	; 0
+    1094:	02 c0       	rjmp	.+4      	; 0x109a <DIO_enumSetPin+0x50>
+    1096:	88 0f       	add	r24, r24
+    1098:	99 1f       	adc	r25, r25
+    109a:	6a 95       	dec	r22
+    109c:	e2 f7       	brpl	.-8      	; 0x1096 <DIO_enumSetPin+0x4c>
+    109e:	82 2b       	or	r24, r18
+    10a0:	88 bb       	out	0x18, r24	; 24
+		}
+		/*All Parameters are Valid, Continue with Configuration*/
+		else
+		{
+			/*Update Error Status to be OK*/
+			RET_enumErrorStatus=DIO_enumOk;
+    10a2:	81 e0       	ldi	r24, 0x01	; 1
+						SET_BIT(PORTA,Copy_enumPinNum);
+						break;
+						case DIO_enumPortB:
+						/*Set Logic of PortB-Pinx as HIGH*/
+						SET_BIT(PORTB,Copy_enumPinNum);
+						break;
+    10a4:	08 95       	ret
+						case DIO_enumPortC:
+						/*Set Logic of PortC-Pinx as HIGH*/
+						SET_BIT(PORTC,Copy_enumPinNum);
+    10a6:	25 b3       	in	r18, 0x15	; 21
+    10a8:	81 e0       	ldi	r24, 0x01	; 1
+    10aa:	90 e0       	ldi	r25, 0x00	; 0
+    10ac:	02 c0       	rjmp	.+4      	; 0x10b2 <DIO_enumSetPin+0x68>
+    10ae:	88 0f       	add	r24, r24
+    10b0:	99 1f       	adc	r25, r25
+    10b2:	6a 95       	dec	r22
+    10b4:	e2 f7       	brpl	.-8      	; 0x10ae <DIO_enumSetPin+0x64>
+    10b6:	82 2b       	or	r24, r18
+    10b8:	85 bb       	out	0x15, r24	; 21
+		}
+		/*All Parameters are Valid, Continue with Configuration*/
+		else
+		{
+			/*Update Error Status to be OK*/
+			RET_enumErrorStatus=DIO_enumOk;
+    10ba:	81 e0       	ldi	r24, 0x01	; 1
+						SET_BIT(PORTB,Copy_enumPinNum);
+						break;
+						case DIO_enumPortC:
+						/*Set Logic of PortC-Pinx as HIGH*/
+						SET_BIT(PORTC,Copy_enumPinNum);
+						break;
+    10bc:	08 95       	ret
+						case DIO_enumPortD:
+						/*Set Logic of PortD-Pinx as HIGH*/
+						SET_BIT(PORTD,Copy_enumPinNum);
+    10be:	22 b3       	in	r18, 0x12	; 18
+    10c0:	81 e0       	ldi	r24, 0x01	; 1
+    10c2:	90 e0       	ldi	r25, 0x00	; 0
+    10c4:	02 c0       	rjmp	.+4      	; 0x10ca <DIO_enumSetPin+0x80>
+    10c6:	88 0f       	add	r24, r24
+    10c8:	99 1f       	adc	r25, r25
+    10ca:	6a 95       	dec	r22
+    10cc:	e2 f7       	brpl	.-8      	; 0x10c6 <DIO_enumSetPin+0x7c>
+    10ce:	82 2b       	or	r24, r18
+    10d0:	82 bb       	out	0x12, r24	; 18
+		}
+		/*All Parameters are Valid, Continue with Configuration*/
+		else
+		{
+			/*Update Error Status to be OK*/
+			RET_enumErrorStatus=DIO_enumOk;
+    10d2:	81 e0       	ldi	r24, 0x01	; 1
+						SET_BIT(PORTC,Copy_enumPinNum);
+						break;
+						case DIO_enumPortD:
+						/*Set Logic of PortD-Pinx as HIGH*/
+						SET_BIT(PORTD,Copy_enumPinNum);
+						break;
+    10d4:	08 95       	ret
+				break;
+				
+				/*In case of Logic LOW*/
+				case DIO_enumLogicLow:
+				/*Switch on Port Number*/
+				switch(Copy_enumPortNum)
+    10d6:	81 30       	cpi	r24, 0x01	; 1
+    10d8:	99 f0       	breq	.+38     	; 0x1100 <DIO_enumSetPin+0xb6>
+    10da:	28 f0       	brcs	.+10     	; 0x10e6 <DIO_enumSetPin+0x9c>
+    10dc:	82 30       	cpi	r24, 0x02	; 2
+    10de:	e9 f0       	breq	.+58     	; 0x111a <DIO_enumSetPin+0xd0>
+    10e0:	83 30       	cpi	r24, 0x03	; 3
+    10e2:	41 f1       	breq	.+80     	; 0x1134 <DIO_enumSetPin+0xea>
+    10e4:	3e c0       	rjmp	.+124    	; 0x1162 <DIO_enumSetPin+0x118>
+				{
+					/*If Number of Ports are 4*/
+					#if PORT_NUM==FOUR_PORTS
+						case DIO_enumPortA:
+						/*Set Logic of PortA-Pinx as LOW*/
+						CLR_BIT(PORTA,Copy_enumPinNum);
+    10e6:	2b b3       	in	r18, 0x1b	; 27
+    10e8:	81 e0       	ldi	r24, 0x01	; 1
+    10ea:	90 e0       	ldi	r25, 0x00	; 0
+    10ec:	02 c0       	rjmp	.+4      	; 0x10f2 <DIO_enumSetPin+0xa8>
+    10ee:	88 0f       	add	r24, r24
+    10f0:	99 1f       	adc	r25, r25
+    10f2:	6a 95       	dec	r22
+    10f4:	e2 f7       	brpl	.-8      	; 0x10ee <DIO_enumSetPin+0xa4>
+    10f6:	80 95       	com	r24
+    10f8:	82 23       	and	r24, r18
+    10fa:	8b bb       	out	0x1b, r24	; 27
+		}
+		/*All Parameters are Valid, Continue with Configuration*/
+		else
+		{
+			/*Update Error Status to be OK*/
+			RET_enumErrorStatus=DIO_enumOk;
+    10fc:	81 e0       	ldi	r24, 0x01	; 1
+					/*If Number of Ports are 4*/
+					#if PORT_NUM==FOUR_PORTS
+						case DIO_enumPortA:
+						/*Set Logic of PortA-Pinx as LOW*/
+						CLR_BIT(PORTA,Copy_enumPinNum);
+						break;
+    10fe:	08 95       	ret
+						case DIO_enumPortB:
+						/*Set Logic of PortB-Pinx as LOW*/
+						CLR_BIT(PORTB,Copy_enumPinNum);
+    1100:	28 b3       	in	r18, 0x18	; 24
+    1102:	81 e0       	ldi	r24, 0x01	; 1
+    1104:	90 e0       	ldi	r25, 0x00	; 0
+    1106:	02 c0       	rjmp	.+4      	; 0x110c <DIO_enumSetPin+0xc2>
+    1108:	88 0f       	add	r24, r24
+    110a:	99 1f       	adc	r25, r25
+    110c:	6a 95       	dec	r22
+    110e:	e2 f7       	brpl	.-8      	; 0x1108 <DIO_enumSetPin+0xbe>
+    1110:	80 95       	com	r24
+    1112:	82 23       	and	r24, r18
+    1114:	88 bb       	out	0x18, r24	; 24
+		}
+		/*All Parameters are Valid, Continue with Configuration*/
+		else
+		{
+			/*Update Error Status to be OK*/
+			RET_enumErrorStatus=DIO_enumOk;
+    1116:	81 e0       	ldi	r24, 0x01	; 1
+						CLR_BIT(PORTA,Copy_enumPinNum);
+						break;
+						case DIO_enumPortB:
+						/*Set Logic of PortB-Pinx as LOW*/
+						CLR_BIT(PORTB,Copy_enumPinNum);
+						break;
+    1118:	08 95       	ret
+						case DIO_enumPortC:
+						/*Set Logic of PortC-Pinx as LOW*/
+						CLR_BIT(PORTC,Copy_enumPinNum);
+    111a:	25 b3       	in	r18, 0x15	; 21
+    111c:	81 e0       	ldi	r24, 0x01	; 1
+    111e:	90 e0       	ldi	r25, 0x00	; 0
+    1120:	02 c0       	rjmp	.+4      	; 0x1126 <DIO_enumSetPin+0xdc>
+    1122:	88 0f       	add	r24, r24
+    1124:	99 1f       	adc	r25, r25
+    1126:	6a 95       	dec	r22
+    1128:	e2 f7       	brpl	.-8      	; 0x1122 <DIO_enumSetPin+0xd8>
+    112a:	80 95       	com	r24
+    112c:	82 23       	and	r24, r18
+    112e:	85 bb       	out	0x15, r24	; 21
+		}
+		/*All Parameters are Valid, Continue with Configuration*/
+		else
+		{
+			/*Update Error Status to be OK*/
+			RET_enumErrorStatus=DIO_enumOk;
+    1130:	81 e0       	ldi	r24, 0x01	; 1
+						CLR_BIT(PORTB,Copy_enumPinNum);
+						break;
+						case DIO_enumPortC:
+						/*Set Logic of PortC-Pinx as LOW*/
+						CLR_BIT(PORTC,Copy_enumPinNum);
+						break;
+    1132:	08 95       	ret
+						case DIO_enumPortD:
+						/*Set Logic of PortD-Pinx as LOW*/
+						CLR_BIT(PORTD,Copy_enumPinNum);
+    1134:	22 b3       	in	r18, 0x12	; 18
+    1136:	81 e0       	ldi	r24, 0x01	; 1
+    1138:	90 e0       	ldi	r25, 0x00	; 0
+    113a:	02 c0       	rjmp	.+4      	; 0x1140 <DIO_enumSetPin+0xf6>
+    113c:	88 0f       	add	r24, r24
+    113e:	99 1f       	adc	r25, r25
+    1140:	6a 95       	dec	r22
+    1142:	e2 f7       	brpl	.-8      	; 0x113c <DIO_enumSetPin+0xf2>
+    1144:	80 95       	com	r24
+    1146:	82 23       	and	r24, r18
+    1148:	82 bb       	out	0x12, r24	; 18
+		}
+		/*All Parameters are Valid, Continue with Configuration*/
+		else
+		{
+			/*Update Error Status to be OK*/
+			RET_enumErrorStatus=DIO_enumOk;
+    114a:	81 e0       	ldi	r24, 0x01	; 1
+						CLR_BIT(PORTC,Copy_enumPinNum);
+						break;
+						case DIO_enumPortD:
+						/*Set Logic of PortD-Pinx as LOW*/
+						CLR_BIT(PORTD,Copy_enumPinNum);
+						break;
+    114c:	08 95       	ret
+		DIO_enumErrorStatus_t RET_enumErrorStatus;
+		
+		/*Check if Port Number Parameter is Valid*/
+		if(Copy_enumPortNum>PORT_NUM)
+		{
+			RET_enumErrorStatus= DIO_enumWrongPort;
+    114e:	83 e0       	ldi	r24, 0x03	; 3
+    1150:	08 95       	ret
+		}
+		/*Check if Pin Number Parameter is Valid*/
+		else if(Copy_enumPinNum>DIO_enumPin7)
+		{
+			RET_enumErrorStatus= DIO_enumWrongPin;
+    1152:	84 e0       	ldi	r24, 0x04	; 4
+    1154:	08 95       	ret
+		}
+		/*Check if Logic State Parameter is Valid*/
+		else if(Copy_enumLogicState>DIO_enumLogicHigh)
+		{
+			RET_enumErrorStatus=DIO_enumWrongLogicState;
+    1156:	86 e0       	ldi	r24, 0x06	; 6
+    1158:	08 95       	ret
+		}
+		/*All Parameters are Valid, Continue with Configuration*/
+		else
+		{
+			/*Update Error Status to be OK*/
+			RET_enumErrorStatus=DIO_enumOk;
+    115a:	81 e0       	ldi	r24, 0x01	; 1
+    115c:	08 95       	ret
+    115e:	81 e0       	ldi	r24, 0x01	; 1
+    1160:	08 95       	ret
+    1162:	81 e0       	ldi	r24, 0x01	; 1
+				break;
+			}
+		}
+			return RET_enumErrorStatus;
+
+	}
+    1164:	08 95       	ret
+
+00001166 <DIO_enumReadState>:
+DIO_enumErrorStatus_t DIO_enumReadState(DIO_enumPorts_t Copy_enumPortNum, DIO_enumPins_t Copy_enumPinNum, DIO_enumLogicState_t* Add_PenumPinValue)
+{
+	/*Create an Error Status Variable*/
+	DIO_enumErrorStatus_t RET_enumErrorStatus;
+	/*Check if Port Number Parameter is Valid*/
+	if(Copy_enumPortNum>PORT_NUM)
+    1166:	84 30       	cpi	r24, 0x04	; 4
+    1168:	e8 f5       	brcc	.+122    	; 0x11e4 <DIO_enumReadState+0x7e>
+	{
+		RET_enumErrorStatus=DIO_enumWrongPort;
+	}
+	/*Check if Pin Number Parameter is Valid*/
+	else if(Copy_enumPinNum>DIO_enumPin7)
+    116a:	68 30       	cpi	r22, 0x08	; 8
+    116c:	e8 f5       	brcc	.+122    	; 0x11e8 <DIO_enumReadState+0x82>
+	{
+		RET_enumErrorStatus=DIO_enumWrongPin;
+	}
+	/*Check if Address is equal to NULL*/
+	else if(Add_PenumPinValue==NULL)
+    116e:	41 15       	cp	r20, r1
+    1170:	51 05       	cpc	r21, r1
+    1172:	e1 f1       	breq	.+120    	; 0x11ec <DIO_enumReadState+0x86>
+	else
+	{
+		/*Update Error Status to OK*/
+		RET_enumErrorStatus=DIO_enumOk;
+		/*Switch on Port Number*/
+		switch(Copy_enumPortNum)
+    1174:	81 30       	cpi	r24, 0x01	; 1
+    1176:	91 f0       	breq	.+36     	; 0x119c <DIO_enumReadState+0x36>
+    1178:	28 f0       	brcs	.+10     	; 0x1184 <DIO_enumReadState+0x1e>
+    117a:	82 30       	cpi	r24, 0x02	; 2
+    117c:	d9 f0       	breq	.+54     	; 0x11b4 <DIO_enumReadState+0x4e>
+    117e:	83 30       	cpi	r24, 0x03	; 3
+    1180:	29 f1       	breq	.+74     	; 0x11cc <DIO_enumReadState+0x66>
+    1182:	36 c0       	rjmp	.+108    	; 0x11f0 <DIO_enumReadState+0x8a>
+		{
+			/*If Number of Ports is 4*/
+			#if PORT_NUM==FOUR_PORTS
+				case DIO_enumPortA:
+				/*Get PortA-Pinx Value*/
+				*Add_PenumPinValue=GET_BIT(PINA,Copy_enumPinNum);
+    1184:	89 b3       	in	r24, 0x19	; 25
+    1186:	90 e0       	ldi	r25, 0x00	; 0
+    1188:	02 c0       	rjmp	.+4      	; 0x118e <DIO_enumReadState+0x28>
+    118a:	95 95       	asr	r25
+    118c:	87 95       	ror	r24
+    118e:	6a 95       	dec	r22
+    1190:	e2 f7       	brpl	.-8      	; 0x118a <DIO_enumReadState+0x24>
+    1192:	81 70       	andi	r24, 0x01	; 1
+    1194:	fa 01       	movw	r30, r20
+    1196:	80 83       	st	Z, r24
+	}
+	/*All parameters are valid, continue with the configurations*/
+	else
+	{
+		/*Update Error Status to OK*/
+		RET_enumErrorStatus=DIO_enumOk;
+    1198:	81 e0       	ldi	r24, 0x01	; 1
+			/*If Number of Ports is 4*/
+			#if PORT_NUM==FOUR_PORTS
+				case DIO_enumPortA:
+				/*Get PortA-Pinx Value*/
+				*Add_PenumPinValue=GET_BIT(PINA,Copy_enumPinNum);
+				break;
+    119a:	08 95       	ret
+				case DIO_enumPortB:
+				/*Get PortB-Pinx Value*/
+				*Add_PenumPinValue=GET_BIT(PINB,Copy_enumPinNum);
+    119c:	86 b3       	in	r24, 0x16	; 22
+    119e:	90 e0       	ldi	r25, 0x00	; 0
+    11a0:	02 c0       	rjmp	.+4      	; 0x11a6 <DIO_enumReadState+0x40>
+    11a2:	95 95       	asr	r25
+    11a4:	87 95       	ror	r24
+    11a6:	6a 95       	dec	r22
+    11a8:	e2 f7       	brpl	.-8      	; 0x11a2 <DIO_enumReadState+0x3c>
+    11aa:	81 70       	andi	r24, 0x01	; 1
+    11ac:	fa 01       	movw	r30, r20
+    11ae:	80 83       	st	Z, r24
+	}
+	/*All parameters are valid, continue with the configurations*/
+	else
+	{
+		/*Update Error Status to OK*/
+		RET_enumErrorStatus=DIO_enumOk;
+    11b0:	81 e0       	ldi	r24, 0x01	; 1
+				*Add_PenumPinValue=GET_BIT(PINA,Copy_enumPinNum);
+				break;
+				case DIO_enumPortB:
+				/*Get PortB-Pinx Value*/
+				*Add_PenumPinValue=GET_BIT(PINB,Copy_enumPinNum);
+				break;
+    11b2:	08 95       	ret
+				case DIO_enumPortC:
+				/*Get PortC-Pinx Value*/
+				*Add_PenumPinValue=GET_BIT(PINC,Copy_enumPinNum);
+    11b4:	83 b3       	in	r24, 0x13	; 19
+    11b6:	90 e0       	ldi	r25, 0x00	; 0
+    11b8:	02 c0       	rjmp	.+4      	; 0x11be <DIO_enumReadState+0x58>
+    11ba:	95 95       	asr	r25
+    11bc:	87 95       	ror	r24
+    11be:	6a 95       	dec	r22
+    11c0:	e2 f7       	brpl	.-8      	; 0x11ba <DIO_enumReadState+0x54>
+    11c2:	81 70       	andi	r24, 0x01	; 1
+    11c4:	fa 01       	movw	r30, r20
+    11c6:	80 83       	st	Z, r24
+	}
+	/*All parameters are valid, continue with the configurations*/
+	else
+	{
+		/*Update Error Status to OK*/
+		RET_enumErrorStatus=DIO_enumOk;
+    11c8:	81 e0       	ldi	r24, 0x01	; 1
+				*Add_PenumPinValue=GET_BIT(PINB,Copy_enumPinNum);
+				break;
+				case DIO_enumPortC:
+				/*Get PortC-Pinx Value*/
+				*Add_PenumPinValue=GET_BIT(PINC,Copy_enumPinNum);
+				break;
+    11ca:	08 95       	ret
+				case DIO_enumPortD:
+				/*Get PortD-Pinx Value*/
+				*Add_PenumPinValue=GET_BIT(PIND,Copy_enumPinNum);
+    11cc:	80 b3       	in	r24, 0x10	; 16
+    11ce:	90 e0       	ldi	r25, 0x00	; 0
+    11d0:	02 c0       	rjmp	.+4      	; 0x11d6 <DIO_enumReadState+0x70>
+    11d2:	95 95       	asr	r25
+    11d4:	87 95       	ror	r24
+    11d6:	6a 95       	dec	r22
+    11d8:	e2 f7       	brpl	.-8      	; 0x11d2 <DIO_enumReadState+0x6c>
+    11da:	81 70       	andi	r24, 0x01	; 1
+    11dc:	fa 01       	movw	r30, r20
+    11de:	80 83       	st	Z, r24
+	}
+	/*All parameters are valid, continue with the configurations*/
+	else
+	{
+		/*Update Error Status to OK*/
+		RET_enumErrorStatus=DIO_enumOk;
+    11e0:	81 e0       	ldi	r24, 0x01	; 1
+				*Add_PenumPinValue=GET_BIT(PINC,Copy_enumPinNum);
+				break;
+				case DIO_enumPortD:
+				/*Get PortD-Pinx Value*/
+				*Add_PenumPinValue=GET_BIT(PIND,Copy_enumPinNum);
+				break;
+    11e2:	08 95       	ret
+	/*Create an Error Status Variable*/
+	DIO_enumErrorStatus_t RET_enumErrorStatus;
+	/*Check if Port Number Parameter is Valid*/
+	if(Copy_enumPortNum>PORT_NUM)
+	{
+		RET_enumErrorStatus=DIO_enumWrongPort;
+    11e4:	83 e0       	ldi	r24, 0x03	; 3
+    11e6:	08 95       	ret
+	}
+	/*Check if Pin Number Parameter is Valid*/
+	else if(Copy_enumPinNum>DIO_enumPin7)
+	{
+		RET_enumErrorStatus=DIO_enumWrongPin;
+    11e8:	84 e0       	ldi	r24, 0x04	; 4
+    11ea:	08 95       	ret
+	}
+	/*Check if Address is equal to NULL*/
+	else if(Add_PenumPinValue==NULL)
+	{
+		RET_enumErrorStatus=DIO_enumNullPointer;
+    11ec:	82 e0       	ldi	r24, 0x02	; 2
+    11ee:	08 95       	ret
+	}
+	/*All parameters are valid, continue with the configurations*/
+	else
+	{
+		/*Update Error Status to OK*/
+		RET_enumErrorStatus=DIO_enumOk;
+    11f0:	81 e0       	ldi	r24, 0x01	; 1
+				break;
+			#endif
+		}
+	}
+	return RET_enumErrorStatus;
+}
+    11f2:	08 95       	ret
+
+000011f4 <DIO_enumSetConfig>:
+ *@brief : Function that takes a struct of Pin configurations and sets them.
+ *@param : Struct that contains Port Number, Pin Number, and Configuration Type (Input PullUp, Input PullDown, OutputHigh, OutputLow).
+ *@return: Error State.                                                                      
+ */
+DIO_enumErrorStatus_t DIO_enumSetConfig(DIO_strDioCfg * Add_strDioCfg, u8 Loc_u8StructSize)
+{
+    11f4:	cf 93       	push	r28
+    11f6:	df 93       	push	r29
+    11f8:	ac 01       	movw	r20, r24
+	/*Create an Error Status Variable*/
+	DIO_enumErrorStatus_t RET_enumErrorStatus=DIO_enumNok;
+	/*Check if Address is Equal to NULL*/
+	if(Add_strDioCfg==NULL)
+    11fa:	89 2b       	or	r24, r25
+    11fc:	11 f0       	breq	.+4      	; 0x1202 <DIO_enumSetConfig+0xe>
+ *@return: Error State.                                                                      
+ */
+DIO_enumErrorStatus_t DIO_enumSetConfig(DIO_strDioCfg * Add_strDioCfg, u8 Loc_u8StructSize)
+{
+	/*Create an Error Status Variable*/
+	DIO_enumErrorStatus_t RET_enumErrorStatus=DIO_enumNok;
+    11fe:	80 e0       	ldi	r24, 0x00	; 0
+    1200:	01 c0       	rjmp	.+2      	; 0x1204 <DIO_enumSetConfig+0x10>
+	/*Check if Address is Equal to NULL*/
+	if(Add_strDioCfg==NULL)
+	{
+		RET_enumErrorStatus=DIO_enumNullPointer;
+    1202:	82 e0       	ldi	r24, 0x02	; 2
+		RET_enumErrorStatus=DIO_enumWrongLogicState;
+	}
+	/*Check if Pin Configuration is Valid*/
+	else if((Add_strDioCfg[iter].PinConfig)>DIO_enumInputExternalPD)
+	{
+		RET_enumErrorStatus=DIO_enumWrongConfig;
+    1204:	90 e0       	ldi	r25, 0x00	; 0
+    1206:	aa c1       	rjmp	.+852    	; 0x155c <DIO_enumSetConfig+0x368>
+	}
+	/*Loop over Size of Struct*/
+	for(u8 iter=0;iter<Loc_u8StructSize;iter++)
+	{
+	/*Check if Port Number is Valid*/
+	if((Add_strDioCfg[iter].Port)>PORT_NUM)
+    1208:	e9 2f       	mov	r30, r25
+    120a:	f0 e0       	ldi	r31, 0x00	; 0
+    120c:	ee 0f       	add	r30, r30
+    120e:	ff 1f       	adc	r31, r31
+    1210:	ee 0f       	add	r30, r30
+    1212:	ff 1f       	adc	r31, r31
+    1214:	e4 0f       	add	r30, r20
+    1216:	f5 1f       	adc	r31, r21
+    1218:	20 81       	ld	r18, Z
+    121a:	24 30       	cpi	r18, 0x04	; 4
+    121c:	08 f0       	brcs	.+2      	; 0x1220 <DIO_enumSetConfig+0x2c>
+    121e:	96 c1       	rjmp	.+812    	; 0x154c <DIO_enumSetConfig+0x358>
+	{
+		RET_enumErrorStatus=DIO_enumWrongPort;
+	}
+	/*Check if Pin Number is Valid*/
+	else if((Add_strDioCfg[iter].Pin)>DIO_enumPin7)
+    1220:	31 81       	ldd	r19, Z+1	; 0x01
+    1222:	38 30       	cpi	r19, 0x08	; 8
+    1224:	08 f0       	brcs	.+2      	; 0x1228 <DIO_enumSetConfig+0x34>
+    1226:	94 c1       	rjmp	.+808    	; 0x1550 <DIO_enumSetConfig+0x35c>
+	{
+		RET_enumErrorStatus=DIO_enumWrongPin;
+	}
+	/*Check if Logic State is Valid*/
+	else if((Add_strDioCfg[iter].LogicState)>DIO_enumLogicHigh)
+    1228:	73 81       	ldd	r23, Z+3	; 0x03
+    122a:	72 30       	cpi	r23, 0x02	; 2
+    122c:	08 f0       	brcs	.+2      	; 0x1230 <DIO_enumSetConfig+0x3c>
+    122e:	92 c1       	rjmp	.+804    	; 0x1554 <DIO_enumSetConfig+0x360>
+	{
+		RET_enumErrorStatus=DIO_enumWrongLogicState;
+	}
+	/*Check if Pin Configuration is Valid*/
+	else if((Add_strDioCfg[iter].PinConfig)>DIO_enumInputExternalPD)
+    1230:	72 81       	ldd	r23, Z+2	; 0x02
+    1232:	73 30       	cpi	r23, 0x03	; 3
+    1234:	08 f0       	brcs	.+2      	; 0x1238 <DIO_enumSetConfig+0x44>
+    1236:	90 c1       	rjmp	.+800    	; 0x1558 <DIO_enumSetConfig+0x364>
+	}
+	/*All Parameters are Valid, Continue with the Configuration*/
+	else
+	{
+		/*Switch on Port Number*/
+		switch(Add_strDioCfg[iter].Port)
+    1238:	21 30       	cpi	r18, 0x01	; 1
+    123a:	09 f4       	brne	.+2      	; 0x123e <DIO_enumSetConfig+0x4a>
+    123c:	68 c0       	rjmp	.+208    	; 0x130e <DIO_enumSetConfig+0x11a>
+    123e:	38 f0       	brcs	.+14     	; 0x124e <DIO_enumSetConfig+0x5a>
+    1240:	22 30       	cpi	r18, 0x02	; 2
+    1242:	09 f4       	brne	.+2      	; 0x1246 <DIO_enumSetConfig+0x52>
+    1244:	c4 c0       	rjmp	.+392    	; 0x13ce <DIO_enumSetConfig+0x1da>
+    1246:	23 30       	cpi	r18, 0x03	; 3
+    1248:	09 f4       	brne	.+2      	; 0x124c <DIO_enumSetConfig+0x58>
+    124a:	21 c1       	rjmp	.+578    	; 0x148e <DIO_enumSetConfig+0x29a>
+    124c:	86 c1       	rjmp	.+780    	; 0x155a <DIO_enumSetConfig+0x366>
+			/*If Number of Ports if 4*/
+			#if PORT_NUM==FOUR_PORTS
+			/*PORTA*/
+			case DIO_enumPortA:
+				/*Switch on Pin Configuration*/
+				switch(Add_strDioCfg[iter].PinConfig)
+    124e:	71 30       	cpi	r23, 0x01	; 1
+    1250:	21 f0       	breq	.+8      	; 0x125a <DIO_enumSetConfig+0x66>
+    1252:	90 f1       	brcs	.+100    	; 0x12b8 <DIO_enumSetConfig+0xc4>
+    1254:	72 30       	cpi	r23, 0x02	; 2
+    1256:	c1 f0       	breq	.+48     	; 0x1288 <DIO_enumSetConfig+0x94>
+    1258:	80 c1       	rjmp	.+768    	; 0x155a <DIO_enumSetConfig+0x366>
+				{
+					case DIO_enumInputInternalPU:
+						/*Set as Input- Internal Pull Up*/
+						CLR_BIT(DDRA,Add_strDioCfg[iter].Pin);
+    125a:	2a b3       	in	r18, 0x1a	; 26
+    125c:	a1 e0       	ldi	r26, 0x01	; 1
+    125e:	b0 e0       	ldi	r27, 0x00	; 0
+    1260:	ed 01       	movw	r28, r26
+    1262:	02 c0       	rjmp	.+4      	; 0x1268 <DIO_enumSetConfig+0x74>
+    1264:	cc 0f       	add	r28, r28
+    1266:	dd 1f       	adc	r29, r29
+    1268:	3a 95       	dec	r19
+    126a:	e2 f7       	brpl	.-8      	; 0x1264 <DIO_enumSetConfig+0x70>
+    126c:	3c 2f       	mov	r19, r28
+    126e:	30 95       	com	r19
+    1270:	23 23       	and	r18, r19
+    1272:	2a bb       	out	0x1a, r18	; 26
+						SET_BIT(PORTA,Add_strDioCfg[iter].Pin);
+    1274:	2b b3       	in	r18, 0x1b	; 27
+    1276:	01 80       	ldd	r0, Z+1	; 0x01
+    1278:	02 c0       	rjmp	.+4      	; 0x127e <DIO_enumSetConfig+0x8a>
+    127a:	aa 0f       	add	r26, r26
+    127c:	bb 1f       	adc	r27, r27
+    127e:	0a 94       	dec	r0
+    1280:	e2 f7       	brpl	.-8      	; 0x127a <DIO_enumSetConfig+0x86>
+    1282:	a2 2b       	or	r26, r18
+    1284:	ab bb       	out	0x1b, r26	; 27
+					break;
+    1286:	69 c1       	rjmp	.+722    	; 0x155a <DIO_enumSetConfig+0x366>
+					
+					case DIO_enumInputExternalPD:
+						/*Set as Input- External Pull Down*/
+						CLR_BIT(DDRA,Add_strDioCfg[iter].Pin);
+    1288:	2a b3       	in	r18, 0x1a	; 26
+    128a:	a1 e0       	ldi	r26, 0x01	; 1
+    128c:	b0 e0       	ldi	r27, 0x00	; 0
+    128e:	ed 01       	movw	r28, r26
+    1290:	02 c0       	rjmp	.+4      	; 0x1296 <DIO_enumSetConfig+0xa2>
+    1292:	cc 0f       	add	r28, r28
+    1294:	dd 1f       	adc	r29, r29
+    1296:	3a 95       	dec	r19
+    1298:	e2 f7       	brpl	.-8      	; 0x1292 <DIO_enumSetConfig+0x9e>
+    129a:	3c 2f       	mov	r19, r28
+    129c:	30 95       	com	r19
+    129e:	23 23       	and	r18, r19
+    12a0:	2a bb       	out	0x1a, r18	; 26
+						CLR_BIT(PORTA,Add_strDioCfg[iter].Pin);
+    12a2:	2b b3       	in	r18, 0x1b	; 27
+    12a4:	01 80       	ldd	r0, Z+1	; 0x01
+    12a6:	02 c0       	rjmp	.+4      	; 0x12ac <DIO_enumSetConfig+0xb8>
+    12a8:	aa 0f       	add	r26, r26
+    12aa:	bb 1f       	adc	r27, r27
+    12ac:	0a 94       	dec	r0
+    12ae:	e2 f7       	brpl	.-8      	; 0x12a8 <DIO_enumSetConfig+0xb4>
+    12b0:	a0 95       	com	r26
+    12b2:	a2 23       	and	r26, r18
+    12b4:	ab bb       	out	0x1b, r26	; 27
+					break;
+    12b6:	51 c1       	rjmp	.+674    	; 0x155a <DIO_enumSetConfig+0x366>
+					
+				
+					case DIO_enumOutput:
+						/*Set as Output*/
+						SET_BIT(DDRA,Add_strDioCfg[iter].Pin);
+    12b8:	7a b3       	in	r23, 0x1a	; 26
+    12ba:	a1 e0       	ldi	r26, 0x01	; 1
+    12bc:	b0 e0       	ldi	r27, 0x00	; 0
+    12be:	ed 01       	movw	r28, r26
+    12c0:	02 c0       	rjmp	.+4      	; 0x12c6 <DIO_enumSetConfig+0xd2>
+    12c2:	cc 0f       	add	r28, r28
+    12c4:	dd 1f       	adc	r29, r29
+    12c6:	3a 95       	dec	r19
+    12c8:	e2 f7       	brpl	.-8      	; 0x12c2 <DIO_enumSetConfig+0xce>
+    12ca:	9e 01       	movw	r18, r28
+    12cc:	27 2b       	or	r18, r23
+    12ce:	2a bb       	out	0x1a, r18	; 26
+						/*Switch on Logic State*/
+						switch(Add_strDioCfg[iter].LogicState)
+    12d0:	23 81       	ldd	r18, Z+3	; 0x03
+    12d2:	22 23       	and	r18, r18
+    12d4:	79 f0       	breq	.+30     	; 0x12f4 <DIO_enumSetConfig+0x100>
+    12d6:	21 30       	cpi	r18, 0x01	; 1
+    12d8:	09 f0       	breq	.+2      	; 0x12dc <DIO_enumSetConfig+0xe8>
+    12da:	3f c1       	rjmp	.+638    	; 0x155a <DIO_enumSetConfig+0x366>
+						{
+							case DIO_enumLogicHigh:
+							/*Set Logic as HIGH*/
+							SET_BIT(PORTA,Add_strDioCfg[iter].Pin);
+    12dc:	7b b3       	in	r23, 0x1b	; 27
+    12de:	21 e0       	ldi	r18, 0x01	; 1
+    12e0:	30 e0       	ldi	r19, 0x00	; 0
+    12e2:	01 80       	ldd	r0, Z+1	; 0x01
+    12e4:	02 c0       	rjmp	.+4      	; 0x12ea <DIO_enumSetConfig+0xf6>
+    12e6:	22 0f       	add	r18, r18
+    12e8:	33 1f       	adc	r19, r19
+    12ea:	0a 94       	dec	r0
+    12ec:	e2 f7       	brpl	.-8      	; 0x12e6 <DIO_enumSetConfig+0xf2>
+    12ee:	27 2b       	or	r18, r23
+    12f0:	2b bb       	out	0x1b, r18	; 27
+							break;
+    12f2:	33 c1       	rjmp	.+614    	; 0x155a <DIO_enumSetConfig+0x366>
+							case DIO_enumLogicLow:
+							/*Set Logic as LOW*/
+							CLR_BIT(PORTA,Add_strDioCfg[iter].Pin);
+    12f4:	7b b3       	in	r23, 0x1b	; 27
+    12f6:	21 e0       	ldi	r18, 0x01	; 1
+    12f8:	30 e0       	ldi	r19, 0x00	; 0
+    12fa:	01 80       	ldd	r0, Z+1	; 0x01
+    12fc:	02 c0       	rjmp	.+4      	; 0x1302 <DIO_enumSetConfig+0x10e>
+    12fe:	22 0f       	add	r18, r18
+    1300:	33 1f       	adc	r19, r19
+    1302:	0a 94       	dec	r0
+    1304:	e2 f7       	brpl	.-8      	; 0x12fe <DIO_enumSetConfig+0x10a>
+    1306:	20 95       	com	r18
+    1308:	27 23       	and	r18, r23
+    130a:	2b bb       	out	0x1b, r18	; 27
+							break;
+    130c:	26 c1       	rjmp	.+588    	; 0x155a <DIO_enumSetConfig+0x366>
+				}
+			break;
+			
+			/*PORTB*/
+			case DIO_enumPortB:
+				switch(Add_strDioCfg[iter].PinConfig)
+    130e:	71 30       	cpi	r23, 0x01	; 1
+    1310:	21 f0       	breq	.+8      	; 0x131a <DIO_enumSetConfig+0x126>
+    1312:	90 f1       	brcs	.+100    	; 0x1378 <DIO_enumSetConfig+0x184>
+    1314:	72 30       	cpi	r23, 0x02	; 2
+    1316:	c1 f0       	breq	.+48     	; 0x1348 <DIO_enumSetConfig+0x154>
+    1318:	20 c1       	rjmp	.+576    	; 0x155a <DIO_enumSetConfig+0x366>
+				{
+					case DIO_enumInputInternalPU:
+						/*Set as Input- Internal Pull Up*/
+						CLR_BIT(DDRB,Add_strDioCfg[iter].Pin);
+    131a:	27 b3       	in	r18, 0x17	; 23
+    131c:	a1 e0       	ldi	r26, 0x01	; 1
+    131e:	b0 e0       	ldi	r27, 0x00	; 0
+    1320:	ed 01       	movw	r28, r26
+    1322:	02 c0       	rjmp	.+4      	; 0x1328 <DIO_enumSetConfig+0x134>
+    1324:	cc 0f       	add	r28, r28
+    1326:	dd 1f       	adc	r29, r29
+    1328:	3a 95       	dec	r19
+    132a:	e2 f7       	brpl	.-8      	; 0x1324 <DIO_enumSetConfig+0x130>
+    132c:	3c 2f       	mov	r19, r28
+    132e:	30 95       	com	r19
+    1330:	23 23       	and	r18, r19
+    1332:	27 bb       	out	0x17, r18	; 23
+						SET_BIT(PORTB,Add_strDioCfg[iter].Pin);
+    1334:	28 b3       	in	r18, 0x18	; 24
+    1336:	01 80       	ldd	r0, Z+1	; 0x01
+    1338:	02 c0       	rjmp	.+4      	; 0x133e <DIO_enumSetConfig+0x14a>
+    133a:	aa 0f       	add	r26, r26
+    133c:	bb 1f       	adc	r27, r27
+    133e:	0a 94       	dec	r0
+    1340:	e2 f7       	brpl	.-8      	; 0x133a <DIO_enumSetConfig+0x146>
+    1342:	a2 2b       	or	r26, r18
+    1344:	a8 bb       	out	0x18, r26	; 24
+					break;
+    1346:	09 c1       	rjmp	.+530    	; 0x155a <DIO_enumSetConfig+0x366>
+				
+					case DIO_enumInputExternalPD:
+						/*Set as Input- External Pull Down*/
+						CLR_BIT(DDRB,Add_strDioCfg[iter].Pin);
+    1348:	27 b3       	in	r18, 0x17	; 23
+    134a:	a1 e0       	ldi	r26, 0x01	; 1
+    134c:	b0 e0       	ldi	r27, 0x00	; 0
+    134e:	ed 01       	movw	r28, r26
+    1350:	02 c0       	rjmp	.+4      	; 0x1356 <DIO_enumSetConfig+0x162>
+    1352:	cc 0f       	add	r28, r28
+    1354:	dd 1f       	adc	r29, r29
+    1356:	3a 95       	dec	r19
+    1358:	e2 f7       	brpl	.-8      	; 0x1352 <DIO_enumSetConfig+0x15e>
+    135a:	3c 2f       	mov	r19, r28
+    135c:	30 95       	com	r19
+    135e:	23 23       	and	r18, r19
+    1360:	27 bb       	out	0x17, r18	; 23
+						CLR_BIT(PORTB,Add_strDioCfg[iter].Pin);
+    1362:	28 b3       	in	r18, 0x18	; 24
+    1364:	01 80       	ldd	r0, Z+1	; 0x01
+    1366:	02 c0       	rjmp	.+4      	; 0x136c <DIO_enumSetConfig+0x178>
+    1368:	aa 0f       	add	r26, r26
+    136a:	bb 1f       	adc	r27, r27
+    136c:	0a 94       	dec	r0
+    136e:	e2 f7       	brpl	.-8      	; 0x1368 <DIO_enumSetConfig+0x174>
+    1370:	a0 95       	com	r26
+    1372:	a2 23       	and	r26, r18
+    1374:	a8 bb       	out	0x18, r26	; 24
+					break;
+    1376:	f1 c0       	rjmp	.+482    	; 0x155a <DIO_enumSetConfig+0x366>
+				
+					/*If Pin Configuration is Output*/
+					case DIO_enumOutput:
+						/*Set as Output*/
+						SET_BIT(DDRB,Add_strDioCfg[iter].Pin);
+    1378:	77 b3       	in	r23, 0x17	; 23
+    137a:	a1 e0       	ldi	r26, 0x01	; 1
+    137c:	b0 e0       	ldi	r27, 0x00	; 0
+    137e:	ed 01       	movw	r28, r26
+    1380:	02 c0       	rjmp	.+4      	; 0x1386 <DIO_enumSetConfig+0x192>
+    1382:	cc 0f       	add	r28, r28
+    1384:	dd 1f       	adc	r29, r29
+    1386:	3a 95       	dec	r19
+    1388:	e2 f7       	brpl	.-8      	; 0x1382 <DIO_enumSetConfig+0x18e>
+    138a:	9e 01       	movw	r18, r28
+    138c:	27 2b       	or	r18, r23
+    138e:	27 bb       	out	0x17, r18	; 23
+						/*Switch on Logic State*/
+						switch(Add_strDioCfg[iter].LogicState)
+    1390:	23 81       	ldd	r18, Z+3	; 0x03
+    1392:	22 23       	and	r18, r18
+    1394:	79 f0       	breq	.+30     	; 0x13b4 <DIO_enumSetConfig+0x1c0>
+    1396:	21 30       	cpi	r18, 0x01	; 1
+    1398:	09 f0       	breq	.+2      	; 0x139c <DIO_enumSetConfig+0x1a8>
+    139a:	df c0       	rjmp	.+446    	; 0x155a <DIO_enumSetConfig+0x366>
+						{
+							case DIO_enumLogicHigh:
+							/*Set Logic as HIGH*/
+							SET_BIT(PORTB,Add_strDioCfg[iter].Pin);
+    139c:	78 b3       	in	r23, 0x18	; 24
+    139e:	21 e0       	ldi	r18, 0x01	; 1
+    13a0:	30 e0       	ldi	r19, 0x00	; 0
+    13a2:	01 80       	ldd	r0, Z+1	; 0x01
+    13a4:	02 c0       	rjmp	.+4      	; 0x13aa <DIO_enumSetConfig+0x1b6>
+    13a6:	22 0f       	add	r18, r18
+    13a8:	33 1f       	adc	r19, r19
+    13aa:	0a 94       	dec	r0
+    13ac:	e2 f7       	brpl	.-8      	; 0x13a6 <DIO_enumSetConfig+0x1b2>
+    13ae:	27 2b       	or	r18, r23
+    13b0:	28 bb       	out	0x18, r18	; 24
+							break;
+    13b2:	d3 c0       	rjmp	.+422    	; 0x155a <DIO_enumSetConfig+0x366>
+							case DIO_enumLogicLow:
+							/*Set Logic as LOW*/
+							CLR_BIT(PORTB,Add_strDioCfg[iter].Pin);
+    13b4:	78 b3       	in	r23, 0x18	; 24
+    13b6:	21 e0       	ldi	r18, 0x01	; 1
+    13b8:	30 e0       	ldi	r19, 0x00	; 0
+    13ba:	01 80       	ldd	r0, Z+1	; 0x01
+    13bc:	02 c0       	rjmp	.+4      	; 0x13c2 <DIO_enumSetConfig+0x1ce>
+    13be:	22 0f       	add	r18, r18
+    13c0:	33 1f       	adc	r19, r19
+    13c2:	0a 94       	dec	r0
+    13c4:	e2 f7       	brpl	.-8      	; 0x13be <DIO_enumSetConfig+0x1ca>
+    13c6:	20 95       	com	r18
+    13c8:	27 23       	and	r18, r23
+    13ca:	28 bb       	out	0x18, r18	; 24
+							break;
+    13cc:	c6 c0       	rjmp	.+396    	; 0x155a <DIO_enumSetConfig+0x366>
+			break;
+			
+			/*PORTC*/
+			case DIO_enumPortC:
+				/*Switch on Pin Configuration*/
+				switch(Add_strDioCfg[iter].PinConfig)
+    13ce:	71 30       	cpi	r23, 0x01	; 1
+    13d0:	21 f0       	breq	.+8      	; 0x13da <DIO_enumSetConfig+0x1e6>
+    13d2:	90 f1       	brcs	.+100    	; 0x1438 <DIO_enumSetConfig+0x244>
+    13d4:	72 30       	cpi	r23, 0x02	; 2
+    13d6:	c1 f0       	breq	.+48     	; 0x1408 <DIO_enumSetConfig+0x214>
+    13d8:	c0 c0       	rjmp	.+384    	; 0x155a <DIO_enumSetConfig+0x366>
+				{
+					case DIO_enumInputInternalPU:
+						/*Set as Input- Internal Pull Up*/
+						CLR_BIT(DDRC,Add_strDioCfg[iter].Pin);
+    13da:	24 b3       	in	r18, 0x14	; 20
+    13dc:	a1 e0       	ldi	r26, 0x01	; 1
+    13de:	b0 e0       	ldi	r27, 0x00	; 0
+    13e0:	ed 01       	movw	r28, r26
+    13e2:	02 c0       	rjmp	.+4      	; 0x13e8 <DIO_enumSetConfig+0x1f4>
+    13e4:	cc 0f       	add	r28, r28
+    13e6:	dd 1f       	adc	r29, r29
+    13e8:	3a 95       	dec	r19
+    13ea:	e2 f7       	brpl	.-8      	; 0x13e4 <DIO_enumSetConfig+0x1f0>
+    13ec:	3c 2f       	mov	r19, r28
+    13ee:	30 95       	com	r19
+    13f0:	23 23       	and	r18, r19
+    13f2:	24 bb       	out	0x14, r18	; 20
+						SET_BIT(PORTC,Add_strDioCfg[iter].Pin);
+    13f4:	25 b3       	in	r18, 0x15	; 21
+    13f6:	01 80       	ldd	r0, Z+1	; 0x01
+    13f8:	02 c0       	rjmp	.+4      	; 0x13fe <DIO_enumSetConfig+0x20a>
+    13fa:	aa 0f       	add	r26, r26
+    13fc:	bb 1f       	adc	r27, r27
+    13fe:	0a 94       	dec	r0
+    1400:	e2 f7       	brpl	.-8      	; 0x13fa <DIO_enumSetConfig+0x206>
+    1402:	a2 2b       	or	r26, r18
+    1404:	a5 bb       	out	0x15, r26	; 21
+					break;
+    1406:	a9 c0       	rjmp	.+338    	; 0x155a <DIO_enumSetConfig+0x366>
+				
+					case DIO_enumInputExternalPD:
+						/*Set as Input- External Pull Down*/
+						CLR_BIT(DDRC,Add_strDioCfg[iter].Pin);
+    1408:	24 b3       	in	r18, 0x14	; 20
+    140a:	a1 e0       	ldi	r26, 0x01	; 1
+    140c:	b0 e0       	ldi	r27, 0x00	; 0
+    140e:	ed 01       	movw	r28, r26
+    1410:	02 c0       	rjmp	.+4      	; 0x1416 <DIO_enumSetConfig+0x222>
+    1412:	cc 0f       	add	r28, r28
+    1414:	dd 1f       	adc	r29, r29
+    1416:	3a 95       	dec	r19
+    1418:	e2 f7       	brpl	.-8      	; 0x1412 <DIO_enumSetConfig+0x21e>
+    141a:	3c 2f       	mov	r19, r28
+    141c:	30 95       	com	r19
+    141e:	23 23       	and	r18, r19
+    1420:	24 bb       	out	0x14, r18	; 20
+						CLR_BIT(PORTC,Add_strDioCfg[iter].Pin);
+    1422:	25 b3       	in	r18, 0x15	; 21
+    1424:	01 80       	ldd	r0, Z+1	; 0x01
+    1426:	02 c0       	rjmp	.+4      	; 0x142c <DIO_enumSetConfig+0x238>
+    1428:	aa 0f       	add	r26, r26
+    142a:	bb 1f       	adc	r27, r27
+    142c:	0a 94       	dec	r0
+    142e:	e2 f7       	brpl	.-8      	; 0x1428 <DIO_enumSetConfig+0x234>
+    1430:	a0 95       	com	r26
+    1432:	a2 23       	and	r26, r18
+    1434:	a5 bb       	out	0x15, r26	; 21
+					break;
+    1436:	91 c0       	rjmp	.+290    	; 0x155a <DIO_enumSetConfig+0x366>
+				
+					case DIO_enumOutput:
+						/*Set as Output*/
+						SET_BIT(DDRC,Add_strDioCfg[iter].Pin);
+    1438:	74 b3       	in	r23, 0x14	; 20
+    143a:	a1 e0       	ldi	r26, 0x01	; 1
+    143c:	b0 e0       	ldi	r27, 0x00	; 0
+    143e:	ed 01       	movw	r28, r26
+    1440:	02 c0       	rjmp	.+4      	; 0x1446 <DIO_enumSetConfig+0x252>
+    1442:	cc 0f       	add	r28, r28
+    1444:	dd 1f       	adc	r29, r29
+    1446:	3a 95       	dec	r19
+    1448:	e2 f7       	brpl	.-8      	; 0x1442 <DIO_enumSetConfig+0x24e>
+    144a:	9e 01       	movw	r18, r28
+    144c:	27 2b       	or	r18, r23
+    144e:	24 bb       	out	0x14, r18	; 20
+						/*Switch on Logic State*/
+						switch(Add_strDioCfg[iter].LogicState)
+    1450:	23 81       	ldd	r18, Z+3	; 0x03
+    1452:	22 23       	and	r18, r18
+    1454:	79 f0       	breq	.+30     	; 0x1474 <DIO_enumSetConfig+0x280>
+    1456:	21 30       	cpi	r18, 0x01	; 1
+    1458:	09 f0       	breq	.+2      	; 0x145c <DIO_enumSetConfig+0x268>
+    145a:	7f c0       	rjmp	.+254    	; 0x155a <DIO_enumSetConfig+0x366>
+						{
+							case DIO_enumLogicHigh:
+							/*Set Logic as HIGH*/
+							SET_BIT(PORTC,Add_strDioCfg[iter].Pin);
+    145c:	75 b3       	in	r23, 0x15	; 21
+    145e:	21 e0       	ldi	r18, 0x01	; 1
+    1460:	30 e0       	ldi	r19, 0x00	; 0
+    1462:	01 80       	ldd	r0, Z+1	; 0x01
+    1464:	02 c0       	rjmp	.+4      	; 0x146a <DIO_enumSetConfig+0x276>
+    1466:	22 0f       	add	r18, r18
+    1468:	33 1f       	adc	r19, r19
+    146a:	0a 94       	dec	r0
+    146c:	e2 f7       	brpl	.-8      	; 0x1466 <DIO_enumSetConfig+0x272>
+    146e:	27 2b       	or	r18, r23
+    1470:	25 bb       	out	0x15, r18	; 21
+							break;
+    1472:	73 c0       	rjmp	.+230    	; 0x155a <DIO_enumSetConfig+0x366>
+							case DIO_enumLogicLow:
+							/*Set Logic as LOW*/
+							CLR_BIT(PORTC,Add_strDioCfg[iter].Pin);
+    1474:	75 b3       	in	r23, 0x15	; 21
+    1476:	21 e0       	ldi	r18, 0x01	; 1
+    1478:	30 e0       	ldi	r19, 0x00	; 0
+    147a:	01 80       	ldd	r0, Z+1	; 0x01
+    147c:	02 c0       	rjmp	.+4      	; 0x1482 <DIO_enumSetConfig+0x28e>
+    147e:	22 0f       	add	r18, r18
+    1480:	33 1f       	adc	r19, r19
+    1482:	0a 94       	dec	r0
+    1484:	e2 f7       	brpl	.-8      	; 0x147e <DIO_enumSetConfig+0x28a>
+    1486:	20 95       	com	r18
+    1488:	27 23       	and	r18, r23
+    148a:	25 bb       	out	0x15, r18	; 21
+							break;
+    148c:	66 c0       	rjmp	.+204    	; 0x155a <DIO_enumSetConfig+0x366>
+			break;
+			
+			/*PORTD*/
+			case DIO_enumPortD:
+				/*Switch On Pin Configuration*/
+				switch(Add_strDioCfg[iter].PinConfig)
+    148e:	71 30       	cpi	r23, 0x01	; 1
+    1490:	21 f0       	breq	.+8      	; 0x149a <DIO_enumSetConfig+0x2a6>
+    1492:	90 f1       	brcs	.+100    	; 0x14f8 <DIO_enumSetConfig+0x304>
+    1494:	72 30       	cpi	r23, 0x02	; 2
+    1496:	c1 f0       	breq	.+48     	; 0x14c8 <DIO_enumSetConfig+0x2d4>
+    1498:	60 c0       	rjmp	.+192    	; 0x155a <DIO_enumSetConfig+0x366>
+				{
+					case DIO_enumInputInternalPU:
+						/*Set as Input- Internal Pull Up*/
+						CLR_BIT(DDRD,Add_strDioCfg[iter].Pin);
+    149a:	21 b3       	in	r18, 0x11	; 17
+    149c:	a1 e0       	ldi	r26, 0x01	; 1
+    149e:	b0 e0       	ldi	r27, 0x00	; 0
+    14a0:	ed 01       	movw	r28, r26
+    14a2:	02 c0       	rjmp	.+4      	; 0x14a8 <DIO_enumSetConfig+0x2b4>
+    14a4:	cc 0f       	add	r28, r28
+    14a6:	dd 1f       	adc	r29, r29
+    14a8:	3a 95       	dec	r19
+    14aa:	e2 f7       	brpl	.-8      	; 0x14a4 <DIO_enumSetConfig+0x2b0>
+    14ac:	3c 2f       	mov	r19, r28
+    14ae:	30 95       	com	r19
+    14b0:	23 23       	and	r18, r19
+    14b2:	21 bb       	out	0x11, r18	; 17
+						SET_BIT(PORTD,Add_strDioCfg[iter].Pin);
+    14b4:	22 b3       	in	r18, 0x12	; 18
+    14b6:	01 80       	ldd	r0, Z+1	; 0x01
+    14b8:	02 c0       	rjmp	.+4      	; 0x14be <DIO_enumSetConfig+0x2ca>
+    14ba:	aa 0f       	add	r26, r26
+    14bc:	bb 1f       	adc	r27, r27
+    14be:	0a 94       	dec	r0
+    14c0:	e2 f7       	brpl	.-8      	; 0x14ba <DIO_enumSetConfig+0x2c6>
+    14c2:	a2 2b       	or	r26, r18
+    14c4:	a2 bb       	out	0x12, r26	; 18
+					break;
+    14c6:	49 c0       	rjmp	.+146    	; 0x155a <DIO_enumSetConfig+0x366>
+				
+					case DIO_enumInputExternalPD:
+						/*Set as Input- External Pull Down*/
+						CLR_BIT(DDRD,Add_strDioCfg[iter].Pin);
+    14c8:	21 b3       	in	r18, 0x11	; 17
+    14ca:	a1 e0       	ldi	r26, 0x01	; 1
+    14cc:	b0 e0       	ldi	r27, 0x00	; 0
+    14ce:	ed 01       	movw	r28, r26
+    14d0:	02 c0       	rjmp	.+4      	; 0x14d6 <DIO_enumSetConfig+0x2e2>
+    14d2:	cc 0f       	add	r28, r28
+    14d4:	dd 1f       	adc	r29, r29
+    14d6:	3a 95       	dec	r19
+    14d8:	e2 f7       	brpl	.-8      	; 0x14d2 <DIO_enumSetConfig+0x2de>
+    14da:	3c 2f       	mov	r19, r28
+    14dc:	30 95       	com	r19
+    14de:	23 23       	and	r18, r19
+    14e0:	21 bb       	out	0x11, r18	; 17
+						CLR_BIT(PORTD,Add_strDioCfg[iter].Pin);
+    14e2:	22 b3       	in	r18, 0x12	; 18
+    14e4:	01 80       	ldd	r0, Z+1	; 0x01
+    14e6:	02 c0       	rjmp	.+4      	; 0x14ec <DIO_enumSetConfig+0x2f8>
+    14e8:	aa 0f       	add	r26, r26
+    14ea:	bb 1f       	adc	r27, r27
+    14ec:	0a 94       	dec	r0
+    14ee:	e2 f7       	brpl	.-8      	; 0x14e8 <DIO_enumSetConfig+0x2f4>
+    14f0:	a0 95       	com	r26
+    14f2:	a2 23       	and	r26, r18
+    14f4:	a2 bb       	out	0x12, r26	; 18
+					break;
+    14f6:	31 c0       	rjmp	.+98     	; 0x155a <DIO_enumSetConfig+0x366>
+				
+					case DIO_enumOutput:
+						/*Set as Output*/
+						SET_BIT(DDRD,Add_strDioCfg[iter].Pin);
+    14f8:	71 b3       	in	r23, 0x11	; 17
+    14fa:	a1 e0       	ldi	r26, 0x01	; 1
+    14fc:	b0 e0       	ldi	r27, 0x00	; 0
+    14fe:	ed 01       	movw	r28, r26
+    1500:	02 c0       	rjmp	.+4      	; 0x1506 <DIO_enumSetConfig+0x312>
+    1502:	cc 0f       	add	r28, r28
+    1504:	dd 1f       	adc	r29, r29
+    1506:	3a 95       	dec	r19
+    1508:	e2 f7       	brpl	.-8      	; 0x1502 <DIO_enumSetConfig+0x30e>
+    150a:	9e 01       	movw	r18, r28
+    150c:	27 2b       	or	r18, r23
+    150e:	21 bb       	out	0x11, r18	; 17
+						/*Switch on Logic State*/
+						switch(Add_strDioCfg[iter].LogicState)
+    1510:	23 81       	ldd	r18, Z+3	; 0x03
+    1512:	22 23       	and	r18, r18
+    1514:	71 f0       	breq	.+28     	; 0x1532 <DIO_enumSetConfig+0x33e>
+    1516:	21 30       	cpi	r18, 0x01	; 1
+    1518:	01 f5       	brne	.+64     	; 0x155a <DIO_enumSetConfig+0x366>
+						{
+							case DIO_enumLogicHigh:
+							/*Set Logic as HIGH*/
+							SET_BIT(PORTD,Add_strDioCfg[iter].Pin);
+    151a:	72 b3       	in	r23, 0x12	; 18
+    151c:	21 e0       	ldi	r18, 0x01	; 1
+    151e:	30 e0       	ldi	r19, 0x00	; 0
+    1520:	01 80       	ldd	r0, Z+1	; 0x01
+    1522:	02 c0       	rjmp	.+4      	; 0x1528 <DIO_enumSetConfig+0x334>
+    1524:	22 0f       	add	r18, r18
+    1526:	33 1f       	adc	r19, r19
+    1528:	0a 94       	dec	r0
+    152a:	e2 f7       	brpl	.-8      	; 0x1524 <DIO_enumSetConfig+0x330>
+    152c:	27 2b       	or	r18, r23
+    152e:	22 bb       	out	0x12, r18	; 18
+							break;
+    1530:	14 c0       	rjmp	.+40     	; 0x155a <DIO_enumSetConfig+0x366>
+							case DIO_enumLogicLow:
+							/*Set Logic as LOW*/
+							CLR_BIT(PORTD,Add_strDioCfg[iter].Pin);
+    1532:	72 b3       	in	r23, 0x12	; 18
+    1534:	21 e0       	ldi	r18, 0x01	; 1
+    1536:	30 e0       	ldi	r19, 0x00	; 0
+    1538:	01 80       	ldd	r0, Z+1	; 0x01
+    153a:	02 c0       	rjmp	.+4      	; 0x1540 <DIO_enumSetConfig+0x34c>
+    153c:	22 0f       	add	r18, r18
+    153e:	33 1f       	adc	r19, r19
+    1540:	0a 94       	dec	r0
+    1542:	e2 f7       	brpl	.-8      	; 0x153c <DIO_enumSetConfig+0x348>
+    1544:	20 95       	com	r18
+    1546:	27 23       	and	r18, r23
+    1548:	22 bb       	out	0x12, r18	; 18
+							break;
+    154a:	07 c0       	rjmp	.+14     	; 0x155a <DIO_enumSetConfig+0x366>
+	for(u8 iter=0;iter<Loc_u8StructSize;iter++)
+	{
+	/*Check if Port Number is Valid*/
+	if((Add_strDioCfg[iter].Port)>PORT_NUM)
+	{
+		RET_enumErrorStatus=DIO_enumWrongPort;
+    154c:	83 e0       	ldi	r24, 0x03	; 3
+    154e:	05 c0       	rjmp	.+10     	; 0x155a <DIO_enumSetConfig+0x366>
+	}
+	/*Check if Pin Number is Valid*/
+	else if((Add_strDioCfg[iter].Pin)>DIO_enumPin7)
+	{
+		RET_enumErrorStatus=DIO_enumWrongPin;
+    1550:	84 e0       	ldi	r24, 0x04	; 4
+    1552:	03 c0       	rjmp	.+6      	; 0x155a <DIO_enumSetConfig+0x366>
+	}
+	/*Check if Logic State is Valid*/
+	else if((Add_strDioCfg[iter].LogicState)>DIO_enumLogicHigh)
+	{
+		RET_enumErrorStatus=DIO_enumWrongLogicState;
+    1554:	86 e0       	ldi	r24, 0x06	; 6
+    1556:	01 c0       	rjmp	.+2      	; 0x155a <DIO_enumSetConfig+0x366>
+	}
+	/*Check if Pin Configuration is Valid*/
+	else if((Add_strDioCfg[iter].PinConfig)>DIO_enumInputExternalPD)
+	{
+		RET_enumErrorStatus=DIO_enumWrongConfig;
+    1558:	85 e0       	ldi	r24, 0x05	; 5
+	if(Add_strDioCfg==NULL)
+	{
+		RET_enumErrorStatus=DIO_enumNullPointer;
+	}
+	/*Loop over Size of Struct*/
+	for(u8 iter=0;iter<Loc_u8StructSize;iter++)
+    155a:	9f 5f       	subi	r25, 0xFF	; 255
+    155c:	96 17       	cp	r25, r22
+    155e:	08 f4       	brcc	.+2      	; 0x1562 <DIO_enumSetConfig+0x36e>
+    1560:	53 ce       	rjmp	.-858    	; 0x1208 <DIO_enumSetConfig+0x14>
+			#endif
+		}
+	}
+	}
+	return RET_enumErrorStatus;
+}	
+    1562:	df 91       	pop	r29
+    1564:	cf 91       	pop	r28
+    1566:	08 95       	ret
+
+00001568 <EXTI_voidInit>:
+/**
+*@brief : Function to Set Call Back Function from Application Layer for EXTI2
+*/
+void EXTI2_voidSetCallBack(void(*cbf)(void))
+{
+	EXTI2_ISR=cbf;
+    1568:	8f b7       	in	r24, 0x3f	; 63
+    156a:	80 68       	ori	r24, 0x80	; 128
+    156c:	8f bf       	out	0x3f, r24	; 63
+    156e:	85 b7       	in	r24, 0x35	; 53
+    1570:	8c 7f       	andi	r24, 0xFC	; 252
+    1572:	85 bf       	out	0x35, r24	; 53
+    1574:	8b b7       	in	r24, 0x3b	; 59
+    1576:	80 64       	ori	r24, 0x40	; 64
+    1578:	8b bf       	out	0x3b, r24	; 59
+    157a:	85 b7       	in	r24, 0x35	; 53
+    157c:	83 7f       	andi	r24, 0xF3	; 243
+    157e:	85 bf       	out	0x35, r24	; 53
+    1580:	8b b7       	in	r24, 0x3b	; 59
+    1582:	80 68       	ori	r24, 0x80	; 128
+    1584:	8b bf       	out	0x3b, r24	; 59
+    1586:	84 b7       	in	r24, 0x34	; 52
+    1588:	8f 7b       	andi	r24, 0xBF	; 191
+    158a:	84 bf       	out	0x34, r24	; 52
+    158c:	8b b7       	in	r24, 0x3b	; 59
+    158e:	80 62       	ori	r24, 0x20	; 32
+    1590:	8b bf       	out	0x3b, r24	; 59
+    1592:	08 95       	ret
+
+00001594 <EXTI0_voidSetCallBack>:
+    1594:	90 93 93 00 	sts	0x0093, r25	; 0x800093 <EXTI0_ISR+0x1>
+    1598:	80 93 92 00 	sts	0x0092, r24	; 0x800092 <EXTI0_ISR>
+    159c:	08 95       	ret
+
+0000159e <EXTI1_voidSetCallBack>:
+    159e:	90 93 91 00 	sts	0x0091, r25	; 0x800091 <EXTI1_ISR+0x1>
+    15a2:	80 93 90 00 	sts	0x0090, r24	; 0x800090 <EXTI1_ISR>
+    15a6:	08 95       	ret
+
+000015a8 <__vector_1>:
+/******************************************************************************/
+/*									EXTI0_ISR					           	  */
+/******************************************************************************/
+void __vector_1(void) __attribute__((signal));
+void __vector_1(void)
+{
+    15a8:	1f 92       	push	r1
+    15aa:	0f 92       	push	r0
+    15ac:	0f b6       	in	r0, 0x3f	; 63
+    15ae:	0f 92       	push	r0
+    15b0:	11 24       	eor	r1, r1
+    15b2:	2f 93       	push	r18
+    15b4:	3f 93       	push	r19
+    15b6:	4f 93       	push	r20
+    15b8:	5f 93       	push	r21
+    15ba:	6f 93       	push	r22
+    15bc:	7f 93       	push	r23
+    15be:	8f 93       	push	r24
+    15c0:	9f 93       	push	r25
+    15c2:	af 93       	push	r26
+    15c4:	bf 93       	push	r27
+    15c6:	ef 93       	push	r30
+    15c8:	ff 93       	push	r31
+	if(EXTI0_ISR!=NULL)
+    15ca:	e0 91 92 00 	lds	r30, 0x0092	; 0x800092 <EXTI0_ISR>
+    15ce:	f0 91 93 00 	lds	r31, 0x0093	; 0x800093 <EXTI0_ISR+0x1>
+    15d2:	30 97       	sbiw	r30, 0x00	; 0
+    15d4:	09 f0       	breq	.+2      	; 0x15d8 <__vector_1+0x30>
+	{
+		EXTI0_ISR();
+    15d6:	09 95       	icall
+	else
+	{
+		
+	}
+	
+}
+    15d8:	ff 91       	pop	r31
+    15da:	ef 91       	pop	r30
+    15dc:	bf 91       	pop	r27
+    15de:	af 91       	pop	r26
+    15e0:	9f 91       	pop	r25
+    15e2:	8f 91       	pop	r24
+    15e4:	7f 91       	pop	r23
+    15e6:	6f 91       	pop	r22
+    15e8:	5f 91       	pop	r21
+    15ea:	4f 91       	pop	r20
+    15ec:	3f 91       	pop	r19
+    15ee:	2f 91       	pop	r18
+    15f0:	0f 90       	pop	r0
+    15f2:	0f be       	out	0x3f, r0	; 63
+    15f4:	0f 90       	pop	r0
+    15f6:	1f 90       	pop	r1
+    15f8:	18 95       	reti
+
+000015fa <__vector_2>:
+/******************************************************************************/
+/*									EXTI1_ISR					           	  */
+/******************************************************************************/
+void __vector_2(void) __attribute__((signal));
+void __vector_2(void)
+{
+    15fa:	1f 92       	push	r1
+    15fc:	0f 92       	push	r0
+    15fe:	0f b6       	in	r0, 0x3f	; 63
+    1600:	0f 92       	push	r0
+    1602:	11 24       	eor	r1, r1
+    1604:	2f 93       	push	r18
+    1606:	3f 93       	push	r19
+    1608:	4f 93       	push	r20
+    160a:	5f 93       	push	r21
+    160c:	6f 93       	push	r22
+    160e:	7f 93       	push	r23
+    1610:	8f 93       	push	r24
+    1612:	9f 93       	push	r25
+    1614:	af 93       	push	r26
+    1616:	bf 93       	push	r27
+    1618:	ef 93       	push	r30
+    161a:	ff 93       	push	r31
+	if(EXTI1_ISR!=NULL)
+    161c:	e0 91 90 00 	lds	r30, 0x0090	; 0x800090 <EXTI1_ISR>
+    1620:	f0 91 91 00 	lds	r31, 0x0091	; 0x800091 <EXTI1_ISR+0x1>
+    1624:	30 97       	sbiw	r30, 0x00	; 0
+    1626:	09 f0       	breq	.+2      	; 0x162a <__vector_2+0x30>
+	{
+		EXTI1_ISR();
+    1628:	09 95       	icall
+	}
+	else
+	{
+		
+	}
+}
+    162a:	ff 91       	pop	r31
+    162c:	ef 91       	pop	r30
+    162e:	bf 91       	pop	r27
+    1630:	af 91       	pop	r26
+    1632:	9f 91       	pop	r25
+    1634:	8f 91       	pop	r24
+    1636:	7f 91       	pop	r23
+    1638:	6f 91       	pop	r22
+    163a:	5f 91       	pop	r21
+    163c:	4f 91       	pop	r20
+    163e:	3f 91       	pop	r19
+    1640:	2f 91       	pop	r18
+    1642:	0f 90       	pop	r0
+    1644:	0f be       	out	0x3f, r0	; 63
+    1646:	0f 90       	pop	r0
+    1648:	1f 90       	pop	r1
+    164a:	18 95       	reti
+
+0000164c <__vector_3>:
+/*									EXTI2_ISR					           	  */
+/******************************************************************************/
+
+void __vector_3(void) __attribute__((signal));
+void __vector_3(void)
+{
+    164c:	1f 92       	push	r1
+    164e:	0f 92       	push	r0
+    1650:	0f b6       	in	r0, 0x3f	; 63
+    1652:	0f 92       	push	r0
+    1654:	11 24       	eor	r1, r1
+    1656:	2f 93       	push	r18
+    1658:	3f 93       	push	r19
+    165a:	4f 93       	push	r20
+    165c:	5f 93       	push	r21
+    165e:	6f 93       	push	r22
+    1660:	7f 93       	push	r23
+    1662:	8f 93       	push	r24
+    1664:	9f 93       	push	r25
+    1666:	af 93       	push	r26
+    1668:	bf 93       	push	r27
+    166a:	ef 93       	push	r30
+    166c:	ff 93       	push	r31
+	if(EXTI2_ISR!=NULL)
+    166e:	e0 91 8e 00 	lds	r30, 0x008E	; 0x80008e <EXTI2_ISR>
+    1672:	f0 91 8f 00 	lds	r31, 0x008F	; 0x80008f <EXTI2_ISR+0x1>
+    1676:	30 97       	sbiw	r30, 0x00	; 0
+    1678:	09 f0       	breq	.+2      	; 0x167c <__vector_3+0x30>
+	{
+		EXTI2_ISR();
+    167a:	09 95       	icall
+	}
+	else
+	{
+		
+	}
+    167c:	ff 91       	pop	r31
+    167e:	ef 91       	pop	r30
+    1680:	bf 91       	pop	r27
+    1682:	af 91       	pop	r26
+    1684:	9f 91       	pop	r25
+    1686:	8f 91       	pop	r24
+    1688:	7f 91       	pop	r23
+    168a:	6f 91       	pop	r22
+    168c:	5f 91       	pop	r21
+    168e:	4f 91       	pop	r20
+    1690:	3f 91       	pop	r19
+    1692:	2f 91       	pop	r18
+    1694:	0f 90       	pop	r0
+    1696:	0f be       	out	0x3f, r0	; 63
+    1698:	0f 90       	pop	r0
+    169a:	1f 90       	pop	r1
+    169c:	18 95       	reti
+
+0000169e <__tablejump2__>:
+    169e:	ee 0f       	add	r30, r30
+    16a0:	ff 1f       	adc	r31, r31
+    16a2:	05 90       	lpm	r0, Z+
+    16a4:	f4 91       	lpm	r31, Z
+    16a6:	e0 2d       	mov	r30, r0
+    16a8:	09 94       	ijmp
+
+000016aa <_exit>:
+    16aa:	f8 94       	cli
+
+000016ac <__stop_program>:
+    16ac:	ff cf       	rjmp	.-2      	; 0x16ac <__stop_program>
